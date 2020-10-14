@@ -40,7 +40,9 @@
                     <div id="tab1" class="tab-pane in active" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
-                                    {!! $about->description !!}
+                                    @if($about)
+                                        {!! $about->description !!}
+                                    @endif
                             </div>
                         </div>
                     </div>
@@ -48,22 +50,27 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <p class="mbr-text mbr-fonts-style display-7">
-                                    Brief Summary of Tuvalu Constitution.....<br><br>Attach a copy of the Constitution itse;lf</p>
+                                    @if($constitution)
+                                        {!! $constitution->description!!}
+                                    @endif
                             </div>
                         </div>
                     </div>
                     <div id="tab3" class="tab-pane" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="mbr-text mbr-fonts-style display-7">Brief Summary of National Development Plan<br>
-                                    <br>Attach a copy of the National Development Plan</p>
+                                    @if($tuvaludevelopmentplan)
+                                        {!! $tuvaludevelopmentplan->description!!}
+                                    @endif
                             </div>
                         </div>
                     </div>
                     <div id="tab4" class="tab-pane" role="tabpanel">
                         <div class="row">
                             <div class="col-md-12">
-                                <p class="mbr-text mbr-fonts-style display-7">List of all the Public Holidays in 2020</p>
+                                    @if($holiday)
+                                        {!! $holiday->description!!}
+                                    @endif
                             </div>
                         </div>
                     </div>

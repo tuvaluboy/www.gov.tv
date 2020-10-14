@@ -13,6 +13,9 @@ use App\Budget;
 use App\Vacancy;
 use App\Page;
 use App\Aboutuvalu;
+use App\Tuvaluconstition;
+use App\Tuvaludevelopmentplan;
+use App\Holiday;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
@@ -88,7 +91,12 @@ class HomeController extends Controller
     }
     public function about(){
         $about = Aboutuvalu::first();
+        $constitution = Tuvaluconstition::first();
+        $tuvaludevelopmentplan = Tuvaludevelopmentplan::first();
+        $holiday = Holiday::first();
        // return $about->description;
-        return view('front.about', compact('about'));
+        return view('front.about', compact('about','constitution','tuvaludevelopmentplan','holiday'));
     }
+
+
 }

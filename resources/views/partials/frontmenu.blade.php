@@ -29,13 +29,14 @@
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route("directory") }}">Directory</a></li>
                             <!-- <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('budget') }}">Budget</a></li> -->
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('vacancies') }}">Vacancies</a></li>
-                            <li class="nav-item dropdown">
+                            <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('about')}}">About</a></li>
+                            <!-- <li class="nav-item dropdown">
                                 <a class="nav-link link text-black dropdown-toggle display-4" href="{{route('about')}}" data-toggle="dropdown-submenu" aria-expanded="false">About Tuvalu</a>
                                     <div class="dropdown-menu">
                                         <a class="text-black dropdown-item display-4" href="{{route('about')}}">Tuvalu Constitution</a>
                                         <a class="text-black dropdown-item display-4" href="#" aria-expanded="false">National Development Plan</a>
                                         <a class="text-black dropdown-item display-4" href="#" aria-expanded="false">Public Holidays 2020</a>
-                                        <a class="text-black dropdown-item display-4" href="https://tuvalu-legislation.tv/cms/" aria-expanded="false">Tuvalu Laws</a></div></li>
+                                        <a class="text-black dropdown-item display-4" href="https://tuvalu-legislation.tv/cms/" aria-expanded="false">Tuvalu Laws</a></div></li> -->
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('contacts')}}">Contacts</a></li></ul>
             </div>
         </div>
