@@ -1,5 +1,5 @@
 <section class="menu cid-s9hDDN5Qmq" once="menu" id="menu2-1">
-    
+
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
         <div class="container-fluid">
             <div class="navbar-brand">
@@ -27,7 +27,7 @@
                                     <div class="dropdown-menu"><a class="text-black dropdown-item display-4" href="{{route('announcement')}}">Announcement</a>
                                         <a class="text-black dropdown-item display-4" href="{{route('news') }}" aria-expanded="false">News</a></div></li>
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route("directory") }}">Directory</a></li>
-                            <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('budget') }}">Budget</a></li>
+                            <!-- <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('budget') }}">Budget</a></li> -->
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('vacancies') }}">Vacancies</a></li>
                             <li class="nav-item dropdown">
                                 <a class="nav-link link text-black dropdown-toggle display-4" href="{{route('about')}}" data-toggle="dropdown-submenu" aria-expanded="false">About Tuvalu</a>
@@ -36,7 +36,7 @@
                                         <a class="text-black dropdown-item display-4" href="#" aria-expanded="false">National Development Plan</a>
                                         <a class="text-black dropdown-item display-4" href="#" aria-expanded="false">Public Holidays 2020</a>
                                         <a class="text-black dropdown-item display-4" href="https://tuvalu-legislation.tv/cms/" aria-expanded="false">Tuvalu Laws</a></div></li>
-                            <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('contacts')}}">Contacts</a></li></ul>   
+                            <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('contacts')}}">Contacts</a></li></ul>
             </div>
         </div>
     </nav>

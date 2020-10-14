@@ -12,6 +12,7 @@ use App\NewsandUpdate;
 use App\Budget;
 use App\Vacancy;
 use App\Page;
+use App\Aboutuvalu;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
@@ -86,7 +87,8 @@ class HomeController extends Controller
 
     }
     public function about(){
-
-        return view('front.about');
+        $about = Aboutuvalu::first();
+       // return $about->description;
+        return view('front.about', compact('about'));
     }
 }
