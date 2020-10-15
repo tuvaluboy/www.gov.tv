@@ -132,5 +132,6 @@ Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/news/{news}','HomeController@shownews')->name('news.show');
     Route::get('/contacts','HomeController@contact')->name('contacts');
     Route::get('/about','HomeController@about')->name('about');
+    Route::get('/showsubcategory/{showsubcategory}','HomeController@showsubcategory')->name('showsubcategory.show');
 });
 

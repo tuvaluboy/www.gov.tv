@@ -17,6 +17,7 @@ use App\Tuvaluconstition;
 use App\Tuvaludevelopmentplan;
 use App\Holiday;
 use App\ServiceCategory;
+use App\ServicesSubCategory;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
@@ -104,5 +105,9 @@ class HomeController extends Controller
         return view('front.about', compact('about','constitution','tuvaludevelopmentplan','holiday'));
     }
 
+    public function showsubcategory($id){
+        $subcategories = ServicesSubCategory::all()->where('servicescategory_id',$id)->where('status','Publish');
 
+        return view('front.servicessubcategory', compact('subcategories'));
+    }
 }

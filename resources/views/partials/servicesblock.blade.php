@@ -11,7 +11,7 @@
 
                 <div class="card-box">
 
-                            <a><h4 class="card-title py-3 mbr-fonts-style display-7">{{$servicescategories[$j]->title}}</h4>
+                            <a href="{{route('showsubcategory.show', $servicescategories[$j]->id)}}"><h4 class="card-title py-3 mbr-fonts-style display-7">{{$servicescategories[$j]->title}}</h4>
                             <p class="mbr-text mbr-fonts-style display-4">{!!$servicescategories[$j]->description!!}</p></a>
 
 
