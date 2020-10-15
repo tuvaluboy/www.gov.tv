@@ -16,6 +16,7 @@ use App\Aboutuvalu;
 use App\Tuvaluconstition;
 use App\Tuvaludevelopmentplan;
 use App\Holiday;
+use App\ServiceCategory;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
@@ -26,13 +27,18 @@ class HomeController extends Controller
 {
     public function index(){
         //Should initialise page to Home
+
         $page = Page::where('name','=','Home')->get();
         //$pageid = $page[0]->id;
         // $imageslides = Imageslide::where('page_id','=',$pageid);
         $imageslides = Imageslide::all();
         // return $imageslides;
         $newsandupdates = NewsandUpdate::orderBy('created_at','desc')->take(3)->get();
-        return view('front.home', compact('imageslides','newsandupdates'));
+
+        $servicescategories = ServiceCategory::all()->where('status','Publish');
+        $counts = ServiceCategory::count();
+
+        return view('front.home', compact('imageslides','newsandupdates','counts','servicescategories'));
 
     }
 
