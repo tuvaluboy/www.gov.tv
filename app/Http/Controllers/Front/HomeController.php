@@ -36,9 +36,10 @@ class HomeController extends Controller
         // return $imageslides;
         $newsandupdates = NewsandUpdate::orderBy('created_at','desc')->take(3)->get();
 
-        $servicescategories = ServiceCategory::all()->where('status','Publish');
-        $counts = ServiceCategory::count();
-
+        $servicescategories = ServiceCategory::where('status','Publish')->get();
+        $counts = ServiceCategory::where('status','Publish')->count(); 
+      
+      
         return view('front.home', compact('imageslides','newsandupdates','counts','servicescategories'));
 
     }
