@@ -14,7 +14,7 @@
                 <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong>News</strong></h1>
                 
                 <p class="mbr-text mbr-fonts-style display-7">
-                    Home &gt; Media &gt; News &gt;</p>
+                    <a  href="{{route('home')}}" class="text-primary"> Home </a> &gt; News </p>
                 
             </div>
         </div>

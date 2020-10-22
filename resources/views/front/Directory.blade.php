@@ -54,7 +54,7 @@
             <div class="col-12 col-lg-12">
                 <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><strong>Directory</strong></h1>
                 
-                <p class="mbr-text mbr-fonts-style display-7"><br><a  href="index.html" class="text-primary">Home</a> &gt; Directory<br><br></p>
+                <p class="mbr-text mbr-fonts-style display-7"><br><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; Directory<br><br></p>
                 
             </div>
         </div>

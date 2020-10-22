@@ -13,7 +13,7 @@
             <div class="col-12 col-lg-12">
                 <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><strong><br></strong><strong>Vacancies</strong></h1>
                 
-                <p class="mbr-text mbr-fonts-style display-7">Home &gt; Vacancies</p>
+                <p class="mbr-text mbr-fonts-style display-7"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; Vacancies</p>
                 
             </div>
         </div>
