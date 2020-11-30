@@ -18,6 +18,7 @@ use App\Tuvaludevelopmentplan;
 use App\Holiday;
 use App\ServiceCategory;
 use App\ServicesSubCategory;
+use App\Service;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
@@ -107,8 +108,12 @@ class HomeController extends Controller
     }
 
     public function showsubcategory($id){
-        $subcategories = ServicesSubCategory::all()->where('servicescategory_id',$id)->where('status','Publish');
-
-        return view('front.servicessubcategory', compact('subcategories'));
+        //find the category
+        $serviceCategory = ServiceCategory::find($id); 
+        $subcategories = ServicesSubCategory::all()->where('servicescategory_id',$id)->where('status','Publish'); 
+    
+         
+       
+        return view('front.servicessubcategory', compact('subcategories','serviceCategory'));
     }
 }
