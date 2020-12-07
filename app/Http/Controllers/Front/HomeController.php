@@ -116,4 +116,9 @@ class HomeController extends Controller
        
         return view('front.servicessubcategory', compact('subcategories','serviceCategory'));
     }
+    public function services($id){ 
+        $service = Service::find($id);
+  
+        return view('front.services', compact('service'));
+    }
 }

@@ -49,10 +49,9 @@
                                 @foreach($subcategory->services as $service)
                                 <p class="mbr-fonts-style panel-text display-4">
                                     
-                                <a href="#"><u>{{$service->title}}</u></a>
+                                <a href="{{route('services.show', $service->id)}}"><u>{{$service->title}}</u></a>
                                 <p>{!!$service->description!!}</p>
-                                    <br> 
-                                   
+                                    
                                 </p>
                                 @endforeach
                             </div>
