@@ -6,9 +6,9 @@
 @include('partials.slidemenu')
 
 <!-- News and Upadte  -->
- @include('partials.newsandupdate')
+ <!-- @include('partials.newsandupdate') -->
  <!-- <section class="content8 cid-s9uvqnwpHy" id="content8-1i">
-    
+
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-12 col-md-10">
@@ -24,15 +24,15 @@
 
 <!-- Another Section -->
 <section class="video5 cid-sa9yHzPuhi" id="video5-4d">
-    
+
     <div class="container">
         <div class="title-wrapper mb-5">
-             
+
         </div>
         <div class="row">
             <div class="col-12 col-md-6 video-block">
                 <div class="video-wrapper"><iframe class="mbr-embedded-video" src="https://www.youtube.com/embed/LjyG31bfZgE?rel=0&amp;amp;showinfo=0&amp;autoplay=0&amp;loop=1&amp;playlist=LjyG31bfZgE" width="1280" height="720" frameborder="0" allowfullscreen></iframe></div>
-                
+
             </div>
             <div class="col-12 col-md-6">
                 <div class="text-wrapper">
