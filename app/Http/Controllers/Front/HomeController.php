@@ -118,7 +118,9 @@ class HomeController extends Controller
     }
     public function services($id){ 
         $service = Service::find($id);
-  
-        return view('front.services', compact('service'));
+        $services = Service::where('servicessubcategory_id',$service->servicessubcategory_id)->get();
+        $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
+        $serviceCategory = ServiceCategory::find($subcategories->servicescategory_id);
+        return view('front.services', compact('service','services','subcategories','serviceCategory'));
     }
 }

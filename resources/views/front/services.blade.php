@@ -11,9 +11,9 @@
     <div class="align-center container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-12">
-                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><br><strong>Business and Industry</strong></h1>
+                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><br><strong>{{$subcategories->title}}</strong></h1>
                 
-                <p class="mbr-text mbr-fonts-style display-7"><a href="index.html" class="text-primary">Home</a> &gt; Business and Industry</p>
+                <p class="mbr-text mbr-fonts-style display-7"><a href="{{route('showsubcategory.show', $serviceCategory->id)}}" class="text-primary">{{$serviceCategory->title}}</a> &gt; {{$subcategories->title}}</p>
                 
             </div>
         </div>
@@ -33,14 +33,14 @@
                     <div class="card-wrapper media-container-row media-container-row">
                         <div class="card-box">
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                                <a href="bus_industry.html">Apply for a business</a>
+                                {{$subcategories->title}} 
                                 
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-7">
-                                How to apply for a business <br> 
-                                <hr>
-                                Business Application Eligiability <br>
-                                <hr>
+                                @foreach($services as $ser)
+                                <a href="bus_industry.html"> {{$ser->title}} </a><br><hr>
+                                @endforeach
+                               
                             </p>
                         </div>
                     </div>
