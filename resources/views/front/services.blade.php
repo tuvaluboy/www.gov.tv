@@ -38,7 +38,7 @@
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-7">
                                 @foreach($services as $ser)
-                                <a href="bus_industry.html"> {{$ser->title}} </a><br><hr>
+                                <a href="{{route('services.show', $ser->id)}}"> {{$ser->title}} </a><br><hr>
                                 @endforeach
                                
                             </p>
@@ -53,7 +53,7 @@
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
                             <a>{{$service->title}}</a></h4>
                             <p class="mbr-text mbr-fonts-style display-7">
-                                All Climate change related projects and resources. jhljfljhflyfuiyfdludulyouy ljhgojhfouyfouyfdouyouyoufy lkjgkgi lhgoyfoutdoyutd lhfgouyfouytd
+                                {{$service->detailinformation}}
                                 <br>
                                 <br>
                             </p>
