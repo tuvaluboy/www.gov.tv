@@ -23,7 +23,7 @@
 @include('partials.servicesblock')
 
 <!-- Another Section -->
-<section class="video5 cid-sa9yHzPuhi" id="video5-4d">
+<!-- <section class="video5 cid-sa9yHzPuhi" id="video5-4d">
 
     <div class="container">
         <div class="title-wrapper mb-5">
@@ -44,6 +44,6 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
 @endsection

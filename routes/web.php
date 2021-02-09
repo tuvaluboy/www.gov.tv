@@ -107,6 +107,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('services/media', 'ServicesController@storeMedia')->name('services.storeMedia');
     Route::post('services/ckmedia', 'ServicesController@storeCKEditorImages')->name('services.storeCKEditorImages');
     Route::resource('services', 'ServicesController');
+
+      // Pictures
+      Route::delete('pictures/destroy', 'PicturesController@massDestroy')->name('pictures.massDestroy');
+      Route::post('pictures/media', 'PicturesController@storeMedia')->name('pictures.storeMedia');
+      Route::post('pictures/ckmedia', 'PicturesController@storeCKEditorImages')->name('pictures.storeCKEditorImages');
+      Route::resource('pictures', 'PicturesController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

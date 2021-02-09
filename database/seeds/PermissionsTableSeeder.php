@@ -364,8 +364,29 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 89,
                 'title' => 'services_setup_access',
             ],
+
             [
                 'id'    => 90,
+                'title' => 'picture_create',
+            ],
+            [
+                'id'    => 91,
+                'title' => 'picture_edit',
+            ],
+            [
+                'id'    => 92,
+                'title' => 'picture_show',
+            ],
+            [
+                'id'    => 93,
+                'title' => 'picture_delete',
+            ],
+            [
+                'id'    => 94,
+                'title' => 'picture_access',
+            ],
+            [
+                'id'    => 95,
                 'title' => 'profile_password_edit',
             ],
         ];

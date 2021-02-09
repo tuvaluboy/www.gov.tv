@@ -32,7 +32,7 @@
                     <li class="nav-item first mbr-fonts-style"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab0" aria-selected="true"><strong>About Tuvalu&nbsp; &nbsp;</strong>&nbsp;&nbsp;</a></li>
                     <li class="nav-item"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab1" aria-selected="true"><strong>Tuvalu Constitution&nbsp; &nbsp;</strong>&nbsp;</a></li>
                     <li class="nav-item"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab2" aria-selected="true"><strong>National Development Plan&nbsp; &nbsp;</strong></a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab3" aria-selected="true"><strong>Public Holidays 2020</strong></a></li>
+                    <li class="nav-item"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab3" aria-selected="true"><strong>Public Holidays 2021</strong></a></li>
 
 
                 </ul>

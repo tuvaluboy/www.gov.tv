@@ -86,6 +86,16 @@
                             </a>
                         </li>
                     @endcan
+                    @can('picture_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.pictures.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pictures") || request()->is("admin/pictures/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.picture.title') }}
+                            </a>
+                        </li>
+                    @endcan
                 </ul>
             </li>
         @endcan

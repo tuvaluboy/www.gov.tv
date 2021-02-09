@@ -30,4 +30,9 @@ class Page extends Model
     {
         return $date->format('Y-m-d H:i:s');
     }
+
+    public function pagePictures()
+    {
+        return $this->hasMany(Picture::class, 'page_id', 'id');
+    }
 }

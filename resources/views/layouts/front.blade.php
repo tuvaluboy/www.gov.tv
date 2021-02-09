@@ -8,8 +8,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
   <link rel="shortcut icon" href="{{asset('assets/images/codeofarms-tranparent-180x200.jpg')}}" type="image/x-icon">
   <meta name="description" content="">
-  
-  
+
+
   <title>Egov.tv</title>
   <link rel="stylesheet" href="{{asset('assets/web/assets/mobirise-icons2/mobirise2.css')}}">
   <link rel="stylesheet" href="{{asset('assets/web/assets/mobirise-icons/mobirise-icons.css')}}">
@@ -26,9 +26,9 @@
   <link rel="preload" as="style" href="{{asset('assets/mobirise/css/mbr-additional.css')}}"><link rel="stylesheet" href="{{asset('assets/mobirise/css/mbr-additional.css')}}" type="text/css">
   <link rel="stylesheet" href="{{asset('assets/datatables/data-tables.bootstrap4.min.css')}}">
 
-  
-  
-  
+
+
+
 </head>
 <body>
 <!-- Menu -->
@@ -48,8 +48,8 @@
 <!-- Footer Section -->
 @include('partials.footer')
 
-  <script src="{{asset('assets/web/assets/jquery/jquery.min.js')}}"></script> 
- 
+  <script src="{{asset('assets/web/assets/jquery/jquery.min.js')}}"></script>
+
   <script src="{{asset('assets/popper/popper.min.js')}}"></script>
   <script src="{{asset('assets/tether/tether.min.js')}}"></script>
   <script src="{{asset('assets/bootstrap/js/bootstrap.min.js')}}"></script>
@@ -93,7 +93,7 @@ $(document).ready( function () {
 
 } );
 </script>
-  
+
   @yield('scripts')
 </body>
 </html>

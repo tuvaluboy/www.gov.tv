@@ -1,6 +1,6 @@
 <section class="footer4 cid-s9hGGsM3vl mbr-parallax-background" once="footers" id="footer4-5">
 
-    
+
     <div class="mbr-overlay" style="opacity: 0; background-color: rgb(255, 255, 255);"></div>
     <div class="container">
         <div class="row mbr-white">
@@ -17,7 +17,7 @@
                 <p class="mbr-text mbr-fonts-style mb-4 display-7">Vaiaku<br>Funafuti<br>Tuvalu</p>
                 <h5 class="mbr-section-subtitle mbr-fonts-style mb-3 display-4"><br><br><br>© Copyright 2020 ICT Department&nbsp;
                 </h5>
-                
+
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7">
@@ -31,7 +31,7 @@
             </div>
             <div class="col-12 col-md-6 col-lg-3">
                 <h5 class="mbr-section-subtitle mbr-fonts-style mb-2 display-7">
-                    <strong>Mobirise Extensions</strong>
+                    <strong>Useful Links</strong>
                 </h5>
                 <ul class="list mbr-fonts-style display-7">
                     <li class="mbr-text item-wrap"><a href="http://mail.gov.tv" target="_blank">Government Email</a></li><a href="http://mail.gov.tv" target="_blank">
