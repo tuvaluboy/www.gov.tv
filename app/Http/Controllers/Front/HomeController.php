@@ -19,6 +19,7 @@ use App\Holiday;
 use App\ServiceCategory;
 use App\ServicesSubCategory;
 use App\Service;
+use App\Picture;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
@@ -31,16 +32,17 @@ class HomeController extends Controller
         //Should initialise page to Home
 
         $page = Page::where('name','=','Home')->get();
-        //$pageid = $page[0]->id;
+        $pictures = Picture::where('page_id','=',$page[0]->id)->get();
+
         // $imageslides = Imageslide::where('page_id','=',$pageid);
         $imageslides = Imageslide::all();
         // return $imageslides;
         $newsandupdates = NewsandUpdate::orderBy('created_at','desc')->take(3)->get();
 
         $servicescategories = ServiceCategory::where('status','Publish')->get();
-        $counts = ServiceCategory::where('status','Publish')->count(); 
-      
-      
+        $counts = ServiceCategory::where('status','Publish')->count();
+
+
         return view('front.home', compact('imageslides','newsandupdates','counts','servicescategories'));
 
     }
@@ -109,14 +111,14 @@ class HomeController extends Controller
 
     public function showsubcategory($id){
         //find the category
-        $serviceCategory = ServiceCategory::find($id); 
-        $subcategories = ServicesSubCategory::all()->where('servicescategory_id',$id)->where('status','Publish'); 
-    
-         
-       
+        $serviceCategory = ServiceCategory::find($id);
+        $subcategories = ServicesSubCategory::all()->where('servicescategory_id',$id)->where('status','Publish');
+
+
+
         return view('front.servicessubcategory', compact('subcategories','serviceCategory'));
     }
-    public function services($id){ 
+    public function services($id){
         $service = Service::find($id);
         $services = Service::where('servicessubcategory_id',$service->servicessubcategory_id)->get();
         $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
