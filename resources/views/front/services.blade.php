@@ -2,19 +2,16 @@
 
 @section('content')
 
-<section class="header3 cid-shcGeNTMHt" id="header3-7n">
 
-
-
-    <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(0, 0, 0);"></div>
-
-    <div class="align-center container">
-        <div class="row justify-content-center">
-            <div class="col-12 col-lg-12">
-                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><br><strong>{{$subcategories->title}}</strong></h1>
-
-                <p class="mbr-text mbr-fonts-style display-7"><a href="{{route('showsubcategory.show', $serviceCategory->id)}}" class="text-primary">{{$serviceCategory->title}}</a> &gt; {{$subcategories->title}}</p>
-
+<section class="header4 cid-sdVgfli5UX" id="header4-2p">
+    <div class="mbr-overlay"></div>
+    <div class="container">
+        <div class="row">
+            <div class="content-wrap">
+                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-2">
+                    <strong><br></strong><br><strong>{{$subcategories->title}}</strong>
+            </h1>
+                    <p class="mbr-text mbr-fonts-style display-6"><a href="{{route('showsubcategory.show', $serviceCategory->id)}}" class="text-primary">{{$serviceCategory->title}}</a> &gt; {{$subcategories->title}}</p>
             </div>
         </div>
     </div>
