@@ -152,6 +152,8 @@ Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/about','HomeController@about')->name('about');
     Route::get('/showsubcategory/{showsubcategory}','HomeController@showsubcategory')->name('showsubcategory.show');
     Route::get('/services/{sercives}','HomeController@services')->name('services.show');
-    Route::get('/media')->name('media');
+    Route::get('/media','HomeController@mediacenter')->name('media');
+    Route::get('/media/{media}','HomeController@medialist')->name('media.list');
+    Route::get('/media/show/{media}','HomeController@mediashow')->name('media.show');
 });
 

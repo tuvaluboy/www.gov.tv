@@ -28,7 +28,7 @@
                                         <a class="text-black dropdown-item display-4" href="{{route('news') }}" aria-expanded="false">News</a>
                                     </div>
                             </li> --}}
-                            <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('news') }}">Media</a></li>
+                            <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('media') }}">Media</a></li>
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route("directory") }}">Directory</a></li>
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('budget') }}">Budget</a></li>
                               <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('vacancies') }}">Vacancies</a></li>

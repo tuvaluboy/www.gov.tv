@@ -20,6 +20,8 @@ use App\ServiceCategory;
 use App\ServicesSubCategory;
 use App\Service;
 use App\Picture;
+use App\Category;
+use App\item;
 
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
@@ -124,5 +126,28 @@ class HomeController extends Controller
         $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
         $serviceCategory = ServiceCategory::find($subcategories->servicescategory_id);
         return view('front.services', compact('service','services','subcategories','serviceCategory'));
+    }
+
+    public function mediacenter(){
+        $categories = Category::all();
+        $titlename = "Media";
+
+        return view('front.media',compact('categories','titlename'));
+    }
+
+    public function medialist($id){
+        $category = Category::find($id);
+        $items = Item::where('categories_id',$category->id)->get();
+        $titlename = $category->title;
+
+        return view('front.medialist',compact('items','titlename','category'));
+    }
+    public function mediashow($id){
+        $categories = Category::all();
+        $category = Category::find($id);
+        $items = Item::where('categories_id',$category->id)->get();
+        $titlename = $category->title;
+
+        return view('front.mediashow',compact('categories','items','titlename'));
     }
 }

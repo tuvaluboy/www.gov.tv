@@ -9,9 +9,8 @@
         <div class="row">
             <div class="content-wrap">
                 <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-2">
-                    <strong><br></strong><br><strong>{{$subcategories->title}}</strong>
+                    <strong><br></strong><br><strong>{{$titlename}}</strong>
             </h1>
-                    <!-- <p class="mbr-text mbr-fonts-style display-6"><a href="{{route('showsubcategory.show', $serviceCategory->id)}}" class="text-primary">{{$serviceCategory->title}}</a> &gt; {{$subcategories->title}}</p> -->
             </div>
         </div>
     </div>
@@ -21,7 +20,7 @@
     <div class="align-left container">
             <div class="content-wrap">
                 <div class="col-lg-12">
-                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; <a href="{{route('showsubcategory.show', $serviceCategory->id)}}" class="text-primary">{{$serviceCategory->title}}</a> &gt; {{$subcategories->title}}</p>
+                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; <a href="{{route('media')}}" class="text-primary">Media</a> &gt; {{$titlename}}</p>
                 </div>
             </div>
     </div>
@@ -41,12 +40,12 @@
                     <div class="card-wrapper media-container-row media-container-row">
                         <div class="card-box">
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                                {{$subcategories->title}}
+                                {{$titlename}}
 
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-text">
-                                @foreach($services as $ser)
-                                <a href="{{route('services.show', $ser->id)}}"> {{$ser->title}} </a><br><hr>
+                                @foreach($items as $item)
+                                <a href="{{route('media.show', $item->id)}}"> {{$item->title}} </a><br><hr>
                                 @endforeach
 
                             </p>
@@ -59,7 +58,7 @@
                         <div class="card-box">
                             <br/>
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            <a>{{$service->title}}</a></h4>
+                            <a>{{$item->title}}</a></h4>
                             <p class="mbr-text mbr-fonts-style display-7">
                             {!!$service->detailinformation!!}
                                 <br>
