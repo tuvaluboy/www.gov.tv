@@ -1,6 +1,6 @@
 @extends('layouts.front')
 
-<style>
+ <style>
    
 
 
@@ -38,7 +38,7 @@
         text-align: center;
       }
     }
-    </style>
+    </style> 
   
 
 @section('content')
@@ -47,22 +47,55 @@
 
     
 
-    <div class="mbr-overlay" style="opacity: 0.2; background-color: rgb(0, 0, 0);"></div>
+    <div class="mbr-overlay" style="opacity: 0.4; background-color: rgb(0, 0, 0);">
+    <br>
+    <br>
+    </div>
 
-    <div class="align-center container">
+     <div class="align-left container">
         <div class="row justify-content-center">
-            <div class="col-12 col-lg-12">
-                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><strong>Directory</strong></h1>
-                
-                <p class="mbr-text mbr-fonts-style display-7"><br><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; Directory<br><br></p>
-                
+            <div class="col-12 col-lg-12"><br><br>
+                <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><strong>Directory</strong></h1><br><br><br><br><br>
+                        
+                               
             </div>
-        </div>
+        </div> 
     </div>
 </section>
+
+
+<hr>
+        <div class="align-left container">
+            <div class="col-lg-10">
+                <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; Directory</p>
+            </div> 
+        </div>    
+        
+<hr>           
+
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 <br>
 
-    <div class="container">
+
+
+     <!-- <div class="container">
         <div class="row">
             <div class="col-12 col-lg-12">
                 <div class="navbars">
@@ -73,19 +106,19 @@
                 </div>    
             </div>
         </div>
-    </div>  
+    </div>   -->
 
 
-    <div class="align-center container">
+    <!-- <div class="align-center container">
         <div class="row justify-content-center">
             <div class="col-12 col-lg-12">
                 <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><strong>The Government</strong></h1>
             </div>
         </div>
-    </div>  
+    </div>   -->
 
 
-<section class="testimonials5 cid-s9R3497Ow0" id="testimonials5-29">
+<!-- <section class="testimonials5 cid-s9R3497Ow0" id="testimonials5-29">
     
     <div class="container">
         <div class="media-container-row">
@@ -148,11 +181,11 @@
 
         </div>
     </div>   
-</section>
+</section> -->
 
 
 
-<section class="testimonials5 cid-s9R3497Ow0" id="testimonials5-29">
+<!-- <section class="testimonials5 cid-s9R3497Ow0" id="testimonials5-29">
 
     
 
@@ -474,7 +507,7 @@
 
         </div>
     </div>        
-</section>
+</section> --> 
 
 
 @endsection
