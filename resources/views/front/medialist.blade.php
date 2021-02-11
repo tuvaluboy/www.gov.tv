@@ -44,16 +44,10 @@
                             <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>{{$item->title}}</strong>
                                 </h6>
                             </a>
-                        </div>
-
-
-
+                            <p class="mbr-fonts-style panel-text display-6">{{$item->summary}}</p>
+                    </div>
 
                     @endforeach
-
-
-
-
 
                 </div>
             </div>
@@ -62,17 +56,7 @@
     </div>
 
 </section>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 
 

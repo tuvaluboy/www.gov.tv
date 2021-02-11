@@ -60,7 +60,8 @@
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
                             <a>{{$item->title}}</a></h4>
                             <p class="mbr-text mbr-fonts-style display-7">
-                            {!!$item->desription!!}
+
+                            {!!$item->description!!}
                                 <br>
                                 <br>
                             </p>
