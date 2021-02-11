@@ -108,11 +108,23 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('services/ckmedia', 'ServicesController@storeCKEditorImages')->name('services.storeCKEditorImages');
     Route::resource('services', 'ServicesController');
 
-      // Pictures
-      Route::delete('pictures/destroy', 'PicturesController@massDestroy')->name('pictures.massDestroy');
-      Route::post('pictures/media', 'PicturesController@storeMedia')->name('pictures.storeMedia');
-      Route::post('pictures/ckmedia', 'PicturesController@storeCKEditorImages')->name('pictures.storeCKEditorImages');
-      Route::resource('pictures', 'PicturesController');
+    // Pictures
+    Route::delete('pictures/destroy', 'PicturesController@massDestroy')->name('pictures.massDestroy');
+    Route::post('pictures/media', 'PicturesController@storeMedia')->name('pictures.storeMedia');
+    Route::post('pictures/ckmedia', 'PicturesController@storeCKEditorImages')->name('pictures.storeCKEditorImages');
+    Route::resource('pictures', 'PicturesController');
+
+    // Categories
+    Route::delete('categories/destroy', 'CategoriesController@massDestroy')->name('categories.massDestroy');
+    Route::post('categories/media', 'CategoriesController@storeMedia')->name('categories.storeMedia');
+    Route::post('categories/ckmedia', 'CategoriesController@storeCKEditorImages')->name('categories.storeCKEditorImages');
+    Route::resource('categories', 'CategoriesController');
+
+    // Items
+    Route::delete('items/destroy', 'ItemController@massDestroy')->name('items.massDestroy');
+    Route::post('items/media', 'ItemController@storeMedia')->name('items.storeMedia');
+    Route::post('items/ckmedia', 'ItemController@storeCKEditorImages')->name('items.storeCKEditorImages');
+    Route::resource('items', 'ItemController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
@@ -140,5 +152,6 @@ Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/about','HomeController@about')->name('about');
     Route::get('/showsubcategory/{showsubcategory}','HomeController@showsubcategory')->name('showsubcategory.show');
     Route::get('/services/{sercives}','HomeController@services')->name('services.show');
+    Route::get('/media')->name('media');
 });
 

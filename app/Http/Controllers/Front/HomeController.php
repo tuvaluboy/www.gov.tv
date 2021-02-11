@@ -31,8 +31,8 @@ class HomeController extends Controller
     public function index(){
         //Should initialise page to Home
 
-        $page = Page::where('name','=','Home')->get();
-        $pictures = Picture::where('page_id','=',$page[0]->id)->get();
+        // $page = Page::where('name','=','Home')->get();
+        // $pictures = Picture::where('page_id','=',$page[0]->id)->get();
 
         // $imageslides = Imageslide::where('page_id','=',$pageid);
         $imageslides = Imageslide::all();

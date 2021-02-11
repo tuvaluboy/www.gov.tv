@@ -364,7 +364,6 @@ class PermissionsTableSeeder extends Seeder
                 'id'    => 89,
                 'title' => 'services_setup_access',
             ],
-
             [
                 'id'    => 90,
                 'title' => 'picture_create',
@@ -387,6 +386,50 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 95,
+                'title' => 'media_center_access',
+            ],
+            [
+                'id'    => 96,
+                'title' => 'category_create',
+            ],
+            [
+                'id'    => 97,
+                'title' => 'category_edit',
+            ],
+            [
+                'id'    => 98,
+                'title' => 'category_show',
+            ],
+            [
+                'id'    => 99,
+                'title' => 'category_delete',
+            ],
+            [
+                'id'    => 100,
+                'title' => 'category_access',
+            ],
+            [
+                'id'    => 101,
+                'title' => 'item_create',
+            ],
+            [
+                'id'    => 102,
+                'title' => 'item_edit',
+            ],
+            [
+                'id'    => 103,
+                'title' => 'item_show',
+            ],
+            [
+                'id'    => 104,
+                'title' => 'item_delete',
+            ],
+            [
+                'id'    => 105,
+                'title' => 'item_access',
+            ],
+            [
+                'id'    => 106,
                 'title' => 'profile_password_edit',
             ],
         ];
