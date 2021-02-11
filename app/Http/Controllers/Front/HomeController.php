@@ -137,7 +137,7 @@ class HomeController extends Controller
 
     public function medialist($id){
         $category = Category::find($id);
-        $items = Item::where('categories_id',$category->id)->get();
+        $items = Item::where('categories_id',$category->id)->where('status','Publish')->get();
         $titlename = $category->title;
 
         return view('front.medialist',compact('items','titlename','category'));
