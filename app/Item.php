@@ -25,10 +25,17 @@ class Item extends Model implements HasMedia
         'deleted_at',
     ];
 
+    const STATUS_SELECT = [
+        'Publish' => 'Publish',
+        'Hidden'  => 'Hidden',
+    ];
+
     protected $fillable = [
         'title',
         'description',
         'categories_id',
+        'status',
+        'summary',
         'created_at',
         'updated_at',
         'deleted_at',

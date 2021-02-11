@@ -29,13 +29,16 @@
                             {{ trans('cruds.item.fields.title') }}
                         </th>
                         <th>
-                            {{ trans('cruds.item.fields.description') }}
-                        </th>
-                        <th>
                             {{ trans('cruds.item.fields.file') }}
                         </th>
                         <th>
                             {{ trans('cruds.item.fields.categories') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.item.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.item.fields.summary') }}
                         </th>
                         <th>
                             &nbsp;
@@ -55,9 +58,6 @@
                                 {{ $item->title ?? '' }}
                             </td>
                             <td>
-                                {{ $item->description ?? '' }}
-                            </td>
-                            <td>
                                 @if($item->file)
                                     <a href="{{ $item->file->getUrl() }}" target="_blank">
                                         {{ trans('global.view_file') }}
@@ -66,6 +66,12 @@
                             </td>
                             <td>
                                 {{ $item->categories->title ?? '' }}
+                            </td>
+                            <td>
+                                {{ App\Item::STATUS_SELECT[$item->status] ?? '' }}
+                            </td>
+                            <td>
+                                {{ $item->summary ?? '' }}
                             </td>
                             <td>
                                 @can('item_show')
@@ -146,7 +152,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

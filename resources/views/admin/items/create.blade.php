@@ -55,6 +55,31 @@
                 <span class="help-block">{{ trans('cruds.item.fields.categories_helper') }}</span>
             </div>
             <div class="form-group">
+                <label>{{ trans('cruds.item.fields.status') }}</label>
+                <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
+                    <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\Item::STATUS_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('status', 'Hidden') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('status'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('status') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.item.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="summary">{{ trans('cruds.item.fields.summary') }}</label>
+                <textarea class="form-control {{ $errors->has('summary') ? 'is-invalid' : '' }}" name="summary" id="summary">{{ old('summary') }}</textarea>
+                @if($errors->has('summary'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('summary') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.item.fields.summary_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

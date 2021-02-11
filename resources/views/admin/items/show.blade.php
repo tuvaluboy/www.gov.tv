@@ -36,7 +36,7 @@
                             {{ trans('cruds.item.fields.description') }}
                         </th>
                         <td>
-                            {{ $item->description }}
+                            {!! $item->description !!}
                         </td>
                     </tr>
                     <tr>
@@ -57,6 +57,22 @@
                         </th>
                         <td>
                             {{ $item->categories->title ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.item.fields.status') }}
+                        </th>
+                        <td>
+                            {{ App\Item::STATUS_SELECT[$item->status] ?? '' }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.item.fields.summary') }}
+                        </th>
+                        <td>
+                            {{ $item->summary }}
                         </td>
                     </tr>
                 </tbody>
