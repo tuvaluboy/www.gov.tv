@@ -17,6 +17,8 @@
     </div>
 </section>
 
+
+
 <section class="content16 cid-shcGsn2WVM" id="content16-7o">
 
 
@@ -33,7 +35,7 @@
                                 {{$subcategories->title}}
 
                             </h4>
-                            <p class="mbr-text mbr-fonts-style display-7">
+                            <p class="mbr-text mbr-fonts-style display-text">
                                 @foreach($services as $ser)
                                 <a href="{{route('services.show', $ser->id)}}"> {{$ser->title}} </a><br><hr>
                                 @endforeach

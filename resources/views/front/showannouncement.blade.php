@@ -2,8 +2,8 @@
 
 @section('content')
 <div class="container">
-        <br/>
-        <br/>
+        
+        
         <div class="form-group">
             <a class="btn btn-primary" href="{{ route('announcement') }}">
                 {{ trans('global.back_to_list') }}

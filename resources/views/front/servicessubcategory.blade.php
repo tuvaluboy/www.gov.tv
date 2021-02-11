@@ -4,25 +4,31 @@
 
 <section class="header4 cid-sdVgfli5UX" id="header4-2p">
     <div class="mbr-overlay"></div>
-    <div class="container">
+    <div class="align-left container">
         <div class="row">
-            <div class="content-wrap">
+            <div class="content-wrap"><br><br><br>
                 <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-2">
-                    <strong><br></strong><br><strong>{{$serviceCategory->title}}</strong></h1>
+                    <strong><br></strong><br><strong>{{$serviceCategory->title}}</strong></h1><br><br><br>
 
             </div>
         </div>
     </div>
 </section>
 <hr>
+    <div class="align-left container">
+            <div class="content-wrap">
+                <div class="col-lg-12">
+                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; {{$serviceCategory->title}}</p>
+                </div> 
+            </div>   
+    </div>  
+<hr>   
 
 
 <section class="content16 cid-s9RPxwphdz" id="content16-1n">
 
-
-
-
     <div class="container">
+    <div class="container wrap">
         <div class="row justify-content-center">
             <div class="col-12 col-md-12">
                 <div class="mbr-section-head align-center mb-4">
@@ -65,6 +71,7 @@
                 </div>
             </div>
         </div>
+    </div>    
     </div>
 
 </section>
@@ -79,14 +86,7 @@
 <br>
 <br>
 <br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
+
 
 
 
