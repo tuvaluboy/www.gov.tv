@@ -20,7 +20,7 @@
     <div class="align-left container">
             <div class="content-wrap">
                 <div class="col-lg-12">
-                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; <a href="{{route('media')}}" class="text-primary">Media</a> &gt; {{$titlename}}</p>
+                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; <a href="{{route('media')}}" class="text-primary">Media</a> &gt; <a href="{{route('media.list',$category->id)}}"> {{$category->title}} </a> &gt;  {{$titlename}}</p>
                 </div>
             </div>
     </div>
@@ -60,7 +60,7 @@
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
                             <a>{{$item->title}}</a></h4>
                             <p class="mbr-text mbr-fonts-style display-7">
-                            {!!$service->detailinformation!!}
+                            {!!$item->desription!!}
                                 <br>
                                 <br>
                             </p>

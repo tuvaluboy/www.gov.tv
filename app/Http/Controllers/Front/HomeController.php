@@ -143,11 +143,12 @@ class HomeController extends Controller
         return view('front.medialist',compact('items','titlename','category'));
     }
     public function mediashow($id){
-        $categories = Category::all();
-        $category = Category::find($id);
+        $selecteditem = Item::find($id);
+        $categoryid = $selecteditem->categories_id;
+        $category = Category::find($categoryid);
         $items = Item::where('categories_id',$category->id)->get();
-        $titlename = $category->title;
+        $titlename = $selecteditem->title;
 
-        return view('front.mediashow',compact('categories','items','titlename'));
+        return view('front.mediashow',compact('category','items','titlename'));
     }
 }
