@@ -40,14 +40,22 @@
                     <div class="card-wrapper media-container-row media-container-row">
                         <div class="card-box">
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                                {{$titlename}}
+                            {{$category->title}}
 
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-text">
                                 @foreach($items as $item)
-                                <a href="{{route('media.show', $item->id)}}"> {{$item->title}} </a><br><hr>
+                                @if($item->id == $selecteditem->id)
+                                      {{$selecteditem->title}}<br>
+                                @else
+
+                                <a href="{{route('media.show', $item->id)}}"> {{$item->title}} </a><br>
+                                @endif
+
                                 @endforeach
 
+                                {{$items->links()}}
+                                <hr>
                             </p>
                         </div>
                     </div>
@@ -58,10 +66,10 @@
                         <div class="card-box">
                             <br/>
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            <a>{{$item->title}}</a></h4>
+                            <a>{{$selecteditem->title}}</a></h4>
                             <p class="mbr-text mbr-fonts-style display-7">
 
-                            {!!$item->description!!}
+                            {!!$selecteditem->description!!}
                                 <br>
                                 <br>
                             </p>

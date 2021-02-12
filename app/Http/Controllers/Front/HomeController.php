@@ -137,7 +137,7 @@ class HomeController extends Controller
 
     public function medialist($id){
         $category = Category::find($id);
-        $items = Item::where('categories_id',$category->id)->where('status','Publish')->get();
+        $items = Item::where('categories_id',$category->id)->where('status','Publish')->orderBy('CREATED_AT', 'desc')->paginate(5);
         $titlename = $category->title;
 
         return view('front.medialist',compact('items','titlename','category'));
@@ -146,9 +146,9 @@ class HomeController extends Controller
         $selecteditem = Item::find($id);
         $categoryid = $selecteditem->categories_id;
         $category = Category::find($categoryid);
-        $items = Item::where('categories_id',$category->id)->get();
+        $items = Item::where('categories_id',$category->id)->paginate(5);
         $titlename = $selecteditem->title;
 
-        return view('front.mediashow',compact('category','items','titlename'));
+        return view('front.mediashow',compact('category','items','titlename','selecteditem'));
     }
 }

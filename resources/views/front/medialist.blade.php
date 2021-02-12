@@ -43,14 +43,18 @@
                             <a role="button" href="{{route('media.show', $item->id)}}" class="panel-title"   aria-expanded="false"  >
                             <h6 class="panel-title-edit mbr-fonts-style mb-0 display-7"><strong>{{$item->title}}</strong>
                                 </h6>
-                            </a>
-                            <p class="mbr-fonts-style panel-text display-6">{{$item->summary}}</p>
+
+
+                            <p class="mbr-fonts-style panel-text display-8">{{$item->created_at->toDateString()}} </p> </a>
+                              <p class="mbr-fonts-style panel-text display-6">{{$item->summary}}</p>
                     </div>
 
                     @endforeach
 
                 </div>
+                {{$items->links()}}
             </div>
+
         </div>
     </div>
     </div>
