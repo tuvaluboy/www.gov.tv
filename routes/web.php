@@ -125,6 +125,19 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('items/media', 'ItemController@storeMedia')->name('items.storeMedia');
     Route::post('items/ckmedia', 'ItemController@storeCKEditorImages')->name('items.storeCKEditorImages');
     Route::resource('items', 'ItemController');
+    // Directory Categories
+    Route::delete('directory-categories/destroy', 'DirectoryCategoryController@massDestroy')->name('directory-categories.massDestroy');
+    Route::resource('directory-categories', 'DirectoryCategoryController');
+
+    // Directory Sub Categories
+    Route::delete('directory-sub-categories/destroy', 'DirectorySubCategoryController@massDestroy')->name('directory-sub-categories.massDestroy');
+    Route::resource('directory-sub-categories', 'DirectorySubCategoryController');
+
+    // Directory Contents
+    Route::delete('directory-contents/destroy', 'DirectoryContentController@massDestroy')->name('directory-contents.massDestroy');
+    Route::post('directory-contents/media', 'DirectoryContentController@storeMedia')->name('directory-contents.storeMedia');
+    Route::post('directory-contents/ckmedia', 'DirectoryContentController@storeCKEditorImages')->name('directory-contents.storeCKEditorImages');
+    Route::resource('directory-contents', 'DirectoryContentController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password

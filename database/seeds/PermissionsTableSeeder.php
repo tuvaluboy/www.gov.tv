@@ -430,6 +430,70 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 106,
+                'title' => 'directory_access',
+            ],
+            [
+                'id'    => 107,
+                'title' => 'directory_category_create',
+            ],
+            [
+                'id'    => 108,
+                'title' => 'directory_category_edit',
+            ],
+            [
+                'id'    => 109,
+                'title' => 'directory_category_show',
+            ],
+            [
+                'id'    => 110,
+                'title' => 'directory_category_delete',
+            ],
+            [
+                'id'    => 111,
+                'title' => 'directory_category_access',
+            ],
+            [
+                'id'    => 112,
+                'title' => 'directory_sub_category_create',
+            ],
+            [
+                'id'    => 113,
+                'title' => 'directory_sub_category_edit',
+            ],
+            [
+                'id'    => 114,
+                'title' => 'directory_sub_category_show',
+            ],
+            [
+                'id'    => 115,
+                'title' => 'directory_sub_category_delete',
+            ],
+            [
+                'id'    => 116,
+                'title' => 'directory_sub_category_access',
+            ],
+            [
+                'id'    => 117,
+                'title' => 'directory_content_create',
+            ],
+            [
+                'id'    => 118,
+                'title' => 'directory_content_edit',
+            ],
+            [
+                'id'    => 119,
+                'title' => 'directory_content_show',
+            ],
+            [
+                'id'    => 120,
+                'title' => 'directory_content_delete',
+            ],
+            [
+                'id'    => 121,
+                'title' => 'directory_content_access',
+            ],
+            [
+                'id'    => 122,
                 'title' => 'profile_password_edit',
             ],
         ];

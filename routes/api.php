@@ -74,4 +74,13 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
     // Items
     Route::post('items/media', 'ItemApiController@storeMedia')->name('items.storeMedia');
     Route::apiResource('items', 'ItemApiController');
+     // Directory Categories
+     Route::apiResource('directory-categories', 'DirectoryCategoryApiController');
+
+     // Directory Sub Categories
+     Route::apiResource('directory-sub-categories', 'DirectorySubCategoryApiController');
+
+     // Directory Contents
+     Route::post('directory-contents/media', 'DirectoryContentApiController@storeMedia')->name('directory-contents.storeMedia');
+     Route::apiResource('directory-contents', 'DirectoryContentApiController');
 });

@@ -131,6 +131,48 @@
                 </ul>
             </li>
         @endcan
+        @can('directory_access')
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/directory-categories*") ? "c-show" : "" }} {{ request()->is("admin/directory-sub-categories*") ? "c-show" : "" }} {{ request()->is("admin/directory-contents*") ? "c-show" : "" }}">
+                <a class="c-sidebar-nav-dropdown-toggle" href="#">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.directory.title') }}
+                </a>
+                <ul class="c-sidebar-nav-dropdown-items">
+                    @can('directory_category_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.directory-categories.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/directory-categories") || request()->is("admin/directory-categories/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.directoryCategory.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('directory_sub_category_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.directory-sub-categories.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/directory-sub-categories") || request()->is("admin/directory-sub-categories/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.directorySubCategory.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                    @can('directory_content_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.directory-contents.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/directory-contents") || request()->is("admin/directory-contents/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.directoryContent.title') }}
+                            </a>
+                        </li>
+                    @endcan
+                </ul>
+            </li>
+        @endcan
         @can('ministry_access')
             <li class="c-sidebar-nav-item">
                 <a href="{{ route("admin.ministries.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/ministries") || request()->is("admin/ministries/*") ? "active" : "" }}">
