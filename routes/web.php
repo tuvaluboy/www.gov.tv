@@ -154,6 +154,8 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
 Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/','HomeController@index')->name('home');
     Route::get('/directory','HomeController@directory')->name('directory');
+    Route::get('/directory/subcategory/{subcategory}','HomeController@directorysubcategory')->name('directory.list');
+    Route::get('/directory/content/{content}','HomeController@directorycontent')->name('directory.show');
     Route::get('/budget','HomeController@budget')->name('budget');
     Route::get('/vacancies','HomeController@vacancies')->name('vacancies');
     Route::get('/vacancies/{vacancies}','HomeController@showvacancies')->name('vacancies.show');
@@ -168,5 +170,6 @@ Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/media','HomeController@mediacenter')->name('media');
     Route::get('/media/{media}','HomeController@medialist')->name('media.list');
     Route::get('/media/show/{media}','HomeController@mediashow')->name('media.show');
+
 });
 

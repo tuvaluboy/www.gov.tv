@@ -22,7 +22,9 @@ use App\Service;
 use App\Picture;
 use App\Category;
 use App\item;
-
+use App\DirectoryCategory;
+use App\DirectorySubCategory;
+use App\DirectoryContent;
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
 
@@ -50,8 +52,25 @@ class HomeController extends Controller
     }
 
     public function directory(){
+        $titlename = "Directory";
+        $diretorycategory = DirectoryCategory::all()->where('status','Publish');
+        return view('front.directorycategory',compact('diretorycategory','titlename'));
+    }
 
-        return view('front.directory');
+    public function directorysubcategory($id){
+        $directorycategory = DirectoryCategory::find($id);
+        $directorysubcategory = DirectorySubCategory::where('directorycategory_id','=',$directorycategory->id)->where('status','Publish')->get();
+        $titlename= $directorycategory->title;
+
+        return view('front.directorysubcategory',compact('directorycategory','titlename','directorysubcategory'));
+    }
+
+    public function directorycontent($id){
+        $directorycontent = DirectoryContent::find($id);
+        $directorycontents = DirectoryContent::where('directorysubcategory_id',$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
+        $directorysubcategory = DirectorySubCategory::find($directorycontent->directorysubcategory_id);
+
+        return view('front.directorycontent',compact('directorycontent','directorycontents'));
     }
 
     public function budget(){
@@ -122,7 +141,7 @@ class HomeController extends Controller
     }
     public function services($id){
         $service = Service::find($id);
-        $services = Service::where('servicessubcategory_id',$service->servicessubcategory_id)->get();
+        $services = Service::where('servicessubcategory_id',$service->servicessubcategory_id)->where('status','Publish')->get();
         $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
         $serviceCategory = ServiceCategory::find($subcategories->servicescategory_id);
         return view('front.services', compact('service','services','subcategories','serviceCategory'));
