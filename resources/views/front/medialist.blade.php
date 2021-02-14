@@ -17,11 +17,13 @@
 
 <hr>
     <div class="align-left container">
+        <div class="row">
             <div class="content-wrap">
                 <div class="col-lg-12">
                     <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; <a href="{{route('media')}}"> Media</a> &gt;{{$titlename}} </p>
                 </div>
             </div>
+        </div>    
     </div>
 <hr>
 
