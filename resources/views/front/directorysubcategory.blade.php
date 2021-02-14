@@ -59,7 +59,7 @@
                                 <p class="mbr-fonts-style panel-text display-4">
 
                                 <a href="{{route('directory.show', $service->id)}}"><u>{{$service->title}}</u></a>
-                                <p>{!!$service->description!!}</p>
+                                <p>{!!$service->detailinformation!!}</p>
 
                                 </p>
                                 @endforeach
