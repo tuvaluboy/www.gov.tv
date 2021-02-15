@@ -64,7 +64,11 @@
             <div class="item features-image сol-12 col-md-6 col-lg-4">
                 <div class="item-wrapper">
                     <div class="item-img">
+                    @if($services->image)
                     <img src="{{asset($services->image->getUrl())}}" alt="No Image">
+                    @else
+                    <img src="" alt="No Image">
+                    @endif
                     </div>
                     <div class="item-content">
                         <h5 class="item-title mbr-fonts-style display-5"><a href="{{route('media.list', $services->id)}}" class="text-primary">{{$services->title}}</a></h5>
