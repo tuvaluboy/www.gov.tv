@@ -2,7 +2,6 @@
     @foreach($servicescategories->chunk(3) as $servicescategory)
  
   
-    {{-- @for($j =  0; $j < $counts ; $j++) --}}
     <div class="container">
        
        

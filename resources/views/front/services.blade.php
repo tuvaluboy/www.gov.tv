@@ -46,9 +46,14 @@
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-text">
                                 @foreach($services as $ser)
-                                <a href="{{route('services.show', $ser->id)}}"> {{$ser->title}} </a><br><hr>
+                                @if($ser->id == $service->id) 
+                                  {{$ser->title}} <br>
+                                @else
+                                <a href="{{route('services.show', $ser->id)}}"> {{$ser->title}} </a><br>
+                                @endif
+                               
                                 @endforeach
-
+                                <hr>
                             </p>
                         </div>
                     </div>
@@ -58,9 +63,9 @@
                     <div class="card-wrapper media-container-row">
                         <div class="card-box">
                             <br/>
-                            <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            <a>{{$service->title}}</a></h4>
-                            <p class="mbr-text mbr-fonts-style display-7">
+                            <h2 class="card-title pb-3 mbr-fonts-style display-3">
+                            {{$service->title}}</h2>
+                            <p class="mbr-text mbr-fonts-style display-menu">
                             {!!$service->detailinformation!!}
                                 <br>
                                 <br>
