@@ -45,9 +45,9 @@ class HomeController extends Controller
 
         $servicescategories = ServiceCategory::where('status','Publish')->get();
         $counts = ServiceCategory::where('status','Publish')->count();
+        $titlename = "Welcome to Gov.tv | Government of Tuvalu";
 
-
-        return view('front.home', compact('imageslides','newsandupdates','counts','servicescategories'));
+        return view('front.home', compact('titlename','imageslides','newsandupdates','counts','servicescategories'));
 
     }
 
@@ -69,8 +69,8 @@ class HomeController extends Controller
         $directorycontent = DirectoryContent::find($id);
         $directorycontents = DirectoryContent::where('directorysubcategory_id',$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
         $directorysubcategory = DirectorySubCategory::find($directorycontent->directorysubcategory_id);
-
-        return view('front.directorycontent',compact('directorycontent','directorycontents'));
+        $titlename = $directorycontent->title;
+        return view('front.directorycontent',compact('titlename','directorycontent','directorycontents'));
     }
 
     public function budget(){
@@ -135,17 +135,18 @@ class HomeController extends Controller
         //find the category
         $serviceCategory = ServiceCategory::find($id);
         $subcategories = ServicesSubCategory::all()->where('servicescategory_id',$id)->where('status','Publish');
+        $titlename = $serviceCategory->title;
 
 
-
-        return view('front.servicessubcategory', compact('subcategories','serviceCategory'));
+        return view('front.servicessubcategory', compact('titlename','subcategories','serviceCategory'));
     }
     public function services($id){
         $service = Service::find($id);
         $services = Service::where('servicessubcategory_id',$service->servicessubcategory_id)->where('status','Publish')->get();
         $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
         $serviceCategory = ServiceCategory::find($subcategories->servicescategory_id);
-        return view('front.services', compact('service','services','subcategories','serviceCategory'));
+        $titlename = $service->title;
+        return view('front.services', compact('$titlename','service','services','subcategories','serviceCategory'));
     }
 
     public function mediacenter(){
