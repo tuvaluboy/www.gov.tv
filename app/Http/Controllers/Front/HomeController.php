@@ -146,7 +146,7 @@ class HomeController extends Controller
         $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
         $serviceCategory = ServiceCategory::find($subcategories->servicescategory_id);
         $titlename = $service->title;
-        return view('front.services', compact('$titlename','service','services','subcategories','serviceCategory'));
+        return view('front.services', compact('titlename','service','services','subcategories','serviceCategory'));
     }
 
     public function mediacenter(){
