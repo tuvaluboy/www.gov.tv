@@ -30,8 +30,6 @@
                             </li> --}}
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('media') }}">Media</a></li>
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route("directory") }}">Directory</a></li>
-                            <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('budget') }}">Budget</a></li>
-                              <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('vacancies') }}">Vacancies</a></li>
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('about')}}">About</a></li>
 
                              <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('contacts')}}">Contacts</a></li></ul>
