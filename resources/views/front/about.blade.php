@@ -13,12 +13,20 @@
             <div class="col-12 col-lg-12">
                 <h1 class="mbr-section-title mbr-fonts-style mb-3 display-2"><strong><br></strong><br><strong>About Tuvalu</strong></h1>
 
-                <p class="mbr-text mbr-fonts-style display-7"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; About Tuvalu&nbsp;<br><br></p>
+                <!-- <p class="mbr-text mbr-fonts-style display-7"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; About Tuvalu&nbsp;<br><br></p> -->
 
             </div>
         </div>
     </div>
 </section>
+<hr>
+        <div class="align-left container">
+            <div class="col-lg-10">
+                <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; {{$titlename}}</p>
+            </div>
+        </div>
+
+<hr>
 <section class="tabs1 cid-s9S00yxLn7" id="tabs1-3g">
 
 
@@ -26,7 +34,7 @@
 
     <div class="container">
 
-        <div class="row justify-content-center">
+        <!-- <div class="row justify-content-center">
             <div class="col-12 col-md-11">
                 <ul class="nav nav-tabs mb-4" role="tablist">
                     <li class="nav-item first mbr-fonts-style"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab0" aria-selected="true"><strong>About Tuvalu&nbsp; &nbsp;</strong>&nbsp;&nbsp;</a></li>
@@ -78,7 +86,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> -->
     </div>
 </section>
 

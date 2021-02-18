@@ -126,8 +126,9 @@ class HomeController extends Controller
         $constitution = Tuvaluconstition::first();
         $tuvaludevelopmentplan = Tuvaludevelopmentplan::first();
         $holiday = Holiday::first();
+        $titlename = "About";
        // return $about->description;
-        return view('front.about', compact('about','constitution','tuvaludevelopmentplan','holiday'));
+        return view('front.about', compact('about','titlename','constitution','tuvaludevelopmentplan','holiday'));
     }
 
     public function showsubcategory($id){
