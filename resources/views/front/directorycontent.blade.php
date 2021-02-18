@@ -62,12 +62,12 @@
                         <div class="card-box">
                             <br/>
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            <a>{{$directorycontent->title}}</a></h4>
-                            <p class="mbr-text mbr-fonts-style display-7">
+                            <a>{{$directorycontent->detailinformation}}</a></h4>
+
                             {!!$directorycontent->description!!}
                                 <br>
                                 <br>
-                            </p>
+
                         </div>
                     </div>
                 </div>
