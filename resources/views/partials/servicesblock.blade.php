@@ -14,7 +14,7 @@
               
                     <div class="card-box">  
                                 <a href="{{route('showsubcategory.show', $services->id)}}"><h4 class="card-title py-3 mbr-fonts-style display-7">{{$services->title}}</h4>
-                                <p class="mbr-text mbr-fonts-style display-4">{!!$services->description!!}</p></a> 
+                                <p class="mbr-text mbr-fonts-style mt-3 display-7">{!!$services->description!!}</p></a>
                     </div>
                 </div>   
                 

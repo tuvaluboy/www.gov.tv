@@ -46,9 +46,9 @@
                             <p class="mbr-text mbr-fonts-style display-text">
                                 @foreach($directorycontents as $ser)
                                 @if($ser->id == $directorycontent->id)
-                                    {{$ser->title}}
+                                    {{$ser->title}}<br>
                                 @else
-                                    <a href="{{route('category.show', $ser->id)}}"> {{$ser->title}} </a><br><hr>
+                                    <a href="{{route('directory.show', $ser->id)}}"> {{$ser->title}} </a><br>
                                 @endif
                                 @endforeach
                                 <hr>
