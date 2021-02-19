@@ -31,7 +31,7 @@
 
 
 
-<section class="features6 cid-s9uzryvHBf mbr-parallax-background" id="features12-4c">
+<section class="features6 cid-saBl8LyfSn" id="content2-4k">
         <!-- @foreach($categories->chunk(3) as $category)
 
 
@@ -59,7 +59,7 @@
 
     <div class="container">
     @foreach($categories->chunk(3) as $category)
-        <div class="row mt-4 cid-saBl8LyfSn">
+        <div class="row mt-4 ">
         @foreach($category as $services)
             <div class="item features-image сol-12 col-md-6 col-lg-4">
                 <div class="item-wrapper">
@@ -76,7 +76,7 @@
                             <!-- <strong>John Smith</strong><em> 10-10-2025</em></h6> -->
                         <p class="mbr-text mbr-fonts-style mt-3 display-7">{!!$services->description!!}</p>
                     </div>
-                    <div class="mbr-section-btn item-footer mt-2"><a href="{{route('media.list', $services->id)}}" class="btn item-btn btn-primary display-7">View More
+                    <div class="mbr-section-btn item-footer mt-2"><a href="{{route('media.list', $services->id)}}" class="btn item-btn btn-primary display-7">Read More
                             </a></div>
                 </div>
             </div>
