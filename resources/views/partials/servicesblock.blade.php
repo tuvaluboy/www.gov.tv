@@ -53,3 +53,59 @@
     </div>
 @endforeach    
 </section>
+
+<section class="features12 cid-sa9wPEpRgN mbr-parallax-background" id="features12-4c">
+
+    
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(255, 255, 255);">
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 col-lg-6">
+                <div class="card-wrapper">
+                    <div class="card-box align-left">
+                        <h4 class="card-title mbr-fonts-style mb-4 display-2"><strong>About the Portal...!!!!</strong></h4>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-7">The complete Portal is yet to be deployed, however our ICT Staffs are working tirelessly around the clock to bring you the fully functioning and complete Portal.<br><br>Thank You&nbsp;</p>
+                        <div class="mbr-section-btn"><a class="btn btn-primary display-4" href="https://127.0.0.1:8000">Create your own site</a></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-6">
+                <div class="item mbr-flex">
+                    <div class="icon-box">
+                        <span class="mbr-iconfont mbrib-briefcase"></span>
+                    </div>
+                    <div class="text-box">
+                        <h4 class="icon-title mbr-semibold mbr-black mbr-fonts-style display-7">
+                            <strong>SERVICE Section</strong></h4>
+                        <h5 class="icon-text mbr-black mbr-fonts-style display-4">Probably the biggest section of the portal that needs to be active and fully online. This section includes all Government Services at present being tranformed and made available online.</h5>
+                    </div>
+                </div>
+                <div class="item mbr-flex">
+                    <div class="icon-box">
+                        <span class="mbr-iconfont mbrib-users"></span>
+                    </div>
+                    <div class="text-box">
+                        <h4 class="icon-title mbr-semibold mbr-black mbr-fonts-style display-7">
+                            <strong>MANATU TIITI Section</strong></h4>
+                        <h5 class="icon-text mbr-black mbr-fonts-style display-4">A discussion forum that enable civil servants to posts and make comments on government related matter.</h5>
+                    </div>
+                </div>
+                <div class="item mbr-flex">
+                    <div class="icon-box">
+                        <span class="mbr-iconfont socicon-internet socicon"></span>
+                    </div>
+                    <div class="text-box">
+                        <h4 class="icon-title mbr-semibold mbr-black mbr-fonts-style display-7">
+                            <strong>LOG IN Section</strong></h4>
+                        <h5 class="icon-text mbr-black mbr-fonts-style display-4">Log-In section gives you access to the backend admin side whereby each designated staff from each department can upload and edit information related to their department.</h5>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<br>
+<br>
+<br>
+<br>

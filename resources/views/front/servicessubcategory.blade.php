@@ -32,7 +32,7 @@
         <div class="row justify-content-center">
             <div class="col-12 col-md-12">
                 <div class="mbr-section-head align-center mb-4">
-                    <h3 class="mbr-section-title mb-0 mbr-fonts-style display-2">
+                    <h3 class="mbr-section-title mb-0 mbr-fonts-style display-4">
                     {{-- <strong>{{$serviceCategory->title}}</strong></h3> --}}
 
                 </div>
