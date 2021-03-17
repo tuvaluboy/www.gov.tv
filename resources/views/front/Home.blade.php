@@ -4,6 +4,9 @@
 
 <!-- Slide Image -->
 @include('partials.slidemenu')
+<br>
+
+@include('partials.search')
 
 <!-- News and Upadte  -->
  <!-- @include('partials.newsandupdate') -->

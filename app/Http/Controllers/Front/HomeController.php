@@ -118,7 +118,8 @@ class HomeController extends Controller
     }
 
     public function contact(){
-        return view('front.contacts');
+        $titlename = "Contacts";
+        return view('front.contacts', compact('titlename'));
 
     }
     public function about(){
@@ -171,5 +172,11 @@ class HomeController extends Controller
         $titlename = $selecteditem->title;
 
         return view('front.mediashow',compact('category','items','titlename','selecteditem'));
+    }
+
+    public function search(Request $request){
+
+        return $request;
+        return view('front.search');
     }
 }

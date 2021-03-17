@@ -5,11 +5,13 @@
             <div class="navbar-brand">
                 <span class="navbar-logo">
                     <a href="{{route('home')}}">
-                        <img src="{{asset('assets/images/codeofarms-tranparent-180x200.jpg')}}" alt="Mobirise" title="" style="height: 5.7rem;">
+                        <img src="{{url('assets/images/codeofarms-tranparent-180x200.jpg')}}" alt="Mobirise" title="" style="height: 5.7rem;">
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-7" href="{{route('home')}}">Tuvalu Government</a></span>
             </div>
+
+
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                 <div class="hamburger">
                     <span></span>
