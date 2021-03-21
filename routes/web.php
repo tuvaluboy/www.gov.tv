@@ -1,6 +1,10 @@
 <?php
 
-Route::redirect('/', '/login');
+// Route::redirect('/', '/login');
+Route::get('/','HomeController@index')->name('home');
+Route::get('/directory', function(){
+    return view('front.directory');
+});
 Route::get('/home', function () {
     if (session('status')) {
         return redirect()->route('admin.home')->with('status', session('status'));
@@ -10,6 +14,7 @@ Route::get('/home', function () {
 });
 
 Auth::routes(['register' => false]);
+// Admin
 
 Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'middleware' => ['auth']], function () {
     Route::get('/', 'HomeController@index')->name('home');
@@ -120,7 +125,6 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('items/media', 'ItemController@storeMedia')->name('items.storeMedia');
     Route::post('items/ckmedia', 'ItemController@storeCKEditorImages')->name('items.storeCKEditorImages');
     Route::resource('items', 'ItemController');
-
     // Directory Categories
     Route::delete('directory-categories/destroy', 'DirectoryCategoryController@massDestroy')->name('directory-categories.massDestroy');
     Route::resource('directory-categories', 'DirectoryCategoryController');
@@ -144,3 +148,28 @@ Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 
         Route::post('profile/destroy', 'ChangePasswordController@destroy')->name('password.destroyProfile');
     }
 });
+
+
+//Front
+Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
+    Route::get('/','HomeController@index')->name('home');
+    Route::get('/directory','HomeController@directory')->name('directory');
+    Route::get('/directory/subcategory/{subcategory}','HomeController@directorysubcategory')->name('directory.list');
+    Route::get('/directory/content/{content}','HomeController@directorycontent')->name('directory.show');
+    Route::get('/budget','HomeController@budget')->name('budget');
+    Route::get('/vacancies','HomeController@vacancies')->name('vacancies');
+    Route::get('/vacancies/{vacancies}','HomeController@showvacancies')->name('vacancies.show');
+    Route::get('/announcement','HomeController@announcement')->name('announcement');
+    Route::get('/anouncement/{anouncement}','HomeController@showannouncement')->name('announcement.show');
+    Route::get('/news','HomeController@news')->name('news');
+    Route::get('/news/{news}','HomeController@shownews')->name('news.show');
+    Route::get('/contacts','HomeController@contact')->name('contacts');
+    Route::get('/about','HomeController@about')->name('about');
+    Route::get('/showsubcategory/{showsubcategory}','HomeController@showsubcategory')->name('showsubcategory.show');
+    Route::get('/services/{sercives}','HomeController@services')->name('services.show');
+    Route::get('/media','HomeController@mediacenter')->name('media');
+    Route::get('/media/{media}','HomeController@medialist')->name('media.list');
+    Route::get('/media/show/{media}','HomeController@mediashow')->name('media.show');
+    Route::get('search','HomeController@search')->name('search');
+});
+

@@ -41,6 +41,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.directoryContent.fields.detailinformation') }}
+                        </th>
+                        <td>
+                            {{ $directoryContent->detailinformation }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.directoryContent.fields.directorysubcategory') }}
                         </th>
                         <td>
@@ -53,14 +61,6 @@
                         </th>
                         <td>
                             {{ App\DirectoryContent::STATUS_SELECT[$directoryContent->status] ?? '' }}
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>
-                            {{ trans('cruds.directoryContent.fields.detailinformation') }}
-                        </th>
-                        <td>
-                            {!! $directoryContent->detailinformation !!}
                         </td>
                     </tr>
                 </tbody>

@@ -9,7 +9,7 @@ class CreateImageslidesTable extends Migration
     public function up()
     {
         Schema::create('imageslides', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->increments('id');
             $table->string('title')->nullable();
             $table->string('description')->nullable();
             $table->string('firstbutton')->nullable();

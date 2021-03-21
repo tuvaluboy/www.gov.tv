@@ -161,7 +161,7 @@
 <script>
     Dropzone.options.fileDropzone = {
     url: '{{ route('admin.newsand-updates.storeMedia') }}',
-    maxFilesize: 2, // MB
+    maxFilesize: 2000, // MB
     maxFiles: 1,
     addRemoveLinks: true,
     headers: {
@@ -211,7 +211,7 @@
 <script>
     Dropzone.options.imageDropzone = {
     url: '{{ route('admin.newsand-updates.storeMedia') }}',
-    maxFilesize: 2, // MB
+    maxFilesize: 2000, // MB
     acceptedFiles: '.jpeg,.jpg,.png,.gif',
     maxFiles: 1,
     addRemoveLinks: true,

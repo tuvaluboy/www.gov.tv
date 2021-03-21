@@ -54,8 +54,6 @@ class PagesController extends Controller
     {
         abort_if(Gate::denies('page_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $page->load('pagePictures');
-
         return view('admin.pages.show', compact('page'));
     }
 

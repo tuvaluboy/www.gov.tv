@@ -4,16 +4,15 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateDirectoryContentsTable extends Migration
+class CreateNewsandUpdatesTable extends Migration
 {
     public function up()
     {
-        Schema::create('directory_contents', function (Blueprint $table) {
-            $table->bigIncrements('id');
+        Schema::create('newsand_updates', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
-            $table->string('status')->nullable();
-            $table->longText('detailinformation')->nullable();
+            $table->string('type')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });

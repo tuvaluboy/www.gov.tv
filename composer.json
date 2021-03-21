@@ -21,7 +21,7 @@
         "yajra/laravel-datatables-oracle": "^9.9",
         "laraveldaily/laravel-charts": "^0.1.14",
         "spatie/laravel-medialibrary": "^7.19",
-        "laravel/sanctum": "^2.8"
+        "laravel/passport": "^9.3"
     },
     "require-dev": {
         "facade/ignition": "^2.0",
