@@ -503,6 +503,8 @@ return [
             'title_helper'                => ' ',
             'description'                 => 'Description',
             'description_helper'          => ' ',
+            'detailinformation'           => 'Detail Information',
+            'detailinformation_helper'    => ' ',
             'directorysubcategory'        => 'Directory Sub Category',
             'directorysubcategory_helper' => ' ',
             'status'                      => 'Status',
@@ -513,8 +515,6 @@ return [
             'updated_at_helper'           => ' ',
             'deleted_at'                  => 'Deleted at',
             'deleted_at_helper'           => ' ',
-            'detailinformation'           => 'Detailinformation',
-            'detailinformation_helper'    => ' ',
         ],
     ],
 ];

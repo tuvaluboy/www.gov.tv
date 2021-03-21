@@ -15,19 +15,12 @@ class Kernel extends HttpKernel
         \Illuminate\Foundation\Http\Middleware\ConvertEmptyStringsToNull::class,
     ];
 
-    protected $routeMiddleware = [
-        'auth'             => \Illuminate\Auth\Middleware\Authenticate::class,
-        'auth.basic'       => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
-        'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
-        'cache.headers'    => \Illuminate\Http\Middleware\SetCacheHeaders::class,
-        'can'              => \Illuminate\Auth\Middleware\Authorize::class,
-        'guest'            => \App\Http\Middleware\RedirectIfAuthenticated::class,
-        'signed'           => \Illuminate\Routing\Middleware\ValidateSignature::class,
-        'throttle'         => \Illuminate\Routing\Middleware\ThrottleRequests::class,
-        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
-    ];
-
     protected $middlewareGroups = [
+        'api' => [
+            'throttle:60,1',
+            'bindings',
+            \App\Http\Middleware\AuthGates::class,
+        ],
         'web' => [
             \App\Http\Middleware\EncryptCookies::class,
             \Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse::class,
@@ -38,11 +31,17 @@ class Kernel extends HttpKernel
             \App\Http\Middleware\AuthGates::class,
             \App\Http\Middleware\SetLocale::class,
         ],
-        'api' => [
-            \Laravel\Sanctum\Http\Middleware\EnsureFrontendRequestsAreStateful::class,
-            'throttle:60,1',
-            'bindings',
-            \App\Http\Middleware\AuthGates::class,
-        ],
+    ];
+
+    protected $routeMiddleware = [
+        'auth'             => \Illuminate\Auth\Middleware\Authenticate::class,
+        'auth.basic'       => \Illuminate\Auth\Middleware\AuthenticateWithBasicAuth::class,
+        'bindings'         => \Illuminate\Routing\Middleware\SubstituteBindings::class,
+        'cache.headers'    => \Illuminate\Http\Middleware\SetCacheHeaders::class,
+        'can'              => \Illuminate\Auth\Middleware\Authorize::class,
+        'guest'            => \App\Http\Middleware\RedirectIfAuthenticated::class,
+        'signed'           => \Illuminate\Routing\Middleware\ValidateSignature::class,
+        'throttle'         => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'password.confirm' => \Illuminate\Auth\Middleware\RequirePassword::class,
     ];
 }

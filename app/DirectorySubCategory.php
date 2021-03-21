@@ -46,4 +46,7 @@ class DirectorySubCategory extends Model
     {
         return $this->belongsTo(DirectoryCategory::class, 'directorycategory_id');
     }
+    public function directorycontent(){
+        return $this->hasMany('App\DirectoryContent', 'directorysubcategory_id','id');
+    }
 }

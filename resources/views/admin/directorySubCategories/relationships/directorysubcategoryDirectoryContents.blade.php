@@ -28,6 +28,9 @@
                             {{ trans('cruds.directoryContent.fields.title') }}
                         </th>
                         <th>
+                            {{ trans('cruds.directoryContent.fields.detailinformation') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.directoryContent.fields.directorysubcategory') }}
                         </th>
                         <th>
@@ -49,6 +52,9 @@
                             </td>
                             <td>
                                 {{ $directoryContent->title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $directoryContent->detailinformation ?? '' }}
                             </td>
                             <td>
                                 {{ $directoryContent->directorysubcategory->title ?? '' }}
