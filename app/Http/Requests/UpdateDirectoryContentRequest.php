@@ -17,11 +17,7 @@ class UpdateDirectoryContentRequest extends FormRequest
     public function rules()
     {
         return [
-            'title'             => [
-                'string',
-                'nullable',
-            ],
-            'detailinformation' => [
+            'title' => [
                 'string',
                 'nullable',
             ],

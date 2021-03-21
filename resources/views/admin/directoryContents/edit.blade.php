@@ -31,16 +31,6 @@
                 <span class="help-block">{{ trans('cruds.directoryContent.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="detailinformation">{{ trans('cruds.directoryContent.fields.detailinformation') }}</label>
-                <input class="form-control {{ $errors->has('detailinformation') ? 'is-invalid' : '' }}" type="text" name="detailinformation" id="detailinformation" value="{{ old('detailinformation', $directoryContent->detailinformation) }}">
-                @if($errors->has('detailinformation'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('detailinformation') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.directoryContent.fields.detailinformation_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label for="directorysubcategory_id">{{ trans('cruds.directoryContent.fields.directorysubcategory') }}</label>
                 <select class="form-control select2 {{ $errors->has('directorysubcategory') ? 'is-invalid' : '' }}" name="directorysubcategory_id" id="directorysubcategory_id">
                     @foreach($directorysubcategories as $id => $directorysubcategory)
@@ -68,6 +58,16 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.directoryContent.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="detailinformation">{{ trans('cruds.directoryContent.fields.detailinformation') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('detailinformation') ? 'is-invalid' : '' }}" name="detailinformation" id="detailinformation">{!! old('detailinformation', $directoryContent->detailinformation) !!}</textarea>
+                @if($errors->has('detailinformation'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('detailinformation') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.directoryContent.fields.detailinformation_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
