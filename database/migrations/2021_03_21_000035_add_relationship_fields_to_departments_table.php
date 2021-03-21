@@ -9,7 +9,7 @@ class AddRelationshipFieldsToDepartmentsTable extends Migration
     public function up()
     {
         Schema::table('departments', function (Blueprint $table) {
-            $table->unsignedInteger('ministry_id')->nullable();
+            $table->unsignedBigInteger('ministry_id')->nullable();
             $table->foreign('ministry_id', 'ministry_fk_2164705')->references('id')->on('ministries');
         });
     }

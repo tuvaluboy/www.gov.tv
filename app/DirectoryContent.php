@@ -29,9 +29,9 @@ class DirectoryContent extends Model implements HasMedia
     protected $fillable = [
         'title',
         'description',
-        'detailinformation',
         'directorysubcategory_id',
         'status',
+        'detailinformation',
         'created_at',
         'updated_at',
         'deleted_at',
