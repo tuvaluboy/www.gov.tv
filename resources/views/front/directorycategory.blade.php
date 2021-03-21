@@ -21,8 +21,6 @@
         </div>
     </div>
 </section>
-
-
 <hr>
         <div class="align-left container">
             <div class="col-lg-10">
@@ -31,10 +29,10 @@
         </div>
 
 <hr>
-<section class="features3 cid-s9QBKWYm2c" id="features3-1y">
 
 
-    <section class="features6 cid-s9uzryvHBf mbr-parallax-background" id="features12-4c">
+
+    <!-- <section class="features6 cid-s9uzryvHBf mbr-parallax-background" id="features12-4c">
         @foreach($diretorycategory->chunk(3) as $category)
 
 
@@ -62,17 +60,43 @@
 
         @endforeach
     
-    </section>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
+    </section> -->
+
+<section class="content2 cid-saBl8LyfSn" id="content2-4k">
+    @foreach($diretorycategory->chunk(3) as $category)
 
 
-
-
+        {{-- @for($j =  0; $j < $counts ; $j++) --}}
+    
+    <div class="container">
+        
+        <div class="row mt-4">
+        @foreach($category as $services)
+            <div class="item features-image сol-12 col-md-6 col-lg-4">
+                <div class="item-wrapper">
+                    
+                    <div class="item-content">
+                        <h5 class="item-title mbr-fonts-style display-7"><a href="{{route('directory.list', $services->id)}}">{{$services->title}}</a></h5>
+                        
+                        <p class="mbr-text mbr-fonts-style mt-3 display-7">{!!$services->description!!}</p><br><br><br>
+                    </div> 
+                </div>
+            </div>
+        @endforeach   
+        </div>
+    </div>
+    @endforeach
 </section>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
 
 
-@endsection
+
+
+
+
+
+
