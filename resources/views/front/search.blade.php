@@ -17,19 +17,20 @@
 
 
 <!-- Search Result Block  -->
-<section class="content16 cid-shcGsn2WVM" id="content16-7o">
+<section class="features9 cid-sslWma43Fx" id="features10-7h">
     <div class="container">
        <div class="row">
 			<div class="col-md-12" >
-				<div class="search-result bg-grey">
-					<h2>Results</h2>
-					<p>  Results</p>
-				</div>
-			</div>
-		</div>
-        <div class="row justify-content-left">
-
-
+                <div class="card-wrapper">
+				    <div class="search-result  ">
+					    <h2>Results</h2>
+					    <p>  Results</p>
+				    </div>
+			    </div>
+		    </div>
+        
+       
+      
                 <div class="col-12 col-md-4 col-lg-3">
                     <div class="card-wrapper media-container-row media-container-row">
                         <div class="card-box">
@@ -53,6 +54,9 @@
         </div>
     </div>
 </section>
+
+
+
 <br>
 <br>
 <br>

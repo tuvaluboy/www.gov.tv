@@ -6675,6 +6675,35 @@ a {
     text-align: left;
     color: #232323;
   }
+  .cid-sslWma43Fx {
+    padding-top: 1rem;
+    padding-bottom: 6rem;
+    background-color: #ffffff;
+  }
+  .cid-sslWma43Fx .card-wrapper {
+    background-color: #ededed;
+    margin-bottom: 2rem;
+    border-radius: 4px;
+    background: #ededed;
+    transition: all 0.3s;
+    padding: 2rem;
+    padding-top: 3rem;
+  }
+  .cid-sslWma43Fx .mbr-section-title,
+  .cid-sslWma43Fx .mbr-section-subtitle {
+    text-align: center;
+  }
+  @media (min-width: 992px) {
+    .cid-sslWma43Fx .card-wrapper {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  @media (max-width: 767px) {
+    .cid-sslWma43Fx .card-wrapper {
+      padding: 1rem;
+      padding-top: 2rem;
+    }
 
   .hero-area .advance-search {
     background: #fff;
