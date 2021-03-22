@@ -170,6 +170,6 @@ Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/media','HomeController@mediacenter')->name('media');
     Route::get('/media/{media}','HomeController@medialist')->name('media.list');
     Route::get('/media/show/{media}','HomeController@mediashow')->name('media.show');
-    Route::get('search','HomeController@search')->name('search');
+    Route::get('/search','HomeController@search')->name('search');
 });
 

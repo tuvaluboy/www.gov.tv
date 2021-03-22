@@ -27,10 +27,6 @@
 <hr>
 
 <section class="content16 cid-shcGsn2WVM" id="content16-7o">
-
-
-
-
     <div class="container">
 
         <div class="row justify-content-left">

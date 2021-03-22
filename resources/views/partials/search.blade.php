@@ -1,4 +1,5 @@
 <div class="container">
+
 <div class="advance-search ">
                     <form action="{{ route('search') }}" method="GET">
 
