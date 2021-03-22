@@ -65,7 +65,7 @@
                 <div class="item-wrapper">
                     <div class="item-img">
                     @if($services->image)
-                    <img src="{{asset($services->image->getUrl())}}" alt="No Image">
+                    <img src="{{url($services->image->getUrl())}}" alt="No Image">
                     @else
                     <img src="" alt="No Image">
                     @endif
