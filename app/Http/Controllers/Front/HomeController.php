@@ -175,13 +175,15 @@ class HomeController extends Controller
     }
 
     public function search(Request $request){
-        $titlename = "Searc Result";
+        $titlename = "Search Result";
         //search services
-        $services = Service::where('title',$request->search)->where('status','Publish')->get();
+        $services = Service::filterByRequest($request)->where('status','Publish')->get();
         //search directory
         $directory = DirectoryContent::where('title',$request->search)->where('status','Publish')->get();
         //search news
         $mediaitem = item::where('title',$request->search)->where('status','Publish')->get();
+
+
 
         //return $services;
         return view('front.search',compact('services','directory','mediaitem','titlename'));
