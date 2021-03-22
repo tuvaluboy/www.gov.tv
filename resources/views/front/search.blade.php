@@ -14,17 +14,17 @@
     </div>
 <hr>
 <br>
-
+@include('partials.search')
 
 <!-- Search Result Block  -->
-<section class="features9 cid-sslWma43Fx" id="features10-7h">
+<!-- <section class="features9 cid-sslWma43Fx" id="features10-7h">
     <div class="container">
        <div class="row">
 			<div class="col-md-12" >
                 <div class="card-wrapper">
 				    <div class="search-result  ">
 					    <h2>Results</h2>
-					    <p>  Results</p>
+					    <p>{{$countresult}}  Results</p>
 				    </div>
 			    </div>
 		    </div>
@@ -57,8 +57,42 @@
 
         </div>
     </div>
-</section>
+</section> -->
+<section class="content16 cid-s9RPxwphdz" id="content16-1n">
+<div class="container">
+    <div class="container wrap">
+        @foreach($services as $service )
+        <div class="row justify-content-center">
+            <div class="card-box">
+            <u> <h3> <a href="{{route('services.show', $service->id)}}">{{$service->title}} </a> </h3></u>
+            <p> {!!$service->description!!}</p>
 
+            </div>
+        </div>
+        @endforeach
+        <br>
+        @foreach($directories as $directory )
+        <div class="row justify-content-center">
+            <div class="card-box">
+            <u> <h3> <a href="{{route('directory.show', $directory->id)}}">{{$directory->title}} </a> </h3></u>
+            <p> {!!$directory->description!!}</p>
+
+            </div>
+        </div>
+        @endforeach
+        <br>
+        @foreach($mediaitems as $mediaitem )
+        <div class="row justify-content-center">
+            <div class="card-box">
+            <u> <h3> <a href="{{route('media.show', $mediaitem->id)}}">{{$mediaitem->title}} </a> </h3></u>
+            <p> {!!$mediaitem->summary!!}</p>
+
+            </div>
+        </div>
+        @endforeach
+    </div>
+</div>
+</section>
 
 
 <br>

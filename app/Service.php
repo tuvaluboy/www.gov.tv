@@ -54,7 +54,7 @@ class Service extends Model implements HasMedia
         return $this->belongsTo(ServicesSubCategory::class, 'servicessubcategory_id');
     }
     public function scopeFilterByRequest($query, Request $request){
-        $query->where('title',$request->search);
+        $query->where('title',$request->search)->orWhere('title','LIKE',$request->search);
         return $query;
     }
 }

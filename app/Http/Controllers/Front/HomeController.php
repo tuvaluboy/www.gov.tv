@@ -179,13 +179,13 @@ class HomeController extends Controller
         //search services
         $services = Service::filterByRequest($request)->where('status','Publish')->get();
         //search directory
-        $directory = DirectoryContent::where('title',$request->search)->where('status','Publish')->get();
+        $directories = DirectoryContent::where('title',$request->search)->where('status','Publish')->get();
         //search news
-        $mediaitem = item::where('title',$request->search)->where('status','Publish')->get();
+        $mediaitems = item::where('title',$request->search)->where('status','Publish')->get();
 
 
-
+        $countresult = $services->count() + $directories->count() + $mediaitems->count();
         //return $services;
-        return view('front.search',compact('services','directory','mediaitem','titlename'));
+        return view('front.search',compact('services','directories','mediaitems','titlename','countresult'));
     }
 }
