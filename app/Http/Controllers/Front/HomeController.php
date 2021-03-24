@@ -41,13 +41,12 @@ class HomeController extends Controller
         // $imageslides = Imageslide::where('page_id','=',$pageid);
         $imageslides = Imageslide::all();
         // return $imageslides;
-        $newsandupdates = NewsandUpdate::orderBy('created_at','desc')->take(3)->get();
 
         $servicescategories = ServiceCategory::where('status','Publish')->get();
         $counts = ServiceCategory::where('status','Publish')->count();
         $titlename = "Welcome to Gov.tv | Government of Tuvalu";
 
-        return view('front.home', compact('titlename','imageslides','newsandupdates','counts','servicescategories'));
+        return view('front.home', compact('titlename','imageslides','counts','servicescategories'));
 
     }
 
@@ -65,12 +64,29 @@ class HomeController extends Controller
         return view('front.directorysubcategory',compact('directorycategory','titlename','directorysubcategory'));
     }
 
-    public function directorycontent($id){
-        $directorycontent = DirectoryContent::find($id);
-        $directorycontents = DirectoryContent::where('directorysubcategory_id',$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
-        $directorysubcategory = DirectorySubCategory::find($directorycontent->directorysubcategory_id);
+    public function directorycontent($content_id, $subcategory_id){
+        // find the content
+        $directorycontent = DirectoryContent::find($content_id);
+        // find the subcategory that was connected
+        $directorysubcategory = DirectorySubCategory::find($subcategory_id);
+        // fint all the content that has same content with the selected
+       // $directorycontents = DirectoryContent::where( ,$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
+
         $titlename = $directorycontent->title;
-        return view('front.directorycontent',compact('titlename','directorycontent','directorycontents'));
+
+        return view('front.directorycontent',compact('titlename','directorycontent','directorysubcategory'));
+    }
+    public function directorycontentsingle($content_id){
+        // find the content
+        $directorycontent = DirectoryContent::find($content_id);
+        // find the subcategory that was connected
+        $directorysubcategory = DirectorySubCategory::find($subcategory_id);
+        // fint all the content that has same content with the selected
+       // $directorycontents = DirectoryContent::where( ,$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
+
+        $titlename = $directorycontent->title;
+
+        return view('front.directorycontent',compact('titlename','directorycontent','directorysubcategory'));
     }
 
     public function budget(){
@@ -122,6 +138,8 @@ class HomeController extends Controller
         return view('front.contacts', compact('titlename'));
 
     }
+
+    // About Controller
     public function about(){
         $about = Aboutuvalu::first();
         $constitution = Tuvaluconstition::first();
@@ -131,7 +149,7 @@ class HomeController extends Controller
        // return $about->description;
         return view('front.about', compact('about','titlename','constitution','tuvaludevelopmentplan','holiday'));
     }
-
+    // Services Sub category
     public function showsubcategory($id){
         //find the category
         $serviceCategory = ServiceCategory::find($id);
@@ -141,11 +159,13 @@ class HomeController extends Controller
 
         return view('front.servicessubcategory', compact('titlename','subcategories','serviceCategory'));
     }
+    // Services Content
     public function services($id){
         $service = Service::find($id);
         $services = Service::where('servicessubcategory_id',$service->servicessubcategory_id)->where('status','Publish')->get();
         $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
         $serviceCategory = ServiceCategory::find($subcategories->servicescategory_id);
+        //return $service->contacts[0]->contentDirectorySubCategories->id;
         $titlename = $service->title;
         return view('front.services', compact('titlename','service','services','subcategories','serviceCategory'));
     }

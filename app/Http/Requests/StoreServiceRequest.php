@@ -17,9 +17,15 @@ class StoreServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
+            'title'      => [
                 'string',
                 'nullable',
+            ],
+            'contacts.*' => [
+                'integer',
+            ],
+            'contacts'   => [
+                'array',
             ],
         ];
     }

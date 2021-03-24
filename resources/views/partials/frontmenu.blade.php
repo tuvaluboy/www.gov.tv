@@ -24,12 +24,6 @@
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
                     <li class="nav-item">
                         <a class="nav-link link text-black display-4" href="{{route('home')}}">Home</a></li>
-                            {{-- <li class="nav-item dropdown">
-                                <a class="nav-link link text-black dropdown-toggle display-4" href="#" data-toggle="dropdown-submenu" aria-expanded="false">Media</a>
-                                    <div class="dropdown-menu"><a class="text-black dropdown-item display-4" href="{{route('announcement')}}">Announcement</a>
-                                        <a class="text-black dropdown-item display-4" href="{{route('news') }}" aria-expanded="false">News</a>
-                                    </div>
-                            </li> --}}
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('media') }}">Media</a></li>
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route("directory") }}">Directory</a></li>
                             <li class="nav-item"><a class="nav-link link text-black display-4" href="{{route('about')}}">About</a></li>

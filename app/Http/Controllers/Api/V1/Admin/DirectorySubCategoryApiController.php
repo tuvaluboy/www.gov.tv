@@ -17,12 +17,13 @@ class DirectorySubCategoryApiController extends Controller
     {
         abort_if(Gate::denies('directory_sub_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DirectorySubCategoryResource(DirectorySubCategory::with(['directorycategory'])->get());
+        return new DirectorySubCategoryResource(DirectorySubCategory::with(['directorycategory', 'contents'])->get());
     }
 
     public function store(StoreDirectorySubCategoryRequest $request)
     {
         $directorySubCategory = DirectorySubCategory::create($request->all());
+        $directorySubCategory->contents()->sync($request->input('contents', []));
 
         return (new DirectorySubCategoryResource($directorySubCategory))
             ->response()
@@ -33,12 +34,13 @@ class DirectorySubCategoryApiController extends Controller
     {
         abort_if(Gate::denies('directory_sub_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DirectorySubCategoryResource($directorySubCategory->load(['directorycategory']));
+        return new DirectorySubCategoryResource($directorySubCategory->load(['directorycategory', 'contents']));
     }
 
     public function update(UpdateDirectorySubCategoryRequest $request, DirectorySubCategory $directorySubCategory)
     {
         $directorySubCategory->update($request->all());
+        $directorySubCategory->contents()->sync($request->input('contents', []));
 
         return (new DirectorySubCategoryResource($directorySubCategory))
             ->response()

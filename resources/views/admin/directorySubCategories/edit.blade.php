@@ -50,6 +50,24 @@
                 <span class="help-block">{{ trans('cruds.directorySubCategory.fields.directorycategory_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="contents">{{ trans('cruds.directorySubCategory.fields.content') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('contents') ? 'is-invalid' : '' }}" name="contents[]" id="contents" multiple>
+                    @foreach($contents as $id => $content)
+                        <option value="{{ $id }}" {{ (in_array($id, old('contents', [])) || $directorySubCategory->contents->contains($id)) ? 'selected' : '' }}>{{ $content }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('contents'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('contents') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.directorySubCategory.fields.content_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>

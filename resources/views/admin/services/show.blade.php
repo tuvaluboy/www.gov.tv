@@ -63,6 +63,16 @@
                             {{ App\Service::STATUS_SELECT[$service->status] ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.service.fields.contact') }}
+                        </th>
+                        <td>
+                            @foreach($service->contacts as $key => $contact)
+                                <span class="label label-info">{{ $contact->title }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

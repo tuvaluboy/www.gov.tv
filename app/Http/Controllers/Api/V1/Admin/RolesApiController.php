@@ -2,56 +2,57 @@
 
 namespace App\Http\Controllers\Api\V1\Admin;
 
+use App\DirectoryContent;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\StoreRoleRequest;
-use App\Http\Requests\UpdateRoleRequest;
-use App\Http\Resources\Admin\RoleResource;
-use App\Role;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
+use App\Http\Requests\StoreDirectoryContentRequest;
+use App\Http\Requests\UpdateDirectoryContentRequest;
+use App\Http\Resources\Admin\DirectoryContentResource;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
 
-class RolesApiController extends Controller
+class DirectoryContentApiController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index()
     {
-        abort_if(Gate::denies('role_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('directory_content_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new RoleResource(Role::with(['permissions'])->get());
+        return new DirectoryContentResource(DirectoryContent::all());
     }
 
-    public function store(StoreRoleRequest $request)
+    public function store(StoreDirectoryContentRequest $request)
     {
-        $role = Role::create($request->all());
-        $role->permissions()->sync($request->input('permissions', []));
+        $directoryContent = DirectoryContent::create($request->all());
 
-        return (new RoleResource($role))
+        return (new DirectoryContentResource($directoryContent))
             ->response()
             ->setStatusCode(Response::HTTP_CREATED);
     }
 
-    public function show(Role $role)
+    public function show(DirectoryContent $directoryContent)
     {
-        abort_if(Gate::denies('role_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('directory_content_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new RoleResource($role->load(['permissions']));
+        return new DirectoryContentResource($directoryContent);
     }
 
-    public function update(UpdateRoleRequest $request, Role $role)
+    public function update(UpdateDirectoryContentRequest $request, DirectoryContent $directoryContent)
     {
-        $role->update($request->all());
-        $role->permissions()->sync($request->input('permissions', []));
+        $directoryContent->update($request->all());
 
-        return (new RoleResource($role))
+        return (new DirectoryContentResource($directoryContent))
             ->response()
             ->setStatusCode(Response::HTTP_ACCEPTED);
     }
 
-    public function destroy(Role $role)
+    public function destroy(DirectoryContent $directoryContent)
     {
-        abort_if(Gate::denies('role_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+        abort_if(Gate::denies('directory_content_delete'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $role->delete();
+        $directoryContent->delete();
 
         return response(null, Response::HTTP_NO_CONTENT);
     }

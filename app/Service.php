@@ -57,4 +57,8 @@ class Service extends Model implements HasMedia
         $query->where('title',$request->search)->orWhere('title','LIKE',$request->search);
         return $query;
     }
+    public function contacts()
+    {
+        return $this->belongsToMany(DirectoryContent::class);
+    }
 }

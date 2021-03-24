@@ -26,13 +26,10 @@
                             {{ trans('cruds.directoryContent.fields.id') }}
                         </th>
                         <th>
+                            {{ trans('cruds.directoryContent.fields.type') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.directoryContent.fields.title') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.directoryContent.fields.detailinformation') }}
-                        </th>
-                        <th>
-                            {{ trans('cruds.directoryContent.fields.directorysubcategory') }}
                         </th>
                         <th>
                             {{ trans('cruds.directoryContent.fields.status') }}
@@ -40,6 +37,34 @@
                         <th>
                             &nbsp;
                         </th>
+                    </tr>
+                    <tr>
+                        <td>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search" strict="true">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach(App\DirectoryContent::TYPE_SELECT as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <input class="search" type="text" placeholder="{{ trans('global.search') }}">
+                        </td>
+                        <td>
+                            <select class="search" strict="true">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach(App\DirectoryContent::STATUS_SELECT as $key => $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                        </td>
                     </tr>
                 </thead>
                 <tbody>
@@ -52,13 +77,10 @@
                                 {{ $directoryContent->id ?? '' }}
                             </td>
                             <td>
+                                {{ App\DirectoryContent::TYPE_SELECT[$directoryContent->type] ?? '' }}
+                            </td>
+                            <td>
                                 {{ $directoryContent->title ?? '' }}
-                            </td>
-                            <td>
-                                {{ $directoryContent->detailinformation ?? '' }}
-                            </td>
-                            <td>
-                                {{ $directoryContent->directorysubcategory->title ?? '' }}
                             </td>
                             <td>
                                 {{ App\DirectoryContent::STATUS_SELECT[$directoryContent->status] ?? '' }}
@@ -143,6 +165,27 @@
           .columns.adjust();
   });
   
+let visibleColumnsIndexes = null;
+$('.datatable thead').on('input', '.search', function () {
+      let strict = $(this).attr('strict') || false
+      let value = strict && this.value ? "^" + this.value + "$" : this.value
+
+      let index = $(this).parent().index()
+      if (visibleColumnsIndexes !== null) {
+        index = visibleColumnsIndexes[index]
+      }
+
+      table
+        .column(index)
+        .search(value, strict)
+        .draw()
+  });
+table.on('column-visibility.dt', function(e, settings, column, state) {
+      visibleColumnsIndexes = []
+      table.columns(":visible").every(function(colIdx) {
+          visibleColumnsIndexes.push(colIdx);
+      });
+  })
 })
 
 </script>

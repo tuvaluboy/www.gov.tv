@@ -70,6 +70,24 @@
                 <span class="help-block">{{ trans('cruds.service.fields.status_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="contacts">{{ trans('cruds.service.fields.contact') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('contacts') ? 'is-invalid' : '' }}" name="contacts[]" id="contacts" multiple>
+                    @foreach($contacts as $id => $contact)
+                        <option value="{{ $id }}" {{ (in_array($id, old('contacts', [])) || $service->contacts->contains($id)) ? 'selected' : '' }}>{{ $contact }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('contacts'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('contacts') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.service.fields.contact_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -127,7 +145,7 @@
                 // Send request
                 var data = new FormData();
                 data.append('upload', file);
-                data.append('crud_id', {{ $service->id ?? 0 }});
+                data.append('crud_id', '{{ $service->id ?? 0 }}');
                 xhr.send(data);
               });
             })

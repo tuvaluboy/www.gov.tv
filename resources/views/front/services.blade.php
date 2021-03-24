@@ -45,20 +45,26 @@
                     <div class="card-wrapper media-container-row media-container-row">
                         <div class="card-box">
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                                {{$subcategories->title}}
+                               <b> {{$subcategories->title}}</b>
 
                             </h4>
                             <p class="mbr-text mbr-fonts-style display-text">
                                 @foreach($services as $ser)
-                                @if($ser->id == $service->id) 
+                                @if($ser->id == $service->id)
                                   {{$ser->title}} <br>
                                 @else
                                 <a href="{{route('services.show', $ser->id)}}"> {{$ser->title}} </a><br>
                                 @endif
-                               
+
                                 @endforeach
                                 <hr>
                             </p>
+                            <p><b>Contacts </b></p>
+                            @foreach($service->contacts as $contact)
+                                @foreach($contact->contentDirectorySubCategories as $subcategory)
+                                <a href="{{route('directory.show', [$contact->id,$subcategory])}}">{!!$contact->title!!}</a> <br><br>
+                                @endforeach
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -47,6 +47,16 @@
                             {{ $directorySubCategory->directorycategory->title ?? '' }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.directorySubCategory.fields.content') }}
+                        </th>
+                        <td>
+                            @foreach($directorySubCategory->contents as $key => $content)
+                                <span class="label label-info">{{ $content->title }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -58,22 +68,6 @@
     </div>
 </div>
 
-<div class="card">
-    <div class="card-header">
-        {{ trans('global.relatedData') }}
-    </div>
-    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
-        <li class="nav-item">
-            <a class="nav-link" href="#directorysubcategory_directory_contents" role="tab" data-toggle="tab">
-                {{ trans('cruds.directoryContent.title') }}
-            </a>
-        </li>
-    </ul>
-    <div class="tab-content">
-        <div class="tab-pane" role="tabpanel" id="directorysubcategory_directory_contents">
-            @includeIf('admin.directorySubCategories.relationships.directorysubcategoryDirectoryContents', ['directoryContents' => $directorySubCategory->directorysubcategoryDirectoryContents])
-        </div>
-    </div>
-</div>
+
 
 @endsection

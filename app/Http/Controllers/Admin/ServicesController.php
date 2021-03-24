@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\DirectoryContent;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyServiceRequest;
@@ -22,7 +23,7 @@ class ServicesController extends Controller
     {
         abort_if(Gate::denies('service_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = Service::all();
+        $services = Service::with(['servicessubcategory', 'contacts'])->get();
 
         return view('admin.services.index', compact('services'));
     }
@@ -33,12 +34,15 @@ class ServicesController extends Controller
 
         $servicessubcategories = ServicesSubCategory::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.services.create', compact('servicessubcategories'));
+        $contacts = DirectoryContent::all()->pluck('title', 'id');
+
+        return view('admin.services.create', compact('servicessubcategories','contacts'));
     }
 
     public function store(StoreServiceRequest $request)
     {
         $service = Service::create($request->all());
+        $service->contacts()->sync($request->input('contacts', []));
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $service->id]);
@@ -53,14 +57,17 @@ class ServicesController extends Controller
 
         $servicessubcategories = ServicesSubCategory::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $service->load('servicessubcategory');
+        $contacts = DirectoryContent::all()->pluck('title', 'id');
 
-        return view('admin.services.edit', compact('servicessubcategories', 'service'));
+        $service->load('servicessubcategory', 'contacts');
+
+        return view('admin.services.edit', compact('servicessubcategories','contacts', 'service'));
     }
 
     public function update(UpdateServiceRequest $request, Service $service)
     {
         $service->update($request->all());
+        $service->contacts()->sync($request->input('contacts', []));
 
         return redirect()->route('admin.services.index');
     }
@@ -69,7 +76,7 @@ class ServicesController extends Controller
     {
         abort_if(Gate::denies('service_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $service->load('servicessubcategory');
+        $service->load('servicessubcategory', 'contacts');
 
         return view('admin.services.show', compact('service'));
     }

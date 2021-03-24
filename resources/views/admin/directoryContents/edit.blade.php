@@ -11,6 +11,21 @@
             @method('PUT')
             @csrf
             <div class="form-group">
+                <label>{{ trans('cruds.directoryContent.fields.type') }}</label>
+                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
+                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
+                    @foreach(App\DirectoryContent::TYPE_SELECT as $key => $label)
+                        <option value="{{ $key }}" {{ old('type', $directoryContent->type) === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('type'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('type') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.directoryContent.fields.type_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label for="title">{{ trans('cruds.directoryContent.fields.title') }}</label>
                 <input class="form-control {{ $errors->has('title') ? 'is-invalid' : '' }}" type="text" name="title" id="title" value="{{ old('title', $directoryContent->title) }}">
                 @if($errors->has('title'))
@@ -31,30 +46,6 @@
                 <span class="help-block">{{ trans('cruds.directoryContent.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
-                <label for="detailinformation">{{ trans('cruds.directoryContent.fields.detailinformation') }}</label>
-                <input class="form-control {{ $errors->has('detailinformation') ? 'is-invalid' : '' }}" type="text" name="detailinformation" id="detailinformation" value="{{ old('detailinformation', $directoryContent->detailinformation) }}">
-                @if($errors->has('detailinformation'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('detailinformation') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.directoryContent.fields.detailinformation_helper') }}</span>
-            </div>
-            <div class="form-group">
-                <label for="directorysubcategory_id">{{ trans('cruds.directoryContent.fields.directorysubcategory') }}</label>
-                <select class="form-control select2 {{ $errors->has('directorysubcategory') ? 'is-invalid' : '' }}" name="directorysubcategory_id" id="directorysubcategory_id">
-                    @foreach($directorysubcategories as $id => $directorysubcategory)
-                        <option value="{{ $id }}" {{ (old('directorysubcategory_id') ? old('directorysubcategory_id') : $directoryContent->directorysubcategory->id ?? '') == $id ? 'selected' : '' }}>{{ $directorysubcategory }}</option>
-                    @endforeach
-                </select>
-                @if($errors->has('directorysubcategory'))
-                    <div class="invalid-feedback">
-                        {{ $errors->first('directorysubcategory') }}
-                    </div>
-                @endif
-                <span class="help-block">{{ trans('cruds.directoryContent.fields.directorysubcategory_helper') }}</span>
-            </div>
-            <div class="form-group">
                 <label>{{ trans('cruds.directoryContent.fields.status') }}</label>
                 <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
                     <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
@@ -68,6 +59,26 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.directoryContent.fields.status_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="detailinformation">{{ trans('cruds.directoryContent.fields.detailinformation') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('detailinformation') ? 'is-invalid' : '' }}" name="detailinformation" id="detailinformation">{!! old('detailinformation', $directoryContent->detailinformation) !!}</textarea>
+                @if($errors->has('detailinformation'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('detailinformation') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.directoryContent.fields.detailinformation_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="contact_information">{{ trans('cruds.directoryContent.fields.contact_information') }}</label>
+                <textarea class="form-control ckeditor {{ $errors->has('contact_information') ? 'is-invalid' : '' }}" name="contact_information" id="contact_information">{!! old('contact_information', $directoryContent->contact_information) !!}</textarea>
+                @if($errors->has('contact_information'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('contact_information') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.directoryContent.fields.contact_information_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

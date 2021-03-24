@@ -273,6 +273,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'contact'            => 'Contact',
+            'contact_helper'     => ' ',
         ],
     ],
     'tuvaludevelopmentplan' => [
@@ -373,6 +375,8 @@ return [
             'updated_at_helper'          => ' ',
             'deleted_at'                 => 'Deleted at',
             'deleted_at_helper'          => ' ',
+            'contact'                    => 'Contact',
+            'contact_helper'             => ' ',
         ],
     ],
     'servicesSetup'         => [
@@ -491,6 +495,8 @@ return [
             'updated_at_helper'        => ' ',
             'deleted_at'               => 'Deleted at',
             'deleted_at_helper'        => ' ',
+            'content'                  => 'Content',
+            'content_helper'           => ' ',
         ],
     ],
     'directoryContent'      => [
@@ -515,6 +521,10 @@ return [
             'updated_at_helper'           => ' ',
             'deleted_at'                  => 'Deleted at',
             'deleted_at_helper'           => ' ',
+            'contact_information'         => 'Contact Information',
+            'contact_information_helper'  => ' ',
+            'type'                       => 'Type',
+            'type_helper'                => 'Whether it Ministry or Deparment',
         ],
     ],
 ];

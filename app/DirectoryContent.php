@@ -15,6 +15,10 @@ class DirectoryContent extends Model implements HasMedia
 
     public $table = 'directory_contents';
 
+    const TYPE_SELECT = [
+        'Head' => 'Head',
+        'Body' => 'Body',
+    ];
     protected $dates = [
         'created_at',
         'updated_at',
@@ -27,11 +31,12 @@ class DirectoryContent extends Model implements HasMedia
     ];
 
     protected $fillable = [
+        'type',
         'title',
         'description',
-        'detailinformation',
-        'directorysubcategory_id',
         'status',
+        'detailinformation',
+        'contact_information',
         'created_at',
         'updated_at',
         'deleted_at',
@@ -48,8 +53,13 @@ class DirectoryContent extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    public function directorysubcategory()
+    public function contactServices()
     {
-        return $this->belongsTo(DirectorySubCategory::class, 'directorysubcategory_id');
+        return $this->belongsToMany(Service::class);
+    }
+
+    public function contentDirectorySubCategories()
+    {
+        return $this->belongsToMany(DirectorySubCategory::class);
     }
 }

@@ -9,7 +9,7 @@ class AddRelationshipFieldsToImageslidesTable extends Migration
     public function up()
     {
         Schema::table('imageslides', function (Blueprint $table) {
-            $table->unsignedInteger('page_id')->nullable();
+            $table->unsignedBigInteger('page_id')->nullable();
             $table->foreign('page_id', 'page_fk_2180059')->references('id')->on('pages');
         });
     }

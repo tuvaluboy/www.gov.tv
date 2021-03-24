@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DirectoryContent;
-use App\DirectorySubCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyDirectoryContentRequest;
@@ -22,7 +21,7 @@ class DirectoryContentController extends Controller
     {
         abort_if(Gate::denies('directory_content_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directoryContents = DirectoryContent::with(['directorysubcategory'])->get();
+        $directoryContents = DirectoryContent::all();
 
         return view('admin.directoryContents.index', compact('directoryContents'));
     }
@@ -31,9 +30,7 @@ class DirectoryContentController extends Controller
     {
         abort_if(Gate::denies('directory_content_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directorysubcategories = DirectorySubCategory::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        return view('admin.directoryContents.create', compact('directorysubcategories'));
+        return view('admin.directoryContents.create');
     }
 
     public function store(StoreDirectoryContentRequest $request)
@@ -51,11 +48,7 @@ class DirectoryContentController extends Controller
     {
         abort_if(Gate::denies('directory_content_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directorysubcategories = DirectorySubCategory::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
-
-        $directoryContent->load('directorysubcategory');
-
-        return view('admin.directoryContents.edit', compact('directorysubcategories', 'directoryContent'));
+        return view('admin.directoryContents.edit', compact('directoryContent'));
     }
 
     public function update(UpdateDirectoryContentRequest $request, DirectoryContent $directoryContent)
@@ -69,7 +62,7 @@ class DirectoryContentController extends Controller
     {
         abort_if(Gate::denies('directory_content_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directoryContent->load('directorysubcategory');
+        $directoryContent->load('contactServices', 'contentDirectorySubCategories');
 
         return view('admin.directoryContents.show', compact('directoryContent'));
     }

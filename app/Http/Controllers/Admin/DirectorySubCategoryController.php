@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DirectoryCategory;
+use App\DirectoryContent;
 use App\DirectorySubCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyDirectorySubCategoryRequest;
@@ -18,9 +19,13 @@ class DirectorySubCategoryController extends Controller
     {
         abort_if(Gate::denies('directory_sub_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directorySubCategories = DirectorySubCategory::with(['directorycategory'])->get();
+        $directorySubCategories = DirectorySubCategory::with(['directorycategory', 'contents'])->get();
 
-        return view('admin.directorySubCategories.index', compact('directorySubCategories'));
+        $directory_categories = DirectoryCategory::get();
+
+        $directory_contents = DirectoryContent::get();
+
+        return view('admin.directorySubCategories.index', compact('directorySubCategories', 'directory_categories', 'directory_contents'));
     }
 
     public function create()
@@ -29,12 +34,15 @@ class DirectorySubCategoryController extends Controller
 
         $directorycategories = DirectoryCategory::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.directorySubCategories.create', compact('directorycategories'));
+        $contents = DirectoryContent::all()->pluck('title', 'id');
+
+        return view('admin.directorySubCategories.create', compact('directorycategories', 'contents'));
     }
 
     public function store(StoreDirectorySubCategoryRequest $request)
     {
         $directorySubCategory = DirectorySubCategory::create($request->all());
+        $directorySubCategory->contents()->sync($request->input('contents', []));
 
         return redirect()->route('admin.directory-sub-categories.index');
     }
@@ -45,14 +53,17 @@ class DirectorySubCategoryController extends Controller
 
         $directorycategories = DirectoryCategory::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $directorySubCategory->load('directorycategory');
+        $contents = DirectoryContent::all()->pluck('title', 'id');
 
-        return view('admin.directorySubCategories.edit', compact('directorycategories', 'directorySubCategory'));
+        $directorySubCategory->load('directorycategory', 'contents');
+
+        return view('admin.directorySubCategories.edit', compact('directorycategories', 'contents', 'directorySubCategory'));
     }
 
     public function update(UpdateDirectorySubCategoryRequest $request, DirectorySubCategory $directorySubCategory)
     {
         $directorySubCategory->update($request->all());
+        $directorySubCategory->contents()->sync($request->input('contents', []));
 
         return redirect()->route('admin.directory-sub-categories.index');
     }
@@ -61,7 +72,7 @@ class DirectorySubCategoryController extends Controller
     {
         abort_if(Gate::denies('directory_sub_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directorySubCategory->load('directorycategory', 'directorysubcategoryDirectoryContents');
+        $directorySubCategory->load('directorycategory', 'contents');
 
         return view('admin.directorySubCategories.show', compact('directorySubCategory'));
     }

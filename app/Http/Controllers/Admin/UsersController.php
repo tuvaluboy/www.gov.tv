@@ -22,7 +22,7 @@ class UsersController extends Controller
     {
         abort_if(Gate::denies('user_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $users = User::all();
+        $users = User::with(['roles', 'media'])->get();
 
         return view('admin.users.index', compact('users'));
     }
@@ -42,7 +42,7 @@ class UsersController extends Controller
         $user->roles()->sync($request->input('roles', []));
 
         if ($request->input('image', false)) {
-            $user->addMedia(storage_path('tmp/uploads/' . $request->input('image')))->toMediaCollection('image');
+            $user->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -74,7 +74,7 @@ class UsersController extends Controller
                     $user->image->delete();
                 }
 
-                $user->addMedia(storage_path('tmp/uploads/' . $request->input('image')))->toMediaCollection('image');
+                $user->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
             }
         } elseif ($user->image) {
             $user->image->delete();

@@ -34,6 +34,9 @@
                             {{ trans('cruds.directorySubCategory.fields.directorycategory') }}
                         </th>
                         <th>
+                            {{ trans('cruds.directorySubCategory.fields.content') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -55,6 +58,11 @@
                             </td>
                             <td>
                                 {{ $directorySubCategory->directorycategory->title ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($directorySubCategory->contents as $key => $item)
+                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
                             </td>
                             <td>
                                 @can('directory_sub_category_show')
@@ -132,7 +140,7 @@
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();
   });
-  
+
 })
 
 </script>

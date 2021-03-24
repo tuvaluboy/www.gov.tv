@@ -37,16 +37,13 @@ class DirectorySubCategory extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
-    public function directorysubcategoryDirectoryContents()
-    {
-        return $this->hasMany(DirectoryContent::class, 'directorysubcategory_id', 'id');
-    }
-
     public function directorycategory()
     {
         return $this->belongsTo(DirectoryCategory::class, 'directorycategory_id');
     }
-    public function directorycontent(){
-        return $this->hasMany('App\DirectoryContent', 'directorysubcategory_id','id');
+
+    public function contents()
+    {
+        return $this->belongsToMany(DirectoryContent::class);
     }
 }

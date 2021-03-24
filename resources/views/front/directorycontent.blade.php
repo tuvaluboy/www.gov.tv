@@ -20,7 +20,10 @@
     <div class="align-left container">
             <div class="content-wrap">
                 <div class="col-lg-12">
-                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; <a href="{{route('directory')}}" class="text-primary">Directory</a> &gt; <a href="{{route('directory.list', $directorycontent->directorysubcategory->directorycategory->id)}}">{{$directorycontent->directorysubcategory->directorycategory->title}} </a>&gt; {{$directorycontent->directorysubcategory->title}}</p>
+                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> /
+                    <a href="{{route('directory')}}" class="text-primary">Directory</a> /
+                    <a href="{{route('directory.list', $directorysubcategory->directorycategory->id)}}">{{$directorysubcategory->directorycategory->title}} </a>/
+                    {{$directorysubcategory->title}}</p>
                 </div>
             </div>
     </div>
@@ -40,17 +43,13 @@
                     <div class="card-wrapper media-container-row media-container-row">
                         <div class="card-box">
                             <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                              {{$directorycontent->directorysubcategory->title}}
-
+                             <b> Contact
+                            </b>
                             </h4>
+
                             <p class="mbr-text mbr-fonts-style display-text">
-                                @foreach($directorycontents as $ser)
-                                @if($ser->id == $directorycontent->id)
-                                    {{$ser->title}}<br>
-                                @else
-                                    <a href="{{route('directory.show', $ser->id)}}"> {{$ser->title}} </a><br>
-                                @endif
-                                @endforeach
+
+                                {!!$directorycontent->contact_information !!}
                                 <hr>
                             </p>
                         </div>
@@ -61,13 +60,31 @@
                     <div class="card-wrapper media-container-row">
                         <div class="card-box">
                             <br/>
-                            <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            <a>{{$directorycontent->detailinformation}}</a></h4>
+                            @if($directorycontent->type == "Body")
+                                @foreach($directorysubcategory->contents as $ser)
+                                    @if($ser->type == "Head")
+                                    <h5><a href="{{route('directory.show', [$ser->id,$directorysubcategory->id])}}"> {{$ser->title}} </a>
+                                    </h4><hr><br>
+                                    @endif
+                                @endforeach
+                            @endif
+                            <h3>
+                            <b>{!!$directorycontent->detailinformation!!}</b>
+                            </h3>
 
                             {!!$directorycontent->description!!}
                                 <br>
-                                <br>
+                            @if($directorycontent->type == "Head")
+                            <h5><b>Departments</b></h5>
+                            @foreach($directorysubcategory->contents as $ser)
+                                @if($ser->id == $directorycontent->id)
 
+                                @else
+                                    <a href="{{route('directory.show', [$ser->id,$directorysubcategory->id])}}"> {{$ser->title}} </a><br>
+                                @endif
+                            @endforeach
+                                <br>
+                            @endif
                         </div>
                     </div>
                 </div>
@@ -75,6 +92,24 @@
         </div>
     </div>
 </section>
+
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
 
 
 @endsection

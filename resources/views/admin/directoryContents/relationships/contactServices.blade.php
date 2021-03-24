@@ -1,8 +1,8 @@
-@can('directory_content_create')
+@can('service_create')
     <div style="margin-bottom: 10px;" class="row">
         <div class="col-lg-12">
-            <a class="btn btn-success" href="{{ route('admin.directory-contents.create') }}">
-                {{ trans('global.add') }} {{ trans('cruds.directoryContent.title_singular') }}
+            <a class="btn btn-success" href="{{ route('admin.services.create') }}">
+                {{ trans('global.add') }} {{ trans('cruds.service.title_singular') }}
             </a>
         </div>
     </div>
@@ -10,31 +10,31 @@
 
 <div class="card">
     <div class="card-header">
-        {{ trans('cruds.directoryContent.title_singular') }} {{ trans('global.list') }}
+        {{ trans('cruds.service.title_singular') }} {{ trans('global.list') }}
     </div>
 
     <div class="card-body">
         <div class="table-responsive">
-            <table class=" table table-bordered table-striped table-hover datatable datatable-directorysubcategoryDirectoryContents">
+            <table class=" table table-bordered table-striped table-hover datatable datatable-contactServices">
                 <thead>
                     <tr>
                         <th width="10">
 
                         </th>
                         <th>
-                            {{ trans('cruds.directoryContent.fields.id') }}
+                            {{ trans('cruds.service.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.directoryContent.fields.title') }}
+                            {{ trans('cruds.service.fields.title') }}
                         </th>
                         <th>
-                            {{ trans('cruds.directoryContent.fields.detailinformation') }}
+                            {{ trans('cruds.service.fields.servicessubcategory') }}
                         </th>
                         <th>
-                            {{ trans('cruds.directoryContent.fields.directorysubcategory') }}
+                            {{ trans('cruds.service.fields.status') }}
                         </th>
                         <th>
-                            {{ trans('cruds.directoryContent.fields.status') }}
+                            {{ trans('cruds.service.fields.contact') }}
                         </th>
                         <th>
                             &nbsp;
@@ -42,41 +42,43 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach($directoryContents as $key => $directoryContent)
-                        <tr data-entry-id="{{ $directoryContent->id }}">
+                    @foreach($services as $key => $service)
+                        <tr data-entry-id="{{ $service->id }}">
                             <td>
 
                             </td>
                             <td>
-                                {{ $directoryContent->id ?? '' }}
+                                {{ $service->id ?? '' }}
                             </td>
                             <td>
-                                {{ $directoryContent->title ?? '' }}
+                                {{ $service->title ?? '' }}
                             </td>
                             <td>
-                                {{ $directoryContent->detailinformation ?? '' }}
+                                {{ $service->servicessubcategory->title ?? '' }}
                             </td>
                             <td>
-                                {{ $directoryContent->directorysubcategory->title ?? '' }}
+                                {{ App\Service::STATUS_SELECT[$service->status] ?? '' }}
                             </td>
                             <td>
-                                {{ App\DirectoryContent::STATUS_SELECT[$directoryContent->status] ?? '' }}
+                                @foreach($service->contacts as $key => $item)
+                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
                             </td>
                             <td>
-                                @can('directory_content_show')
-                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.directory-contents.show', $directoryContent->id) }}">
+                                @can('service_show')
+                                    <a class="btn btn-xs btn-primary" href="{{ route('admin.services.show', $service->id) }}">
                                         {{ trans('global.view') }}
                                     </a>
                                 @endcan
 
-                                @can('directory_content_edit')
-                                    <a class="btn btn-xs btn-info" href="{{ route('admin.directory-contents.edit', $directoryContent->id) }}">
+                                @can('service_edit')
+                                    <a class="btn btn-xs btn-info" href="{{ route('admin.services.edit', $service->id) }}">
                                         {{ trans('global.edit') }}
                                     </a>
                                 @endcan
 
-                                @can('directory_content_delete')
-                                    <form action="{{ route('admin.directory-contents.destroy', $directoryContent->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
+                                @can('service_delete')
+                                    <form action="{{ route('admin.services.destroy', $service->id) }}" method="POST" onsubmit="return confirm('{{ trans('global.areYouSure') }}');" style="display: inline-block;">
                                         <input type="hidden" name="_method" value="DELETE">
                                         <input type="hidden" name="_token" value="{{ csrf_token() }}">
                                         <input type="submit" class="btn btn-xs btn-danger" value="{{ trans('global.delete') }}">
@@ -98,11 +100,11 @@
 <script>
     $(function () {
   let dtButtons = $.extend(true, [], $.fn.dataTable.defaults.buttons)
-@can('directory_content_delete')
+@can('service_delete')
   let deleteButtonTrans = '{{ trans('global.datatables.delete') }}'
   let deleteButton = {
     text: deleteButtonTrans,
-    url: "{{ route('admin.directory-contents.massDestroy') }}",
+    url: "{{ route('admin.services.massDestroy') }}",
     className: 'btn-danger',
     action: function (e, dt, node, config) {
       var ids = $.map(dt.rows({ selected: true }).nodes(), function (entry) {
@@ -133,7 +135,7 @@
     order: [[ 1, 'desc' ]],
     pageLength: 100,
   });
-  let table = $('.datatable-directorysubcategoryDirectoryContents:not(.ajaxTable)').DataTable({ buttons: dtButtons })
+  let table = $('.datatable-contactServices:not(.ajaxTable)').DataTable({ buttons: dtButtons })
   $('a[data-toggle="tab"]').on('shown.bs.tab click', function(e){
       $($.fn.dataTable.tables(true)).DataTable()
           .columns.adjust();

@@ -17,9 +17,15 @@ class UpdateDirectorySubCategoryRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
+            'title'      => [
                 'string',
                 'nullable',
+            ],
+            'contents.*' => [
+                'integer',
+            ],
+            'contents'   => [
+                'array',
             ],
         ];
     }
