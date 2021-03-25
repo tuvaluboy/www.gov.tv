@@ -74,426 +74,242 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 17,
-                'title' => 'ministry_create',
-            ],
-            [
-                'id'    => 18,
-                'title' => 'ministry_edit',
-            ],
-            [
-                'id'    => 19,
-                'title' => 'ministry_show',
-            ],
-            [
-                'id'    => 20,
-                'title' => 'ministry_delete',
-            ],
-            [
-                'id'    => 21,
-                'title' => 'ministry_access',
-            ],
-            [
-                'id'    => 22,
-                'title' => 'newsand_update_create',
-            ],
-            [
-                'id'    => 23,
-                'title' => 'newsand_update_edit',
-            ],
-            [
-                'id'    => 24,
-                'title' => 'newsand_update_show',
-            ],
-            [
-                'id'    => 25,
-                'title' => 'newsand_update_delete',
-            ],
-            [
-                'id'    => 26,
-                'title' => 'newsand_update_access',
-            ],
-            [
-                'id'    => 27,
-                'title' => 'department_create',
-            ],
-            [
-                'id'    => 28,
-                'title' => 'department_edit',
-            ],
-            [
-                'id'    => 29,
-                'title' => 'department_show',
-            ],
-            [
-                'id'    => 30,
-                'title' => 'department_delete',
-            ],
-            [
-                'id'    => 31,
-                'title' => 'department_access',
-            ],
-            [
-                'id'    => 32,
-                'title' => 'vacancy_create',
-            ],
-            [
-                'id'    => 33,
-                'title' => 'vacancy_edit',
-            ],
-            [
-                'id'    => 34,
-                'title' => 'vacancy_show',
-            ],
-            [
-                'id'    => 35,
-                'title' => 'vacancy_delete',
-            ],
-            [
-                'id'    => 36,
-                'title' => 'vacancy_access',
-            ],
-            [
-                'id'    => 37,
-                'title' => 'budget_create',
-            ],
-            [
-                'id'    => 38,
-                'title' => 'budget_edit',
-            ],
-            [
-                'id'    => 39,
-                'title' => 'budget_show',
-            ],
-            [
-                'id'    => 40,
-                'title' => 'budget_delete',
-            ],
-            [
-                'id'    => 41,
-                'title' => 'budget_access',
-            ],
-            [
-                'id'    => 42,
-                'title' => 'imageslide_create',
-            ],
-            [
-                'id'    => 43,
-                'title' => 'imageslide_edit',
-            ],
-            [
-                'id'    => 44,
-                'title' => 'imageslide_show',
-            ],
-            [
-                'id'    => 45,
-                'title' => 'imageslide_delete',
-            ],
-            [
-                'id'    => 46,
-                'title' => 'imageslide_access',
-            ],
-            [
-                'id'    => 47,
-                'title' => 'page_create',
-            ],
-            [
-                'id'    => 48,
-                'title' => 'page_edit',
-            ],
-            [
-                'id'    => 49,
-                'title' => 'page_show',
-            ],
-            [
-                'id'    => 50,
-                'title' => 'page_delete',
-            ],
-            [
-                'id'    => 51,
-                'title' => 'page_access',
-            ],
-            [
-                'id'    => 52,
-                'title' => 'utilize_access',
-            ],
-            [
-                'id'    => 53,
                 'title' => 'about_access',
             ],
             [
-                'id'    => 54,
-                'title' => 'aboutuvalu_create',
-            ],
-            [
-                'id'    => 55,
-                'title' => 'aboutuvalu_edit',
-            ],
-            [
-                'id'    => 56,
-                'title' => 'aboutuvalu_show',
-            ],
-            [
-                'id'    => 57,
-                'title' => 'aboutuvalu_delete',
-            ],
-            [
-                'id'    => 58,
-                'title' => 'aboutuvalu_access',
-            ],
-            [
-                'id'    => 59,
-                'title' => 'tuvaluconstition_create',
-            ],
-            [
-                'id'    => 60,
-                'title' => 'tuvaluconstition_edit',
-            ],
-            [
-                'id'    => 61,
-                'title' => 'tuvaluconstition_show',
-            ],
-            [
-                'id'    => 62,
-                'title' => 'tuvaluconstition_delete',
-            ],
-            [
-                'id'    => 63,
-                'title' => 'tuvaluconstition_access',
-            ],
-            [
-                'id'    => 64,
-                'title' => 'tuvaludevelopmentplan_create',
-            ],
-            [
-                'id'    => 65,
-                'title' => 'tuvaludevelopmentplan_edit',
-            ],
-            [
-                'id'    => 66,
-                'title' => 'tuvaludevelopmentplan_show',
-            ],
-            [
-                'id'    => 67,
-                'title' => 'tuvaludevelopmentplan_delete',
-            ],
-            [
-                'id'    => 68,
-                'title' => 'tuvaludevelopmentplan_access',
-            ],
-            [
-                'id'    => 69,
-                'title' => 'holiday_create',
-            ],
-            [
-                'id'    => 70,
-                'title' => 'holiday_edit',
-            ],
-            [
-                'id'    => 71,
-                'title' => 'holiday_show',
-            ],
-            [
-                'id'    => 72,
-                'title' => 'holiday_delete',
-            ],
-            [
-                'id'    => 73,
-                'title' => 'holiday_access',
-            ],
-            [
-                'id'    => 74,
+                'id'    => 18,
                 'title' => 'service_category_create',
             ],
             [
-                'id'    => 75,
+                'id'    => 19,
                 'title' => 'service_category_edit',
             ],
             [
-                'id'    => 76,
+                'id'    => 20,
                 'title' => 'service_category_show',
             ],
             [
-                'id'    => 77,
+                'id'    => 21,
                 'title' => 'service_category_delete',
             ],
             [
-                'id'    => 78,
+                'id'    => 22,
                 'title' => 'service_category_access',
             ],
             [
-                'id'    => 79,
+                'id'    => 23,
                 'title' => 'services_sub_category_create',
             ],
             [
-                'id'    => 80,
+                'id'    => 24,
                 'title' => 'services_sub_category_edit',
             ],
             [
-                'id'    => 81,
+                'id'    => 25,
                 'title' => 'services_sub_category_show',
             ],
             [
-                'id'    => 82,
+                'id'    => 26,
                 'title' => 'services_sub_category_delete',
             ],
             [
-                'id'    => 83,
+                'id'    => 27,
                 'title' => 'services_sub_category_access',
             ],
             [
-                'id'    => 84,
+                'id'    => 28,
                 'title' => 'service_create',
             ],
             [
-                'id'    => 85,
+                'id'    => 29,
                 'title' => 'service_edit',
             ],
             [
-                'id'    => 86,
+                'id'    => 30,
                 'title' => 'service_show',
             ],
             [
-                'id'    => 87,
+                'id'    => 31,
                 'title' => 'service_delete',
             ],
             [
-                'id'    => 88,
+                'id'    => 32,
                 'title' => 'service_access',
             ],
             [
-                'id'    => 89,
+                'id'    => 33,
                 'title' => 'services_setup_access',
             ],
             [
-                'id'    => 90,
-                'title' => 'picture_create',
-            ],
-            [
-                'id'    => 91,
-                'title' => 'picture_edit',
-            ],
-            [
-                'id'    => 92,
-                'title' => 'picture_show',
-            ],
-            [
-                'id'    => 93,
-                'title' => 'picture_delete',
-            ],
-            [
-                'id'    => 94,
-                'title' => 'picture_access',
-            ],
-            [
-                'id'    => 95,
+                'id'    => 34,
                 'title' => 'media_center_access',
             ],
             [
-                'id'    => 96,
+                'id'    => 35,
                 'title' => 'category_create',
             ],
             [
-                'id'    => 97,
+                'id'    => 36,
                 'title' => 'category_edit',
             ],
             [
-                'id'    => 98,
+                'id'    => 37,
                 'title' => 'category_show',
             ],
             [
-                'id'    => 99,
+                'id'    => 38,
                 'title' => 'category_delete',
             ],
             [
-                'id'    => 100,
+                'id'    => 39,
                 'title' => 'category_access',
             ],
             [
-                'id'    => 101,
+                'id'    => 40,
                 'title' => 'item_create',
             ],
             [
-                'id'    => 102,
+                'id'    => 41,
                 'title' => 'item_edit',
             ],
             [
-                'id'    => 103,
+                'id'    => 42,
                 'title' => 'item_show',
             ],
             [
-                'id'    => 104,
+                'id'    => 43,
                 'title' => 'item_delete',
             ],
             [
-                'id'    => 105,
+                'id'    => 44,
                 'title' => 'item_access',
             ],
             [
-                'id'    => 106,
+                'id'    => 45,
                 'title' => 'directory_access',
             ],
             [
-                'id'    => 107,
+                'id'    => 46,
                 'title' => 'directory_category_create',
             ],
             [
-                'id'    => 108,
+                'id'    => 47,
                 'title' => 'directory_category_edit',
             ],
             [
-                'id'    => 109,
+                'id'    => 48,
                 'title' => 'directory_category_show',
             ],
             [
-                'id'    => 110,
+                'id'    => 49,
                 'title' => 'directory_category_delete',
             ],
             [
-                'id'    => 111,
+                'id'    => 50,
                 'title' => 'directory_category_access',
             ],
             [
-                'id'    => 112,
+                'id'    => 51,
                 'title' => 'directory_sub_category_create',
             ],
             [
-                'id'    => 113,
+                'id'    => 52,
                 'title' => 'directory_sub_category_edit',
             ],
             [
-                'id'    => 114,
+                'id'    => 53,
                 'title' => 'directory_sub_category_show',
             ],
             [
-                'id'    => 115,
+                'id'    => 54,
                 'title' => 'directory_sub_category_delete',
             ],
             [
-                'id'    => 116,
+                'id'    => 55,
                 'title' => 'directory_sub_category_access',
             ],
             [
-                'id'    => 117,
+                'id'    => 56,
                 'title' => 'directory_content_create',
             ],
             [
-                'id'    => 118,
+                'id'    => 57,
                 'title' => 'directory_content_edit',
             ],
             [
-                'id'    => 119,
+                'id'    => 58,
                 'title' => 'directory_content_show',
             ],
             [
-                'id'    => 120,
+                'id'    => 59,
                 'title' => 'directory_content_delete',
             ],
             [
-                'id'    => 121,
+                'id'    => 60,
                 'title' => 'directory_content_access',
             ],
             [
-                'id'    => 122,
+                'id'    => 61,
+                'title' => 'ministry_content_create',
+            ],
+            [
+                'id'    => 62,
+                'title' => 'ministry_content_edit',
+            ],
+            [
+                'id'    => 63,
+                'title' => 'ministry_content_show',
+            ],
+            [
+                'id'    => 64,
+                'title' => 'ministry_content_delete',
+            ],
+            [
+                'id'    => 65,
+                'title' => 'ministry_content_access',
+            ],
+            [
+                'id'    => 66,
+                'title' => 'content_create',
+            ],
+            [
+                'id'    => 67,
+                'title' => 'content_edit',
+            ],
+            [
+                'id'    => 68,
+                'title' => 'content_show',
+            ],
+            [
+                'id'    => 69,
+                'title' => 'content_delete',
+            ],
+            [
+                'id'    => 70,
+                'title' => 'content_access',
+            ],
+            [
+                'id'    => 71,
+                'title' => 'tag_create',
+            ],
+            [
+                'id'    => 72,
+                'title' => 'tag_edit',
+            ],
+            [
+                'id'    => 73,
+                'title' => 'tag_show',
+            ],
+            [
+                'id'    => 74,
+                'title' => 'tag_delete',
+            ],
+            [
+                'id'    => 75,
+                'title' => 'tag_access',
+            ],
+            [
+                'id'    => 76,
                 'title' => 'profile_password_edit',
             ],
         ];

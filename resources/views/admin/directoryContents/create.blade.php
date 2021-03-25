@@ -10,19 +10,18 @@
         <form method="POST" action="{{ route("admin.directory-contents.store") }}" enctype="multipart/form-data">
             @csrf
             <div class="form-group">
-                <label>{{ trans('cruds.directoryContent.fields.type') }}</label>
-                <select class="form-control {{ $errors->has('type') ? 'is-invalid' : '' }}" name="type" id="type">
-                    <option value disabled {{ old('type', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
-                    @foreach(App\DirectoryContent::TYPE_SELECT as $key => $label)
-                        <option value="{{ $key }}" {{ old('type', 'Body') === (string) $key ? 'selected' : '' }}>{{ $label }}</option>
+                <label for="ministry_id">{{ trans('cruds.directoryContent.fields.ministry') }}</label>
+                <select class="form-control select2 {{ $errors->has('ministry') ? 'is-invalid' : '' }}" name="ministry_id" id="ministry_id">
+                    @foreach($ministries as $id => $ministry)
+                        <option value="{{ $id }}" {{ old('ministry_id') == $id ? 'selected' : '' }}>{{ $ministry }}</option>
                     @endforeach
                 </select>
-                @if($errors->has('type'))
+                @if($errors->has('ministry'))
                     <div class="invalid-feedback">
-                        {{ $errors->first('type') }}
+                        {{ $errors->first('ministry') }}
                     </div>
                 @endif
-                <span class="help-block">{{ trans('cruds.directoryContent.fields.type_helper') }}</span>
+                <span class="help-block">{{ trans('cruds.directoryContent.fields.ministry_helper') }}</span>
             </div>
             <div class="form-group">
                 <label for="title">{{ trans('cruds.directoryContent.fields.title') }}</label>
@@ -78,6 +77,24 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.directoryContent.fields.contact_information_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="tags">{{ trans('cruds.directoryContent.fields.tags') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('tags') ? 'is-invalid' : '' }}" name="tags[]" id="tags" multiple>
+                    @foreach($tags as $id => $tags)
+                        <option value="{{ $id }}" {{ in_array($id, old('tags', [])) ? 'selected' : '' }}>{{ $tags }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('tags'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('tags') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.directoryContent.fields.tags_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">

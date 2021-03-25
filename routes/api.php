@@ -83,4 +83,16 @@ Route::group(['prefix' => 'v1', 'as' => 'api.', 'namespace' => 'Api\V1\Admin', '
      // Directory Contents
      Route::post('directory-contents/media', 'DirectoryContentApiController@storeMedia')->name('directory-contents.storeMedia');
      Route::apiResource('directory-contents', 'DirectoryContentApiController');
+
+
+    // Ministry Contents
+    Route::post('ministry-contents/media', 'MinistryContentApiController@storeMedia')->name('ministry-contents.storeMedia');
+    Route::apiResource('ministry-contents', 'MinistryContentApiController');
+
+    // Contents
+    Route::post('contents/media', 'ContentApiController@storeMedia')->name('contents.storeMedia');
+    Route::apiResource('contents', 'ContentApiController');
+
+    // Tags
+    Route::apiResource('tags', 'TagApiController');
 });

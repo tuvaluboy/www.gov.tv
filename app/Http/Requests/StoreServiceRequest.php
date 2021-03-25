@@ -27,6 +27,12 @@ class StoreServiceRequest extends FormRequest
             'contacts'   => [
                 'array',
             ],
+            'tags.*'     => [
+                'integer',
+            ],
+            'tags'       => [
+                'array',
+            ],
         ];
     }
 }

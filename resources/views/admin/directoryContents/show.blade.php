@@ -25,10 +25,10 @@
                     </tr>
                     <tr>
                         <th>
-                            {{ trans('cruds.directoryContent.fields.type') }}
+                            {{ trans('cruds.directoryContent.fields.ministry') }}
                         </th>
                         <td>
-                            {{ App\DirectoryContent::TYPE_SELECT[$directoryContent->type] ?? '' }}
+                            {{ $directoryContent->ministry->title ?? '' }}
                         </td>
                     </tr>
                     <tr>
@@ -71,6 +71,16 @@
                             {!! $directoryContent->contact_information !!}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.directoryContent.fields.tags') }}
+                        </th>
+                        <td>
+                            @foreach($directoryContent->tags as $key => $tags)
+                                <span class="label label-info">{{ $tags->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -92,18 +102,10 @@
                 {{ trans('cruds.service.title') }}
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#content_directory_sub_categories" role="tab" data-toggle="tab">
-                {{ trans('cruds.directorySubCategory.title') }}
-            </a>
-        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="contact_services">
             @includeIf('admin.directoryContents.relationships.contactServices', ['services' => $directoryContent->contactServices])
-        </div>
-        <div class="tab-pane" role="tabpanel" id="content_directory_sub_categories">
-            @includeIf('admin.directoryContents.relationships.contentDirectorySubCategories', ['directorySubCategories' => $directoryContent->contentDirectorySubCategories])
         </div>
     </div>
 </div>

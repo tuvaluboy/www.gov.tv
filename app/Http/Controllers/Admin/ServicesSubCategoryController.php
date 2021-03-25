@@ -18,9 +18,11 @@ class ServicesSubCategoryController extends Controller
     {
         abort_if(Gate::denies('services_sub_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $servicesSubCategories = ServicesSubCategory::all();
+        $servicesSubCategories = ServicesSubCategory::with(['servicescategory'])->get();
 
-        return view('admin.servicesSubCategories.index', compact('servicesSubCategories'));
+        $service_categories = ServiceCategory::get();
+
+        return view('admin.servicesSubCategories.index', compact('servicesSubCategories', 'service_categories'));
     }
 
     public function create()
@@ -61,7 +63,7 @@ class ServicesSubCategoryController extends Controller
     {
         abort_if(Gate::denies('services_sub_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $servicesSubCategory->load('servicescategory');
+        $servicesSubCategory->load('servicescategory', 'servicessubcategoryServices');
 
         return view('admin.servicesSubCategories.show', compact('servicesSubCategory'));
     }

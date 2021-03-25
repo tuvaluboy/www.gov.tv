@@ -74,7 +74,7 @@
         @foreach($directories as $directory )
         <div class="row justify-content-center">
             <div class="card-box">
-            <u> <h3> <a href="{{route('directory.show', $directory->id)}}">{{$directory->title}} </a> </h3></u>
+            <u> <h3> <a href="{{route('directory.show', [$directory->id,1])}}">{{$directory->title}} </a> </h3></u>
             <p> {!!$directory->description!!}</p>
 
             </div>

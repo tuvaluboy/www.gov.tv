@@ -73,6 +73,16 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.service.fields.tags') }}
+                        </th>
+                        <td>
+                            @foreach($service->tags as $key => $tags)
+                                <span class="label label-info">{{ $tags->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

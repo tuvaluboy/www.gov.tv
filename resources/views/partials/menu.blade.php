@@ -57,50 +57,8 @@
                 </ul>
             </li>
         @endcan
-        @can('utilize_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/imageslides*") ? "c-show" : "" }} {{ request()->is("admin/pages*") ? "c-show" : "" }} {{ request()->is("admin/pictures*") ? "c-show" : "" }}">
-                <a class="c-sidebar-nav-dropdown-toggle" href="#">
-                    <i class="fa-fw fas fa-asterisk c-sidebar-nav-icon">
-
-                    </i>
-                    {{ trans('cruds.utilize.title') }}
-                </a>
-                <ul class="c-sidebar-nav-dropdown-items">
-                    @can('imageslide_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.imageslides.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/imageslides") || request()->is("admin/imageslides/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-image c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.imageslide.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('page_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.pages.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pages") || request()->is("admin/pages/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-file-alt c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.page.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('picture_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.pictures.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/pictures") || request()->is("admin/pictures/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.picture.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                </ul>
-            </li>
-        @endcan
         @can('about_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/aboutuvalus*") ? "c-show" : "" }} {{ request()->is("admin/tuvaluconstitions*") ? "c-show" : "" }} {{ request()->is("admin/tuvaludevelopmentplans*") ? "c-show" : "" }} {{ request()->is("admin/holidays*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/contents*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-info-circle c-sidebar-nav-icon">
 
@@ -108,43 +66,13 @@
                     {{ trans('cruds.about.title') }}
                 </a>
                 <ul class="c-sidebar-nav-dropdown-items">
-                    @can('aboutuvalu_access')
+                    @can('content_access')
                         <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.aboutuvalus.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/aboutuvalus") || request()->is("admin/aboutuvalus/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-globe c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.aboutuvalu.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('tuvaluconstition_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.tuvaluconstitions.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/tuvaluconstitions") || request()->is("admin/tuvaluconstitions/*") ? "c-active" : "" }}">
+                            <a href="{{ route("admin.contents.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/contents") || request()->is("admin/contents/*") ? "c-active" : "" }}">
                                 <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
                                 </i>
-                                {{ trans('cruds.tuvaluconstition.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('tuvaludevelopmentplan_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.tuvaludevelopmentplans.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/tuvaludevelopmentplans") || request()->is("admin/tuvaludevelopmentplans/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.tuvaludevelopmentplan.title') }}
-                            </a>
-                        </li>
-                    @endcan
-                    @can('holiday_access')
-                        <li class="c-sidebar-nav-item">
-                            <a href="{{ route("admin.holidays.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/holidays") || request()->is("admin/holidays/*") ? "c-active" : "" }}">
-                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
-
-                                </i>
-                                {{ trans('cruds.holiday.title') }}
+                                {{ trans('cruds.content.title') }}
                             </a>
                         </li>
                     @endcan
@@ -226,7 +154,7 @@
             </li>
         @endcan
         @can('directory_access')
-            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/directory-categories*") ? "c-show" : "" }} {{ request()->is("admin/directory-sub-categories*") ? "c-show" : "" }} {{ request()->is("admin/directory-contents*") ? "c-show" : "" }}">
+            <li class="c-sidebar-nav-dropdown {{ request()->is("admin/directory-categories*") ? "c-show" : "" }} {{ request()->is("admin/directory-sub-categories*") ? "c-show" : "" }} {{ request()->is("admin/ministry-contents*") ? "c-show" : "" }} {{ request()->is("admin/directory-contents*") ? "c-show" : "" }}">
                 <a class="c-sidebar-nav-dropdown-toggle" href="#">
                     <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
 
@@ -254,6 +182,16 @@
                             </a>
                         </li>
                     @endcan
+                    @can('ministry_content_access')
+                        <li class="c-sidebar-nav-item">
+                            <a href="{{ route("admin.ministry-contents.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/ministry-contents") || request()->is("admin/ministry-contents/*") ? "c-active" : "" }}">
+                                <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                                </i>
+                                {{ trans('cruds.ministryContent.title') }}
+                            </a>
+                        </li>
+                    @endcan
                     @can('directory_content_access')
                         <li class="c-sidebar-nav-item">
                             <a href="{{ route("admin.directory-contents.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/directory-contents") || request()->is("admin/directory-contents/*") ? "c-active" : "" }}">
@@ -265,6 +203,16 @@
                         </li>
                     @endcan
                 </ul>
+            </li>
+        @endcan
+        @can('tag_access')
+            <li class="c-sidebar-nav-item">
+                <a href="{{ route("admin.tags.index") }}" class="c-sidebar-nav-link {{ request()->is("admin/tags") || request()->is("admin/tags/*") ? "c-active" : "" }}">
+                    <i class="fa-fw fas fa-cogs c-sidebar-nav-icon">
+
+                    </i>
+                    {{ trans('cruds.tag.title') }}
+                </a>
             </li>
         @endcan
         @if(file_exists(app_path('Http/Controllers/Auth/ChangePasswordController.php')))

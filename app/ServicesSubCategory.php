@@ -37,12 +37,13 @@ class ServicesSubCategory extends Model
         return $date->format('Y-m-d H:i:s');
     }
 
+    public function servicessubcategoryServices()
+    {
+        return $this->hasMany(Service::class, 'servicessubcategory_id', 'id');
+    }
+
     public function servicescategory()
     {
         return $this->belongsTo(ServiceCategory::class, 'servicescategory_id');
-    }
-
-    public function services(){
-        return $this->hasMany('App\Service','servicessubcategory_id','id');
     }
 }

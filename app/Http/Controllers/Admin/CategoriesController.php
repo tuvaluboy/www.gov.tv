@@ -38,7 +38,7 @@ class CategoriesController extends Controller
         $category = Category::create($request->all());
 
         if ($request->input('image', false)) {
-            $category->addMedia(storage_path('tmp/uploads/' . $request->input('image')))->toMediaCollection('image');
+            $category->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -65,7 +65,7 @@ class CategoriesController extends Controller
                     $category->image->delete();
                 }
 
-                $category->addMedia(storage_path('tmp/uploads/' . $request->input('image')))->toMediaCollection('image');
+                $category->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
             }
         } elseif ($category->image) {
             $category->image->delete();
@@ -77,6 +77,8 @@ class CategoriesController extends Controller
     public function show(Category $category)
     {
         abort_if(Gate::denies('category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
+
+        $category->load('categoriesItems');
 
         return view('admin.categories.show', compact('category'));
     }

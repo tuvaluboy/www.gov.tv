@@ -25,6 +25,8 @@ use App\item;
 use App\DirectoryCategory;
 use App\DirectorySubCategory;
 use App\DirectoryContent;
+use App\MinistryContent;
+use App\Content;
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
 
@@ -39,14 +41,14 @@ class HomeController extends Controller
         // $pictures = Picture::where('page_id','=',$page[0]->id)->get();
 
         // $imageslides = Imageslide::where('page_id','=',$pageid);
-        $imageslides = Imageslide::all();
+
         // return $imageslides;
 
         $servicescategories = ServiceCategory::where('status','Publish')->get();
         $counts = ServiceCategory::where('status','Publish')->count();
         $titlename = "Welcome to Gov.tv | Government of Tuvalu";
 
-        return view('front.home', compact('titlename','imageslides','counts','servicescategories'));
+        return view('front.home', compact('titlename','counts','servicescategories'));
 
     }
 
@@ -76,9 +78,9 @@ class HomeController extends Controller
 
         return view('front.directorycontent',compact('titlename','directorycontent','directorysubcategory'));
     }
-    public function directorycontentsingle($content_id){
+    public function directorycontentministry($content_id, $subcategory_id){
         // find the content
-        $directorycontent = DirectoryContent::find($content_id);
+        $directorycontent = MinistryContent::find($content_id);
         // find the subcategory that was connected
         $directorysubcategory = DirectorySubCategory::find($subcategory_id);
         // fint all the content that has same content with the selected
@@ -86,7 +88,7 @@ class HomeController extends Controller
 
         $titlename = $directorycontent->title;
 
-        return view('front.directorycontent',compact('titlename','directorycontent','directorysubcategory'));
+        return view('front.directoryministrycontent',compact('titlename','directorycontent','directorysubcategory'));
     }
 
     public function budget(){
@@ -141,13 +143,20 @@ class HomeController extends Controller
 
     // About Controller
     public function about(){
-        $about = Aboutuvalu::first();
-        $constitution = Tuvaluconstition::first();
-        $tuvaludevelopmentplan = Tuvaludevelopmentplan::first();
-        $holiday = Holiday::first();
+
+        $contents = Content::all();
         $titlename = "About";
        // return $about->description;
-        return view('front.about', compact('about','titlename','constitution','tuvaludevelopmentplan','holiday'));
+        return view('front.about', compact('titlename','contents'));
+    }
+
+    // About content Controller
+    public function aboutcontent($id){
+
+        $content = Content::find($id);
+        $titlename = "About";
+       // return $about->description;
+        return view('front.aboutcontent', compact('titlename','content'));
     }
     // Services Sub category
     public function showsubcategory($id){
@@ -196,8 +205,10 @@ class HomeController extends Controller
 
     public function search(Request $request){
         $titlename = "Search Result";
+
+
         //search services
-        $services = Service::filterByRequest($request)->where('status','Publish')->get();
+        $services = Service::where('title',$request->search)->where('status','Publish')->get();
         //search directory
         $directories = DirectoryContent::where('title',$request->search)->where('status','Publish')->get();
         //search news

@@ -44,6 +44,11 @@ class Category extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
+    public function categoriesItems()
+    {
+        return $this->hasMany(Item::class, 'categories_id', 'id');
+    }
+
     public function getImageAttribute()
     {
         $file = $this->getMedia('image')->last();

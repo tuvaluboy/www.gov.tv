@@ -60,31 +60,19 @@
                     <div class="card-wrapper media-container-row">
                         <div class="card-box">
                             <br/>
-                            @if($directorycontent->type == "Body")
-                                @foreach($directorysubcategory->contents as $ser)
-                                    @if($ser->type == "Head")
-                                    <h5><a href="{{route('directory.show', [$ser->id,$directorysubcategory->id])}}"> {{$ser->title}} </a>
+
+
+
+                                    <h5><a href="{{route('directory.showministry', [$directorycontent->ministry->id,$directorysubcategory->id])}}"> {{$directorycontent->ministry->title}} </a>
                                     </h4><hr><br>
-                                    @endif
-                                @endforeach
-                            @endif
+
                             <h3>
                             <b>{!!$directorycontent->detailinformation!!}</b>
                             </h3>
 
                             {!!$directorycontent->description!!}
                                 <br>
-                            @if($directorycontent->type == "Head")
-                            <h5><b>Departments</b></h5>
-                            @foreach($directorysubcategory->contents as $ser)
-                                @if($ser->id == $directorycontent->id)
 
-                                @else
-                                    <a href="{{route('directory.show', [$ser->id,$directorysubcategory->id])}}"> {{$ser->title}} </a><br>
-                                @endif
-                            @endforeach
-                                <br>
-                            @endif
                         </div>
                     </div>
                 </div>

@@ -8,6 +8,8 @@ use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\MassDestroyDirectoryContentRequest;
 use App\Http\Requests\StoreDirectoryContentRequest;
 use App\Http\Requests\UpdateDirectoryContentRequest;
+use App\MinistryContent;
+use App\Tag;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\Models\Media;
@@ -21,21 +23,30 @@ class DirectoryContentController extends Controller
     {
         abort_if(Gate::denies('directory_content_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directoryContents = DirectoryContent::all();
+        $directoryContents = DirectoryContent::with(['ministry', 'tags'])->get();
 
-        return view('admin.directoryContents.index', compact('directoryContents'));
+        $ministry_contents = MinistryContent::get();
+
+        $tags = Tag::get();
+
+        return view('admin.directoryContents.index', compact('directoryContents', 'ministry_contents', 'tags'));
     }
 
     public function create()
     {
         abort_if(Gate::denies('directory_content_create'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.directoryContents.create');
+        $ministries = MinistryContent::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $tags = Tag::all()->pluck('name', 'id');
+
+        return view('admin.directoryContents.create', compact('ministries', 'tags'));
     }
 
     public function store(StoreDirectoryContentRequest $request)
     {
         $directoryContent = DirectoryContent::create($request->all());
+        $directoryContent->tags()->sync($request->input('tags', []));
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $directoryContent->id]);
@@ -48,12 +59,19 @@ class DirectoryContentController extends Controller
     {
         abort_if(Gate::denies('directory_content_edit'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return view('admin.directoryContents.edit', compact('directoryContent'));
+        $ministries = MinistryContent::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
+
+        $tags = Tag::all()->pluck('name', 'id');
+
+        $directoryContent->load('ministry', 'tags');
+
+        return view('admin.directoryContents.edit', compact('ministries', 'tags', 'directoryContent'));
     }
 
     public function update(UpdateDirectoryContentRequest $request, DirectoryContent $directoryContent)
     {
         $directoryContent->update($request->all());
+        $directoryContent->tags()->sync($request->input('tags', []));
 
         return redirect()->route('admin.directory-contents.index');
     }
@@ -62,7 +80,7 @@ class DirectoryContentController extends Controller
     {
         abort_if(Gate::denies('directory_content_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directoryContent->load('contactServices', 'contentDirectorySubCategories');
+        $directoryContent->load('ministry', 'tags', 'contactServices');
 
         return view('admin.directoryContents.show', compact('directoryContent'));
     }

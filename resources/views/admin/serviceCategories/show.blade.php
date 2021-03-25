@@ -58,6 +58,22 @@
     </div>
 </div>
 
-
+<div class="card">
+    <div class="card-header">
+        {{ trans('global.relatedData') }}
+    </div>
+    <ul class="nav nav-tabs" role="tablist" id="relationship-tabs">
+        <li class="nav-item">
+            <a class="nav-link" href="#servicescategory_services_sub_categories" role="tab" data-toggle="tab">
+                {{ trans('cruds.servicesSubCategory.title') }}
+            </a>
+        </li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane" role="tabpanel" id="servicescategory_services_sub_categories">
+            @includeIf('admin.serviceCategories.relationships.servicescategoryServicesSubCategories', ['servicesSubCategories' => $serviceCategory->servicescategoryServicesSubCategories])
+        </div>
+    </div>
+</div>
 
 @endsection

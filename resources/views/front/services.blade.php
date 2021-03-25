@@ -61,9 +61,8 @@
                             </p>
                             <p><b>Contacts </b></p>
                             @foreach($service->contacts as $contact)
-                                @foreach($contact->contentDirectorySubCategories as $subcategory)
-                                <a href="{{route('directory.show', [$contact->id,$subcategory])}}">{!!$contact->title!!}</a> <br><br>
-                                @endforeach
+                                <a href="{{route('directory.show', [$contact->id,1])}}">{!!$contact->title!!}</a> <br><br>
+
                             @endforeach
                         </div>
                     </div>

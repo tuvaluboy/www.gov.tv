@@ -56,14 +56,12 @@
                     <div id="collapse{{$subcategory->id}}_69" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#bootstrap-accordion_69">
                             <div class="panel-body">
                                 @foreach($subcategory->contents as $service)
-                                @if($service->type == "Head")
                                 <p class="mbr-fonts-style panel-text display-4">
 
-                                <a href="{{route('directory.show',[ $service->id , $subcategory->id])}}"><u>{{$service->title}}</u></a>
+                                <a href="{{route('directory.showministry',[ $service->id , $subcategory->id])}}"><u>{{$service->title}}</u></a>
                                 <p>{!!$service->detailinformation!!}</p>
 
                                 </p>
-                                @endif
                                 @endforeach
                             </div>
                         </div>

@@ -28,7 +28,7 @@ class CategoriesApiController extends Controller
         $category = Category::create($request->all());
 
         if ($request->input('image', false)) {
-            $category->addMedia(storage_path('tmp/uploads/' . $request->input('image')))->toMediaCollection('image');
+            $category->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
         }
 
         return (new CategoryResource($category))
@@ -53,7 +53,7 @@ class CategoriesApiController extends Controller
                     $category->image->delete();
                 }
 
-                $category->addMedia(storage_path('tmp/uploads/' . $request->input('image')))->toMediaCollection('image');
+                $category->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
             }
         } elseif ($category->image) {
             $category->image->delete();

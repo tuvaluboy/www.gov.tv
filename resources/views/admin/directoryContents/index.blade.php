@@ -26,13 +26,16 @@
                             {{ trans('cruds.directoryContent.fields.id') }}
                         </th>
                         <th>
-                            {{ trans('cruds.directoryContent.fields.type') }}
+                            {{ trans('cruds.directoryContent.fields.ministry') }}
                         </th>
                         <th>
                             {{ trans('cruds.directoryContent.fields.title') }}
                         </th>
                         <th>
                             {{ trans('cruds.directoryContent.fields.status') }}
+                        </th>
+                        <th>
+                            {{ trans('cruds.directoryContent.fields.tags') }}
                         </th>
                         <th>
                             &nbsp;
@@ -45,10 +48,10 @@
                             <input class="search" type="text" placeholder="{{ trans('global.search') }}">
                         </td>
                         <td>
-                            <select class="search" strict="true">
+                            <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
-                                @foreach(App\DirectoryContent::TYPE_SELECT as $key => $item)
-                                    <option value="{{ $item }}">{{ $item }}</option>
+                                @foreach($ministry_contents as $key => $item)
+                                    <option value="{{ $item->title }}">{{ $item->title }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -60,6 +63,14 @@
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach(App\DirectoryContent::STATUS_SELECT as $key => $item)
                                     <option value="{{ $item }}">{{ $item }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($tags as $key => $item)
+                                    <option value="{{ $item->name }}">{{ $item->name }}</option>
                                 @endforeach
                             </select>
                         </td>
@@ -77,13 +88,18 @@
                                 {{ $directoryContent->id ?? '' }}
                             </td>
                             <td>
-                                {{ App\DirectoryContent::TYPE_SELECT[$directoryContent->type] ?? '' }}
+                                {{ $directoryContent->ministry->title ?? '' }}
                             </td>
                             <td>
                                 {{ $directoryContent->title ?? '' }}
                             </td>
                             <td>
                                 {{ App\DirectoryContent::STATUS_SELECT[$directoryContent->status] ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($directoryContent->tags as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
                             </td>
                             <td>
                                 @can('directory_content_show')

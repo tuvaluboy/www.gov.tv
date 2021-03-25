@@ -37,6 +37,9 @@
                             {{ trans('cruds.service.fields.contact') }}
                         </th>
                         <th>
+                            {{ trans('cruds.service.fields.tags') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -62,6 +65,11 @@
                             <td>
                                 @foreach($service->contacts as $key => $item)
                                     <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($service->tags as $key => $item)
+                                    <span class="badge badge-info">{{ $item->name }}</span>
                                 @endforeach
                             </td>
                             <td>

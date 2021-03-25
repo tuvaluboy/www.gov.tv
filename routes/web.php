@@ -138,6 +138,22 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('directory-contents/media', 'DirectoryContentController@storeMedia')->name('directory-contents.storeMedia');
     Route::post('directory-contents/ckmedia', 'DirectoryContentController@storeCKEditorImages')->name('directory-contents.storeCKEditorImages');
     Route::resource('directory-contents', 'DirectoryContentController');
+
+    // Ministry Contents
+    Route::delete('ministry-contents/destroy', 'MinistryContentController@massDestroy')->name('ministry-contents.massDestroy');
+    Route::post('ministry-contents/media', 'MinistryContentController@storeMedia')->name('ministry-contents.storeMedia');
+    Route::post('ministry-contents/ckmedia', 'MinistryContentController@storeCKEditorImages')->name('ministry-contents.storeCKEditorImages');
+    Route::resource('ministry-contents', 'MinistryContentController');
+
+    // Contents
+    Route::delete('contents/destroy', 'ContentController@massDestroy')->name('contents.massDestroy');
+    Route::post('contents/media', 'ContentController@storeMedia')->name('contents.storeMedia');
+    Route::post('contents/ckmedia', 'ContentController@storeCKEditorImages')->name('contents.storeCKEditorImages');
+    Route::resource('contents', 'ContentController');
+
+    // Tags
+    Route::delete('tags/destroy', 'TagController@massDestroy')->name('tags.massDestroy');
+    Route::resource('tags', 'TagController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
@@ -156,6 +172,7 @@ Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/directory','HomeController@directory')->name('directory');
     Route::get('/directory/subcategory/{subcategory}','HomeController@directorysubcategory')->name('directory.list');
     Route::get('/directory/content/{content_id}/show/{subcategory_id}','HomeController@directorycontent')->name('directory.show');
+    Route::get('/directory/content/{content_id}/shows/{subcategory_id}','HomeController@directorycontentministry')->name('directory.showministry');
     Route::get('/directory/content/{content_id}','HomeController@directorycontentsingle')->name('directory.showsingle');
     Route::get('/budget','HomeController@budget')->name('budget');
     Route::get('/vacancies','HomeController@vacancies')->name('vacancies');
@@ -166,6 +183,7 @@ Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/news/{news}','HomeController@shownews')->name('news.show');
     Route::get('/contacts','HomeController@contact')->name('contacts');
     Route::get('/about','HomeController@about')->name('about');
+    Route::get('/about/{about}','HomeController@aboutcontent')->name('aboutcontent');
     Route::get('/showsubcategory/{showsubcategory}','HomeController@showsubcategory')->name('showsubcategory.show');
     Route::get('/services/{sercives}','HomeController@services')->name('services.show');
     Route::get('/media','HomeController@mediacenter')->name('media');

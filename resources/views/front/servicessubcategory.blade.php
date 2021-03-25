@@ -19,10 +19,10 @@
             <div class="content-wrap">
                 <div class="col-lg-12">
                     <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; {{$serviceCategory->title}}</p>
-                </div> 
-            </div>   
-    </div>  
-<hr>   
+                </div>
+            </div>
+    </div>
+<hr>
 
 
 <section class="content16 cid-s9RPxwphdz" id="content16-1n">
@@ -49,7 +49,7 @@
 
                     <div id="collapse{{$subcategory->id}}_69" class="panel-collapse noScroll collapse" role="tabpanel" aria-labelledby="headingOne" data-parent="#bootstrap-accordion_69">
                             <div class="panel-body">
-                                @foreach($subcategory->services as $service)
+                                @foreach($subcategory->servicessubcategoryServices as $service)
                                 <p class="mbr-fonts-style panel-text display-4">
 
                                 <a href="{{route('services.show', $service->id)}}"><u>{{$service->title}}</u></a>
@@ -71,7 +71,7 @@
                 </div>
             </div>
         </div>
-    </div>    
+    </div>
     </div>
 
 </section>

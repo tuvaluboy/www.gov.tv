@@ -17,9 +17,21 @@ class UpdateServiceRequest extends FormRequest
     public function rules()
     {
         return [
-            'title' => [
+            'title'      => [
                 'string',
                 'nullable',
+            ],
+            'contacts.*' => [
+                'integer',
+            ],
+            'contacts'   => [
+                'array',
+            ],
+            'tags.*'     => [
+                'integer',
+            ],
+            'tags'       => [
+                'array',
             ],
         ];
     }

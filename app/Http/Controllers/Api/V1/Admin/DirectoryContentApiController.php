@@ -20,12 +20,13 @@ class DirectoryContentApiController extends Controller
     {
         abort_if(Gate::denies('directory_content_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DirectoryContentResource(DirectoryContent::all());
+        return new DirectoryContentResource(DirectoryContent::with(['ministry', 'tags'])->get());
     }
 
     public function store(StoreDirectoryContentRequest $request)
     {
         $directoryContent = DirectoryContent::create($request->all());
+        $directoryContent->tags()->sync($request->input('tags', []));
 
         return (new DirectoryContentResource($directoryContent))
             ->response()
@@ -36,12 +37,13 @@ class DirectoryContentApiController extends Controller
     {
         abort_if(Gate::denies('directory_content_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        return new DirectoryContentResource($directoryContent);
+        return new DirectoryContentResource($directoryContent->load(['ministry', 'tags']));
     }
 
     public function update(UpdateDirectoryContentRequest $request, DirectoryContent $directoryContent)
     {
         $directoryContent->update($request->all());
+        $directoryContent->tags()->sync($request->input('tags', []));
 
         return (new DirectoryContentResource($directoryContent))
             ->response()

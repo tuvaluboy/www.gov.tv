@@ -61,4 +61,9 @@ class Item extends Model implements HasMedia
     {
         return $this->belongsTo(Category::class, 'categories_id');
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

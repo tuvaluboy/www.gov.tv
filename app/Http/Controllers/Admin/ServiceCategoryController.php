@@ -62,6 +62,8 @@ class ServiceCategoryController extends Controller
     {
         abort_if(Gate::denies('service_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
+        $serviceCategory->load('servicescategoryServicesSubCategories');
+
         return view('admin.serviceCategories.show', compact('serviceCategory'));
     }
 

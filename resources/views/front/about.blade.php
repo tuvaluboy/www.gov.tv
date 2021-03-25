@@ -32,62 +32,46 @@
 
 
 
-    <div class="container">
+<div class="container">
 
-        <!-- <div class="row justify-content-center">
-            <div class="col-12 col-md-11">
-                <ul class="nav nav-tabs mb-4" role="tablist">
-                    <li class="nav-item first mbr-fonts-style"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab0" aria-selected="true"><strong>About Tuvalu&nbsp; &nbsp;</strong>&nbsp;&nbsp;</a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab1" aria-selected="true"><strong>Tuvalu Constitution&nbsp; &nbsp;</strong>&nbsp;</a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab2" aria-selected="true"><strong>National Development Plan&nbsp; &nbsp;</strong></a></li>
-                    <li class="nav-item"><a class="nav-link mbr-fonts-style show active display-7" role="tab" data-toggle="tab" href="#tabs1-3g_tab3" aria-selected="true"><strong>Public Holidays 2021</strong></a></li>
+<div class="row justify-content-left">
 
 
-                </ul>
-                <div class="tab-content">
-                    <div id="tab1" class="tab-pane in active" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                    @if($about)
-                                        {!! $about->description !!}
-                                    @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab2" class="tab-pane" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <p class="mbr-text mbr-fonts-style display-7">
-                                    @if($constitution)
-                                        {!! $constitution->description!!}
-                                    @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab3" class="tab-pane" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                    @if($tuvaludevelopmentplan)
-                                        {!! $tuvaludevelopmentplan->description!!}
-                                    @endif
-                            </div>
-                        </div>
-                    </div>
-                    <div id="tab4" class="tab-pane" role="tabpanel">
-                        <div class="row">
-                            <div class="col-md-12">
-                                    @if($holiday)
-                                        {!! $holiday->description!!}
-                                    @endif
-                            </div>
-                        </div>
-                    </div>
+        <div class="col-12 col-md-4 col-lg-3">
+            <div class="card-wrapper media-container-row media-container-row">
+                <div class="card-box">
+                    <h4 class="card-title pb-3 mbr-fonts-style display-7">
+                       <b> About </b>
 
 
+                    </h4>
+
+                    @foreach($contents as $content)
+                       <a href="{{route('aboutcontent',$content->id)}}" >{{$content->title}}</a> <br>
+                    @endforeach
                 </div>
             </div>
-        </div> -->
-    </div>
+        </div>
+
+        <div class="col-12 col-lg-4 col-lg-9">
+            <div class="card-wrapper media-container-row">
+                <div class="card-box">
+                    <br/>
+                    @foreach($contents as $content)
+                    <h5 class="card-title pb-3 mbr-fonts-style display-5">
+                    <a href="{{route('aboutcontent',$content->id)}}" >{{$content->title}}</a></h5>
+                    <p class="mbr-text mbr-fonts-style display-menu">
+                    {!!$content->description!!}
+                        <br>
+                        <br>
+                    </p>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+</div>
+</div>
 </section>
 
 @endsection

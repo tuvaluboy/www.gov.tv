@@ -7,7 +7,6 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
-use Illuminate\Http\Request;
 use \DateTimeInterface;
 
 class Service extends Model implements HasMedia
@@ -53,12 +52,14 @@ class Service extends Model implements HasMedia
     {
         return $this->belongsTo(ServicesSubCategory::class, 'servicessubcategory_id');
     }
-    public function scopeFilterByRequest($query, Request $request){
-        $query->where('title',$request->search)->orWhere('title','LIKE',$request->search);
-        return $query;
-    }
+
     public function contacts()
     {
         return $this->belongsToMany(DirectoryContent::class);
+    }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
     }
 }

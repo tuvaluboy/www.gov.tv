@@ -9,6 +9,7 @@ use App\Http\Requests\MassDestroyItemRequest;
 use App\Http\Requests\StoreItemRequest;
 use App\Http\Requests\UpdateItemRequest;
 use App\Item;
+use App\Tag;
 use Gate;
 use Illuminate\Http\Request;
 use Spatie\MediaLibrary\Models\Media;
@@ -22,9 +23,13 @@ class ItemController extends Controller
     {
         abort_if(Gate::denies('item_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $items = Item::with(['categories', 'media'])->get();
+        $items = Item::with(['categories', 'tags', 'media'])->get();
 
-        return view('admin.items.index', compact('items'));
+        $categories = Category::get();
+
+        $tags = Tag::get();
+
+        return view('admin.items.index', compact('items', 'categories', 'tags'));
     }
 
     public function create()
@@ -33,15 +38,18 @@ class ItemController extends Controller
 
         $categories = Category::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        return view('admin.items.create', compact('categories'));
+        $tags = Tag::all()->pluck('name', 'id');
+
+        return view('admin.items.create', compact('categories', 'tags'));
     }
 
     public function store(StoreItemRequest $request)
     {
         $item = Item::create($request->all());
+        $item->tags()->sync($request->input('tags', []));
 
         if ($request->input('file', false)) {
-            $item->addMedia(storage_path('tmp/uploads/' . $request->input('file')))->toMediaCollection('file');
+            $item->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -57,14 +65,17 @@ class ItemController extends Controller
 
         $categories = Category::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $item->load('categories');
+        $tags = Tag::all()->pluck('name', 'id');
 
-        return view('admin.items.edit', compact('categories', 'item'));
+        $item->load('categories', 'tags');
+
+        return view('admin.items.edit', compact('categories', 'tags', 'item'));
     }
 
     public function update(UpdateItemRequest $request, Item $item)
     {
         $item->update($request->all());
+        $item->tags()->sync($request->input('tags', []));
 
         if ($request->input('file', false)) {
             if (!$item->file || $request->input('file') !== $item->file->file_name) {
@@ -72,7 +83,7 @@ class ItemController extends Controller
                     $item->file->delete();
                 }
 
-                $item->addMedia(storage_path('tmp/uploads/' . $request->input('file')))->toMediaCollection('file');
+                $item->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
             }
         } elseif ($item->file) {
             $item->file->delete();
@@ -85,7 +96,7 @@ class ItemController extends Controller
     {
         abort_if(Gate::denies('item_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $item->load('categories');
+        $item->load('categories', 'tags');
 
         return view('admin.items.show', compact('item'));
     }

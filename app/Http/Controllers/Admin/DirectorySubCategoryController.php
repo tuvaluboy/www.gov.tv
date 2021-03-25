@@ -3,12 +3,12 @@
 namespace App\Http\Controllers\Admin;
 
 use App\DirectoryCategory;
-use App\DirectoryContent;
 use App\DirectorySubCategory;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\MassDestroyDirectorySubCategoryRequest;
 use App\Http\Requests\StoreDirectorySubCategoryRequest;
 use App\Http\Requests\UpdateDirectorySubCategoryRequest;
+use App\MinistryContent;
 use Gate;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,9 +23,9 @@ class DirectorySubCategoryController extends Controller
 
         $directory_categories = DirectoryCategory::get();
 
-        $directory_contents = DirectoryContent::get();
+        $ministry_contents = MinistryContent::get();
 
-        return view('admin.directorySubCategories.index', compact('directorySubCategories', 'directory_categories', 'directory_contents'));
+        return view('admin.directorySubCategories.index', compact('directorySubCategories', 'directory_categories', 'ministry_contents'));
     }
 
     public function create()
@@ -34,7 +34,7 @@ class DirectorySubCategoryController extends Controller
 
         $directorycategories = DirectoryCategory::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $contents = DirectoryContent::all()->pluck('title', 'id');
+        $contents = MinistryContent::all()->pluck('title', 'id');
 
         return view('admin.directorySubCategories.create', compact('directorycategories', 'contents'));
     }
@@ -53,7 +53,7 @@ class DirectorySubCategoryController extends Controller
 
         $directorycategories = DirectoryCategory::all()->pluck('title', 'id')->prepend(trans('global.pleaseSelect'), '');
 
-        $contents = DirectoryContent::all()->pluck('title', 'id');
+        $contents = MinistryContent::all()->pluck('title', 'id');
 
         $directorySubCategory->load('directorycategory', 'contents');
 
@@ -72,7 +72,7 @@ class DirectorySubCategoryController extends Controller
     {
         abort_if(Gate::denies('directory_sub_category_show'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directorySubCategory->load('directorycategory', 'contents');
+        $directorySubCategory->load('directorycategory', 'contents', 'subCategoriesMinistryContents');
 
         return view('admin.directorySubCategories.show', compact('directorySubCategory'));
     }

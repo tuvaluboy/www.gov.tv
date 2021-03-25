@@ -75,6 +75,16 @@
                             {{ $item->summary }}
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.item.fields.tags') }}
+                        </th>
+                        <td>
+                            @foreach($item->tags as $key => $tags)
+                                <span class="label label-info">{{ $tags->name }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">

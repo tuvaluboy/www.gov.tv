@@ -46,5 +46,8 @@ class ServiceCategory extends Model implements HasMedia
         $this->addMediaConversion('preview')->fit('crop', 120, 120);
     }
 
-    
+    public function servicescategoryServicesSubCategories()
+    {
+        return $this->hasMany(ServicesSubCategory::class, 'servicescategory_id', 'id');
+    }
 }
