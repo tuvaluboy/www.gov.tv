@@ -48,7 +48,10 @@ class HomeController extends Controller
         $counts = ServiceCategory::where('status','Publish')->count();
         $titlename = "Welcome to Gov.tv | Government of Tuvalu";
 
-        return view('front.home', compact('titlename','counts','servicescategories'));
+        //Directory
+        $diretorycategories = DirectoryCategory::where('status','Publish')->get();
+        $counts_directory = DirectoryCategory::where('status','Publish')->count();
+        return view('front.home', compact('titlename','counts','servicescategories','diretorycategories','counts_directory'));
 
     }
 

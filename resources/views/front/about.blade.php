@@ -73,5 +73,71 @@
 </div>
 </div>
 </section>
+<section class="clients2 cid-ssJDGmsKPt mbr-parallax-background" id="clients2-m">
 
+
+
+    <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(255, 255, 255);">
+    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="card col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <!-- <div class="img-wrapper">
+                        <img src="assets/images/1.png" alt="Mobirise">
+                    </div> -->
+                    <div class="card-box align-center">
+
+                        <h5 class="card-title mbr-fonts-style mb-3 display-5">
+                            <strong>Our partner</strong>
+                        </h5>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-4">
+                            No special actions required, all sites you make with Mobirise are mobile-friendly.</p>
+                        <div class="mbr-section-btn mt-3">
+                            <a class="btn btn-primary-outline display-4" href="https://mobiri.se">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <!-- <div class="img-wrapper">
+                        <img src="assets/images/1.png" alt="Mobirise">
+                    </div> -->
+                    <div class="card-box align-center">
+
+                        <h5 class="card-title mbr-fonts-style mb-3 display-5">
+                            <strong>Our partner</strong>
+                        </h5>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-4">
+                            Use Mobirise website building software to create multiple sites for your clients.
+                            Use Mobirise website building software to create multiple sites for your client</p>
+                        <div class="mbr-section-btn mt-3">
+                            <a class="btn btn-primary-outline display-4" href="https://mobiri.se">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="card col-12 col-md-6 col-lg-4">
+                <div class="card-wrapper">
+                    <!-- <div class="img-wrapper">
+                        <img src="assets/images/1.png" alt="Mobirise">
+                    </div> -->
+                    <div class="card-box align-center">
+
+                        <h5 class="card-title mbr-fonts-style mb-3 display-5">
+                            <strong>Our partner</strong>
+                        </h5>
+                        <p class="mbr-text mbr-fonts-style mb-4 display-4">
+                            Create multiple pages. Don't forget to set links to your pages after creating them.</p>
+                        <div class="mbr-section-btn mt-3">
+                            <a class="btn btn-primary-outline display-4" href="https://mobiri.se">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
 @endsection

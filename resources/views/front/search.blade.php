@@ -65,7 +65,13 @@
         <div class="row justify-content-center">
             <div class="card-box">
             <u> <h3> <a href="{{route('services.show', $service->id)}}">{{$service->title}} </a> </h3></u>
-            <p> {!!$service->description!!}</p>
+            <p> {!!$service->description!!}
+            <span>
+                @foreach($service->tags as $tag)
+                    {{$tag->name}}
+                @endforeach
+            </span>
+            </p>
 
             </div>
         </div>
@@ -75,7 +81,9 @@
         <div class="row justify-content-center">
             <div class="card-box">
             <u> <h3> <a href="{{route('directory.show', [$directory->id,1])}}">{{$directory->title}} </a> </h3></u>
+
             <p> {!!$directory->description!!}</p>
+
 
             </div>
         </div>
