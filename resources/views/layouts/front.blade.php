@@ -11,20 +11,20 @@
 
 
   <title>{{$titlename}}</title>
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons2/mobirise2.css">
-  <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
-  <link rel="stylesheet" href="assets/tether/tether.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
-  <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-  <link rel="stylesheet" href="assets/chatbutton/floating-wpp.css">
-  <link rel="stylesheet" href="assets/dropdown/css/style.css">
-  <link rel="stylesheet" href="assets/formstyler/jquery.formstyler.css">
-  <link rel="stylesheet" href="assets/formstyler/jquery.formstyler.theme.css">
-  <link rel="stylesheet" href="assets/datepicker/jquery.datetimepicker.min.css">
-  <link rel="stylesheet" href="assets/socicon/css/styles.css">
-  <link rel="stylesheet" href="assets/theme/css/style.css">
-  <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css"><link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+  <link rel="stylesheet" href="{{url('assets/web/assets/mobirise-icons2/mobirise2.css')}}">
+  <link rel="stylesheet" href="{{url('assets/web/assets/mobirise-icons/mobirise-icons.css')}}">
+  <link rel="stylesheet" href="{{url('assets/tether/tether.min.css')}}">
+  <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap.min.css')}}">
+  <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap-grid.min.css')}}">
+  <link rel="stylesheet" href="{{url('assets/bootstrap/css/bootstrap-reboot.min.css')}}">
+  <link rel="stylesheet" href="{{url('assets/chatbutton/floating-wpp.css')}}">
+  <link rel="stylesheet" href="{{url('assets/dropdown/css/style.css')}}">
+  <link rel="stylesheet" href="{{url('assets/formstyler/jquery.formstyler.css')}}">
+  <link rel="stylesheet" href="{{url('assets/formstyler/jquery.formstyler.theme.css')}}">
+  <link rel="stylesheet" href="{{url('assets/datepicker/jquery.datetimepicker.min.css')}}">
+  <link rel="stylesheet" href="{{url('assets/socicon/css/styles.css')}}">
+  <link rel="stylesheet" href="{{url('assets/theme/css/style.css')}}">
+  <link rel="preload" as="style" href="{{url('assets/mobirise/css/mbr-additional.css')}}"><link rel="stylesheet" href="{{url('assets/mobirise/css/mbr-additional.css')}}" type="text/css">
 
 
 
@@ -48,24 +48,24 @@
 
 <!-- Footer Section -->
 @include('partials.footer')
-<script src="assets/web/assets/jquery/jquery.min.js"></script>
-  <script src="assets/popper/popper.min.js"></script>
-  <script src="assets/tether/tether.min.js"></script>
-  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-  <script src="assets/smoothscroll/smooth-scroll.js"></script>
-  <script src="assets/chatbutton/floating-wpp.js"></script>
-  <script src="assets/chatbutton/script.js"></script>
-  <script src="assets/dropdown/js/nav-dropdown.js"></script>
-  <script src="assets/dropdown/js/navbar-dropdown.js"></script>
-  <script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
-  <script src="assets/parallax/jarallax.min.js"></script>
-  <script src="assets/mbr-switch-arrow/mbr-switch-arrow.js"></script>
-  <script src="assets/playervimeo/vimeo_player.js"></script>
-  <script src="assets/formstyler/jquery.formstyler.js"></script>
-  <script src="assets/formstyler/jquery.formstyler.min.js"></script>
-  <script src="assets/datepicker/jquery.datetimepicker.full.js"></script>
-  <script src="assets/theme/js/script.js"></script>
-  <script src="assets/formoid/formoid.min.js"></script>
+<script src="{{url('assets/web/assets/jquery/jquery.min.js')}}"></script>
+  <script src="{{url('assets/popper/popper.min.js')}}"></script>
+  <script src="{{url('assets/tether/tether.min.js')}}"></script>
+  <script src="{{url('assets/bootstrap/js/bootstrap.min.js')}}"></script>
+  <script src="{{url('assets/smoothscroll/smooth-scroll.js')}}"></script>
+  <script src="{{url('assets/chatbutton/floating-wpp.js')}}"></script>
+  <script src="{{url('assets/chatbutton/script.js')}}"></script>
+  <script src="{{url('assets/dropdown/js/nav-dropdown.js')}}"></script>
+  <script src="{{url('assets/dropdown/js/navbar-dropdown.js')}}"></script>
+  <script src="{{url('assets/touchswipe/jquery.touch-swipe.min.js')}}"></script>
+  <script src="{{url('assets/parallax/jarallax.min.js')}}"></script>
+  <script src="{{url('assets/mbr-switch-arrow/mbr-switch-arrow.js')}}"></script>
+  <script src="{{url('assets/playervimeo/vimeo_player.js')}}"></script>
+  <script src="{{url('assets/formstyler/jquery.formstyler.js')}}"></script>
+  <script src="{{url('assets/formstyler/jquery.formstyler.min.js')}}"></script>
+  <script src="{{url('assets/datepicker/jquery.datetimepicker.full.js')}}"></script>
+  <script src="{{url('assets/theme/js/script.js')}}"></script>
+  <script src="{{url('assets/formoid/formoid.min.js')}}"></script>
 
 
 

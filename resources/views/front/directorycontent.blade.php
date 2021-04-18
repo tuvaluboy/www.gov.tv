@@ -21,83 +21,54 @@
             <div class="content-wrap">
                 <div class="col-lg-12">
                     <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> /
-                    <a href="{{route('directory')}}" class="text-primary">Directory</a> /
-                    <a href="{{route('directory.list', $directorysubcategory->directorycategory->id)}}">{{$directorysubcategory->directorycategory->title}} </a>/
-                    {{$directorysubcategory->title}}</p>
+                    </p>
                 </div>
             </div>
     </div>
 <hr>
 
-<section class="content16 cid-shcGsn2WVM" id="content16-7o">
 
+<section class="features2 cid-s1YPl57Et0" id="features2-3">
 
+<div class="container">
+    <div class="row justify-content-center">
 
+        <div class="col-lg-3 col-md-12 md-pb">
+        <div class="title-wrapper align-left">
 
-    <div class="container">
+                <h6 class="mbr-section-title mbr-white   pb-3 mbr-fonts-style display-2"> Contact</h6>
+                <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
+                {!!$directorycontent->contact_information !!}
+                </p>
+        </div>
+        </div>
+        <div class="col-lg-9 col-md-12 md-pb">
+        <h5><a href="{{route('directory.showministry', [$directorycontent->ministry->id ])}}"> {{$directorycontent->ministry->title}} </a>
+                                    </h4>
+            <div class="title-wrapper align-left">
+                <div class="line"></div>
+                <h3 class="mbr-section-title mbr-white mbr-semibold pb-3 mbr-fonts-style display-2">  {{$directorycontent->title}}</h3>
 
-        <div class="row justify-content-left">
-
-
-                <div class="col-12 col-md-4 col-lg-3">
-                    <div class="card-wrapper media-container-row media-container-row">
+            </div>
+            <div class="row">
+                <div class="card p-3 col-12 col-md-6 col-lg-12">
+                    <div class="card-wrapper">
                         <div class="card-box">
-                            <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                             <b> Contact
-                            </b>
-                            </h4>
 
-                            <p class="mbr-text mbr-fonts-style display-text">
-
-                                {!!$directorycontent->contact_information !!}
-                                <hr>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-4 col-lg-9">
-                    <div class="card-wrapper media-container-row">
-                        <div class="card-box">
-                            <br/>
-
-
-
-                                    <h5><a href="{{route('directory.showministry', [$directorycontent->ministry->id,$directorysubcategory->id])}}"> {{$directorycontent->ministry->title}} </a>
-                                    </h4><hr><br>
-
-                            <h3>
-                            <b>{!!$directorycontent->detailinformation!!}</b>
-                            </h3>
-
+                            <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
                             {!!$directorycontent->description!!}
                                 <br>
 
+
                         </div>
+
                     </div>
                 </div>
-
+            </div>
         </div>
     </div>
+</div>
 </section>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
 
 
 @endsection

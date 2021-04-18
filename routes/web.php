@@ -171,8 +171,8 @@ Route::group(['prefix' => '', 'as' => '', 'namespace' => 'Front'], function () {
     Route::get('/','HomeController@index')->name('home');
     Route::get('/directory','HomeController@directory')->name('directory');
     Route::get('/directory/subcategory/{subcategory}','HomeController@directorysubcategory')->name('directory.list');
-    Route::get('/directory/content/{content_id}/show/{subcategory_id}','HomeController@directorycontent')->name('directory.show');
-    Route::get('/directory/content/{content_id}/shows/{subcategory_id}','HomeController@directorycontentministry')->name('directory.showministry');
+    Route::get('/directory/content/{content_id}/show','HomeController@directorycontent')->name('directory.show');
+    Route::get('/directory/content/{content_id}/shows','HomeController@directorycontentministry')->name('directory.showministry');
     Route::get('/directory/content/{content_id}','HomeController@directorycontentsingle')->name('directory.showsingle');
     Route::get('/budget','HomeController@budget')->name('budget');
     Route::get('/vacancies','HomeController@vacancies')->name('vacancies');

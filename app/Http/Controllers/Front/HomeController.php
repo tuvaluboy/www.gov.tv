@@ -69,29 +69,30 @@ class HomeController extends Controller
         return view('front.directorysubcategory',compact('directorycategory','titlename','directorysubcategory'));
     }
 
-    public function directorycontent($content_id, $subcategory_id){
+    public function directorycontent($content_id){
         // find the content
         $directorycontent = DirectoryContent::find($content_id);
-        // find the subcategory that was connected
-        $directorysubcategory = DirectorySubCategory::find($subcategory_id);
+        // find the subcategory that was selected
+       // $directorysubcategory = DirectorySubCategory::find($subcategory_id);
         // fint all the content that has same content with the selected
        // $directorycontents = DirectoryContent::where( ,$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
 
         $titlename = $directorycontent->title;
 
-        return view('front.directorycontent',compact('titlename','directorycontent','directorysubcategory'));
+        return view('front.directorycontent',compact('titlename','directorycontent'));
     }
-    public function directorycontentministry($content_id, $subcategory_id){
+    public function directorycontentministry($content_id){
         // find the content
         $directorycontent = MinistryContent::find($content_id);
+       // return $directorycontent->contentDirectorySubCategories;
         // find the subcategory that was connected
-        $directorysubcategory = DirectorySubCategory::find($subcategory_id);
+       // $directorysubcategory = DirectorySubCategory::find($subcategory_id);
         // fint all the content that has same content with the selected
        // $directorycontents = DirectoryContent::where( ,$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
 
         $titlename = $directorycontent->title;
 
-        return view('front.directoryministrycontent',compact('titlename','directorycontent','directorysubcategory'));
+        return view('front.directoryministrycontent',compact('titlename','directorycontent'));
     }
 
     public function budget(){
@@ -177,7 +178,7 @@ class HomeController extends Controller
         $services = Service::where('servicessubcategory_id',$service->servicessubcategory_id)->where('status','Publish')->get();
         $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
         $serviceCategory = ServiceCategory::find($subcategories->servicescategory_id);
-        //return $service->contacts[0]->contentDirectorySubCategories->id;
+
         $titlename = $service->title;
         return view('front.services', compact('titlename','service','services','subcategories','serviceCategory'));
     }

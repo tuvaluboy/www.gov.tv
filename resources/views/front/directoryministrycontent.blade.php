@@ -2,7 +2,7 @@
 
 @section('content')
 
-
+<!--
 <section class="header4 cid-sdVgfli5UX" id="header4-2p">
     <div class="mbr-overlay"></div>
     <div class="container">
@@ -14,93 +14,68 @@
             </div>
         </div>
     </div>
-</section>
+</section> -->
 
+@include('partials.slidemenu')
 <hr>
     <div class="align-left container">
             <div class="content-wrap">
                 <div class="col-lg-12">
                     <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> /
-                    <a href="{{route('directory')}}" class="text-primary">Directory</a> /
-                    <a href="{{route('directory.list', $directorysubcategory->directorycategory->id)}}">{{$directorysubcategory->directorycategory->title}} </a>/
-                    {{$directorysubcategory->title}}</p>
+
+
                 </div>
             </div>
     </div>
 <hr>
 
-<section class="content16 cid-shcGsn2WVM" id="content16-7o">
+
+
+<section class="features2 cid-s1YPl57Et0" id="features2-3">
 
 
 
+<div class="container">
+    <div class="row justify-content-center">
 
-    <div class="container">
+        <div class="col-lg-3 col-md-12 md-pb">
+        <div class="title-wrapper align-left">
 
-        <div class="row justify-content-left">
+                <h6 class="mbr-section-title mbr-white   pb-3 mbr-fonts-style display-2"> Contact</h6>
+                <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
+                {!!$directorycontent->contact_information !!}
+                </p>
+    </div>
+        </div>
+        <div class="col-lg-9 col-md-12 md-pb">
+            <div class="title-wrapper align-left">
+                <div class="line"></div>
+                <h3 class="mbr-section-title mbr-white mbr-semibold pb-3 mbr-fonts-style display-2">  {{$directorycontent->title}}</h3>
 
-
-                <div class="col-12 col-md-4 col-lg-3">
-                    <div class="card-wrapper media-container-row media-container-row">
+            </div>
+            <div class="row">
+                <div class="card p-3 col-12 col-md-6 col-lg-12">
+                    <div class="card-wrapper">
                         <div class="card-box">
-                            <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                             <b> Contact
-                            </b>
-                            </h4>
-
-                            <p class="mbr-text mbr-fonts-style display-text">
-
-                                {!!$directorycontent->contact_information !!}
-                                <hr>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-4 col-lg-9">
-                    <div class="card-wrapper media-container-row">
-                        <div class="card-box">
-                            <br/>
-
-                            <h3>
-                            <b>{!!$directorycontent->detailinformation!!}</b>
-                            </h3>
-
+                            <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
                             {!!$directorycontent->description!!}
                                 <br>
-
+                                {!!$directorycontent->detailinformation!!}
                             <h5><b>Departments</b></h5>
                             @foreach($directorycontent->ministryDirectoryContents as $ser)
 
-                                    <a href="{{route('directory.show', [$ser->id,$directorysubcategory->id])}}"> {{$ser->title}} </a><br>
+                                    <a href="{{route('directory.show', [$ser->id])}}"> {{$ser->title}} </a><br>
 
                             @endforeach
-                                <br>
-
+                                <br></p>
                         </div>
+
                     </div>
                 </div>
-
+            </div>
         </div>
     </div>
+</div>
 </section>
-
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-<br>
-
 
 @endsection

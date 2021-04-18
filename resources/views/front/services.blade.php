@@ -2,20 +2,8 @@
 
 @section('content')
 
+@include('partials.slidemenu')
 
-<section class="header4 cid-sdVgfli5UX" id="header4-2p">
-    <div class="mbr-overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="content-wrap">
-                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-2">
-                    <strong><br></strong><br><strong>{{$subcategories->title}}</strong>
-            </h1>
-                    <!-- <p class="mbr-text mbr-fonts-style display-6"><a href="{{route('showsubcategory.show', $serviceCategory->id)}}" class="text-primary">{{$serviceCategory->title}}</a> &gt; {{$subcategories->title}}</p> -->
-            </div>
-        </div>
-    </div>
-</section>
 
 <hr>
     <div class="align-left container">
@@ -27,65 +15,52 @@
     </div>
 <hr>
 
-
-
-
-
-<section class="content16 cid-shcGsn2WVM" id="content16-7o">
-
+<section class="features2 cid-s1YPl57Et0" id="features2-3">
 
 
 
     <div class="container">
+        <div class="row justify-content-center">
 
-        <div class="row justify-content-left">
+            <div class="col-lg-3 col-md-12 md-pb">
+            <div class="title-wrapper align-left">
 
-
-                <div class="col-12 col-md-4 col-lg-3">
-                    <div class="card-wrapper media-container-row media-container-row">
-                        <div class="card-box">
-                            <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                               <b> {{$subcategories->title}}</b>
-
-                            </h4>
-                            <p class="mbr-text mbr-fonts-style display-text">
-                                @foreach($services as $ser)
-                                @if($ser->id == $service->id)
-                                  {{$ser->title}} <br>
+                    <h6 class="mbr-section-title mbr-white   pb-3 mbr-fonts-style display-2"> {{$serviceCategory->title}}</h6>
+                    <p class="mbr-text pb-3 mbr-white mbr-regular mbr-fonts-style display-7">
+                        @foreach($subcategories->servicessubcategoryServices as $ser)
+                                @if($ser->title == $service->title )
+        	                    {{$ser->title}}<br><br>
                                 @else
-                                <a href="{{route('services.show', $ser->id)}}"> {{$ser->title}} </a><br>
+                                <a href="{{route('services.show', $ser->id)}}"> {{$ser->title}} </a><br><br>
                                 @endif
+                        @endforeach
+                    <hr> <h5 class="card-title mbr-regular pb-1 mbr-black mbr-fonts-style display-5">Contacts</h5>
+                        @foreach($service->contacts as $contact)
+                            <a href="{{route('directory.show', [$contact->id])}}">{!!$contact->title!!}</a> <br><br>
 
-                                @endforeach
-                                <hr>
-                            </p>
-                            <p><b>Contacts </b></p>
-                            @foreach($service->contacts as $contact)
-                                <a href="{{route('directory.show', [$contact->id,1])}}">{!!$contact->title!!}</a> <br><br>
+                        @endforeach
+                    </p>
+        </div>
+            </div>
+            <div class="col-lg-9 col-md-12 md-pb">
+                <div class="title-wrapper align-left">
+                    <div class="line"></div>
+                    <h3 class="mbr-section-title mbr-white mbr-semibold pb-3 mbr-fonts-style display-2">  {{$service->title}}</h3>
 
-                            @endforeach
+                </div>
+                <div class="row">
+                    <div class="card p-3 col-12 col-md-6 col-lg-12">
+                        <div class="card-wrapper">
+                            <div class="card-box">
+                                <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
+                                {!!$service->detailinformation!!}</p>
+                            </div>
+
                         </div>
                     </div>
                 </div>
-
-                <div class="col-12 col-lg-4 col-lg-9">
-                    <div class="card-wrapper media-container-row">
-                        <div class="card-box">
-                            <br/>
-                            <h2 class="card-title pb-3 mbr-fonts-style display-3">
-                            {{$service->title}}</h2>
-                            <p class="mbr-text mbr-fonts-style display-menu">
-                            {!!$service->detailinformation!!}
-                                <br>
-                                <br>
-                            </p>
-                        </div>
-                    </div>
-                </div>
-
+            </div>
         </div>
     </div>
 </section>
-
-
 @endsection

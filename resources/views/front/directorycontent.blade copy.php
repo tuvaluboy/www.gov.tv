@@ -21,8 +21,6 @@
             <div class="content-wrap">
                 <div class="col-lg-12">
                     <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> /
-                    <a href="{{route('directory')}}" class="text-primary">Directory</a> /
-                    <a href="{{route('directory.list', $directorysubcategory->directorycategory->id)}}">{{$directorysubcategory->directorycategory->title}} </a>/
                     {{$directorysubcategory->title}}</p>
                 </div>
             </div>

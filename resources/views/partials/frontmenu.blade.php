@@ -57,7 +57,7 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="index.html#features4-2">Services</a></li>
+                    <li class="nav-item"><a class="nav-link link text-black text-primary display-4" href="{{route('home')}}#features4-2">Services</a></li>
                     <li class="nav-item"><a class="nav-link link text-black display-4" href="https://mobiri.se">Media</a></li>
                     <li class="nav-item"><a class="nav-link link text-black display-4" href="https://mobiri.se">Directory</a></li>
                     <li class="nav-item"><a class="nav-link link text-black display-4" href="https://mobiri.se">Contacts</a></li></ul>
