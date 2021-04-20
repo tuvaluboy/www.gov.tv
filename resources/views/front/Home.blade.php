@@ -30,14 +30,13 @@
 @foreach($diretorycategories->chunk(3) as $category)
 
 
-{{-- @for($j =  0; $j < $counts ; $j++) --}}
-
     <div class="container mbr-white">
 
         <div class="row justify-content-center">
         @foreach($category as $services)
 
-            <div class="card md-pb first  col-12 col-md-6 col-lg-4">
+            @if($loop->first)
+            <div class="card  md-pb first  col-12 col-md-6 col-lg-4">
             <a href="{{route('directory.list', $services->id)}}">
                 <div class="card-wrapper align-center">
                     <div class="card-box align-center">
@@ -52,7 +51,42 @@
                 </div>
                 </a>
             </div>
+            @continue
+            @elseif($loop->last)
+            <div class="card  md-pb last  col-12 col-md-6 col-lg-4">
+            <a href="{{route('directory.list', $services->id)}}">
+                <div class="card-wrapper align-center">
+                    <div class="card-box align-center">
 
+                        <h4 class="mbr-section-title pb-2 mbr-semibold mbr-fonts-style display-5">{{$services->title}}</h4>
+                        <p class="mbr-section-text align-center mbr-regular pb-2 mbr-fonts-style display-7">
+                        {!!$services->description!!}</p>
+                    </div>
+                    <div class="img-wrapper">
+                        <img src="assets/images/02.jpg" alt="Mobirise">
+                    </div>
+                </div>
+                </a>
+            </div>
+            @continue
+            @else
+            <div class="card  md-pb   col-12 col-md-6 col-lg-4">
+            <a href="{{route('directory.list', $services->id)}}">
+                <div class="card-wrapper align-center">
+                    <div class="card-box align-center">
+
+                        <h4 class="mbr-section-title pb-2 mbr-semibold mbr-fonts-style display-5">{{$services->title}}</h4>
+                        <p class="mbr-section-text align-center mbr-regular pb-2 mbr-fonts-style display-7">
+                        {!!$services->description!!}</p>
+                    </div>
+                    <div class="img-wrapper">
+                        <img src="assets/images/02.jpg" alt="Mobirise">
+                    </div>
+                </div>
+                </a>
+            </div>
+            @continue
+            @endif
 
          @endforeach
         </div>
@@ -111,3 +145,4 @@
 
 
 @endsection
+

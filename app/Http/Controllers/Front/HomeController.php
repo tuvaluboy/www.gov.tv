@@ -50,8 +50,11 @@ class HomeController extends Controller
 
         //Directory
         $diretorycategories = DirectoryCategory::where('status','Publish')->get();
+        $first = reset($diretorycategories);
+        $last  = end($diretorycategories);
+      //  return $last;
         $counts_directory = DirectoryCategory::where('status','Publish')->count();
-        return view('front.home', compact('titlename','counts','servicescategories','diretorycategories','counts_directory'));
+        return view('front.home', compact('titlename','counts','servicescategories','diretorycategories','counts_directory','first','last'));
 
     }
 

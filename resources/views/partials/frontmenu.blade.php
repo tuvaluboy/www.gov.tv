@@ -42,7 +42,7 @@
             <div class="navbar-brand">
                 <span class="navbar-logo">
                 <a href="{{route('home')}}">
-                        <img src="{{url('assets/images/codeofarms-tranparent-180x200.jpg')}}" alt="Mobirise" title="" style="height: 5.7rem;">
+                        <img src="{{url('assets/images/tuvalu coat of arms.png')}}" alt="Mobirise" title="" style="height: 5.7rem;">
                     </a>
                 </span>
                 <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="{{route('home')}}">Tuvalu Government</a></span>
