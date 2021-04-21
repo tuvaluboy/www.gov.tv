@@ -39,7 +39,9 @@
         @foreach($servicescategory as $services)
             <div class="card col-12 col-md-6 col-lg-4">
                 <div class="card-wrapper align-center" >
-
+                        <div class="img-wrapper">
+                                <span class="mbr-iconfont mobi-mbri-paper-plane mobi-mbri"></span>
+                            </div>
                     <div class="card-box align-center">
 
                         <h4 class="mbr-section-title pb-2 mbr-semibold mbr-fonts-style display-5">{{$services->title}}</h4>

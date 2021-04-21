@@ -310,6 +310,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 76,
+                'title' => 'background_image_create',
+            ],
+            [
+                'id'    => 77,
+                'title' => 'background_image_edit',
+            ],
+            [
+                'id'    => 78,
+                'title' => 'background_image_show',
+            ],
+            [
+                'id'    => 79,
+                'title' => 'background_image_delete',
+            ],
+            [
+                'id'    => 80,
+                'title' => 'background_image_access',
+            ],
+            [
+                'id'    => 81,
                 'title' => 'profile_password_edit',
             ],
         ];

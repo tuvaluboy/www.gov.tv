@@ -46,7 +46,7 @@
 
                                     <p class="mbr-fonts-style mbr-regular mbr-text panel-text display-7">
                                     @foreach($subcategory->contents as $service)
-                                    <a href="{{route('directory.showministry',[ $service->id ])}}"><u>{{$service->title}}</u></a>
+                                    <a href="{{route('directory.showministry',[ $service->id ])}}"><u>{{$service->title}}</u></a><br>
                                     {!!$service->description!!}
                                     @endforeach</p>
 

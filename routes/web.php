@@ -156,6 +156,12 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     // Tags
     Route::delete('tags/destroy', 'TagController@massDestroy')->name('tags.massDestroy');
     Route::resource('tags', 'TagController');
+    
+    // Background Image
+    Route::delete('background-images/destroy', 'BackgroundImageController@massDestroy')->name('background-images.massDestroy');
+    Route::post('background-images/media', 'BackgroundImageController@storeMedia')->name('background-images.storeMedia');
+    Route::post('background-images/ckmedia', 'BackgroundImageController@storeCKEditorImages')->name('background-images.storeCKEditorImages');
+    Route::resource('background-images', 'BackgroundImageController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
