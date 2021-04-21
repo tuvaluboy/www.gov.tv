@@ -27,6 +27,7 @@ use App\DirectorySubCategory;
 use App\DirectoryContent;
 use App\MinistryContent;
 use App\Content;
+use App\BackgroundImage;
 use Illuminate\Support\Facades\DB;
 use Spatie\MediaLibrary\Models\Media;
 
@@ -35,15 +36,13 @@ use Illuminate\Support\Str;
 class HomeController extends Controller
 {
     public function index(){
-        //Should initialise page to Home
+        //Get image background for Home
+        $pagename = "Home";
+        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
+        $backgroundimagemiddle = BackgroundImage::where('page','Homesecond')->where('status','Publish')->first();
 
-        // $page = Page::where('name','=','Home')->get();
-        // $pictures = Picture::where('page_id','=',$page[0]->id)->get();
-
-        // $imageslides = Imageslide::where('page_id','=',$pageid);
-
-        // return $imageslides;
-
+   
         $servicescategories = ServiceCategory::where('status','Publish')->get();
         $counts = ServiceCategory::where('status','Publish')->count();
         $titlename = "Welcome to Gov.tv | Government of Tuvalu";
@@ -54,7 +53,7 @@ class HomeController extends Controller
         $last  = end($diretorycategories);
       //  return $last;
         $counts_directory = DirectoryCategory::where('status','Publish')->count();
-        return view('front.home', compact('titlename','counts','servicescategories','diretorycategories','counts_directory','first','last'));
+        return view('front.home', compact('titlename','counts','servicescategories','diretorycategories','counts_directory','first','last','backgroundimagetop','backgroundimagefooter','backgroundimagemiddle'));
 
     }
 

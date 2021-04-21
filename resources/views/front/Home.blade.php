@@ -24,7 +24,7 @@
 @include('partials.servicesblock')
 
 <!-- Directory -->
-<section class="features3 solutionm4_features3 cid-suH2PdPBWP mbr-parallax-background" id="features3-3">
+<section class="features3 solutionm4_features3 cid-suH2PdPBWP mbr-parallax-background" style="background-image: url('{{$backgroundimagemiddle->image->url}}');" id="features3-3">
 
 <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(255, 255, 255);">
 </div>
@@ -110,7 +110,7 @@
         </div>
         <div class="row">
             <div class="card p-3 col-12 col-md-6 col-lg-4">
-                <div class="card-wrapper card1">
+                <div class="card-wrapper card1" style="background-image: url('../../../assets/images/02.jpg');">
                     <div class="card-box">
                         <h4 class="card-title align-center mbr-bold pb-4 mbr-white mbr-fonts-style display-5">
                             Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>

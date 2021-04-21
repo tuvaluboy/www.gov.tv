@@ -16,7 +16,7 @@
     </div>
 </section> -->
 
-<section class="header3 cid-s1YNmF9EpW mbr-parallax-background" id="header3-0">
+<section class="header3 cid-s1YNmF9EpW mbr-parallax-background" style="background-image: url('{{$backgroundimagetop->image->url}}');" id="header3-0">
 
     <!-- <div class="mbr-overlay" style="opacity: 0.8; background-color: rgb(0, 0, 0);"></div> -->
     <div class="container align-center">

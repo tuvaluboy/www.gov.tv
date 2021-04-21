@@ -26,6 +26,7 @@ class BackgroundImage extends Model implements HasMedia
         'Services'   => 'Services',
         'About'      => 'About',
         'Homesecond' => 'Home Second',
+        'Footer'     => 'Footer',
     ];
 
     public $table = 'background_images';

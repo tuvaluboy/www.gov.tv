@@ -41,7 +41,7 @@
     </div>
 </section> -->
 
-<section class="footer2 solutionm4_footer2 cid-suH0nqptA5" once="footers" id="footer2-2">
+<section class="footer2 solutionm4_footer2 cid-suH0nqptA5" style="background-image: url('{{$backgroundimagefooter->image->url}}');" once="footers" id="footer2-2">
 
     <div class="mbr-overlay"></div>
     <div class="container">
