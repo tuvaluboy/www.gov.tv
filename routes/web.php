@@ -127,6 +127,8 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::resource('items', 'ItemController');
     // Directory Categories
     Route::delete('directory-categories/destroy', 'DirectoryCategoryController@massDestroy')->name('directory-categories.massDestroy');
+    Route::post('directory-categories/media', 'DirectoryCategoryController@storeMedia')->name('directory-categories.storeMedia');
+    Route::post('directory-categories/ckmedia', 'DirectoryCategoryController@storeCKEditorImages')->name('directory-categories.storeCKEditorImages');
     Route::resource('directory-categories', 'DirectoryCategoryController');
 
     // Directory Sub Categories

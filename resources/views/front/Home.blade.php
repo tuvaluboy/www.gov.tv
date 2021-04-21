@@ -4,7 +4,7 @@
 
 <!-- Slide Image -->
 @include('partials.slidemenu')
-<br>
+
 
 @include('partials.search')
 <!-- Directory -->
@@ -24,9 +24,10 @@
 @include('partials.servicesblock')
 
 <!-- Directory -->
-<section class="features3 solutionm4_features3 cid-suH2PdPBWP" id="features3-3">
+<section class="features3 solutionm4_features3 cid-suH2PdPBWP mbr-parallax-background" id="features3-3">
 
-
+<div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(255, 255, 255);">
+</div>
 @foreach($diretorycategories->chunk(3) as $category)
 
 
@@ -45,8 +46,9 @@
                         <p class="mbr-section-text align-center mbr-regular pb-2 mbr-fonts-style display-7">
                         {!!$services->description!!}</p>
                     </div>
-                    <div class="img-wrapper">
-                        <img src="assets/images/02.jpg" alt="Mobirise">
+                    <div class="img-wrapper"> 
+                        <img src="{{ $services->image->getUrl() }}">
+                        {{-- <img src="assets/images/02.jpg" alt="Mobirise"> --}}
                     </div>
                 </div>
                 </a>
@@ -63,7 +65,7 @@
                         {!!$services->description!!}</p>
                     </div>
                     <div class="img-wrapper">
-                        <img src="assets/images/02.jpg" alt="Mobirise">
+                            <img src="{{ $services->image->getUrl() }}">
                     </div>
                 </div>
                 </a>
@@ -80,7 +82,7 @@
                         {!!$services->description!!}</p>
                     </div>
                     <div class="img-wrapper">
-                        <img src="assets/images/02.jpg" alt="Mobirise">
+                            <img src="{{ $services->image->getUrl() }}">
                     </div>
                 </div>
                 </a>

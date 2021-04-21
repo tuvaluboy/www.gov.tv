@@ -31,6 +31,9 @@
                             {{ trans('cruds.ministryContent.fields.title') }}
                         </th>
                         <th>
+                            {{ trans('cruds.ministryContent.fields.files') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.ministryContent.fields.status') }}
                         </th>
                         <th>
@@ -54,6 +57,13 @@
                             </td>
                             <td>
                                 {{ $ministryContent->title ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($ministryContent->files as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank">
+                                        {{ trans('global.view_file') }}
+                                    </a>
+                                @endforeach
                             </td>
                             <td>
                                 {{ App\MinistryContent::STATUS_SELECT[$ministryContent->status] ?? '' }}

@@ -67,6 +67,18 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.ministryContent.fields.files') }}
+                        </th>
+                        <td>
+                            @foreach($ministryContent->files as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank">
+                                    {{ trans('global.view_file') }}
+                                </a>
+                            @endforeach
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.ministryContent.fields.status') }}
                         </th>
                         <td>

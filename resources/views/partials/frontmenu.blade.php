@@ -34,7 +34,7 @@
     </nav>
 
 </section> -->
-
+{{--
 <section class="menu cid-s1YNw91RvB" once="menu" id="menu1-1">
 
     <nav class="navbar navbar-dropdown navbar-fixed-top navbar-expand-lg">
@@ -66,4 +66,40 @@
             </div>
         </div>
     </nav>
-</section>
+</section> --}}
+
+
+<section class="menu1 digitalm4_menu1 cid-sv1GwAyJ5L" once="menu" id="menu1-a">
+
+
+
+
+        <nav class="navbar navbar-dropdown navbar-expand-lg">
+
+            <div class="container">
+                <div class="navbar-brand">
+                    <span class="navbar-logo">
+                            <a href="{{route('home')}}">
+                            <img src="{{url('assets/images/tuvalu coat of arms.png')}}" alt="Mobirise" title="" style="height: 3.8rem;">
+                        </a>
+                    </span>
+                    <span class="navbar-caption-wrap"><a class="navbar-caption text-black display-4" href="{{route('home')}}">Tuvalu Government</a></span>
+                </div>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                    <div class="hamburger">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                {{--  --}}
+                    <div class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true"> </div>
+          
+                {{--       --}}
+                </div>
+            </div>
+        </nav>
+
+    </section>

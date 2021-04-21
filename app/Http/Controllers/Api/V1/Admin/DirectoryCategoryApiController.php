@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Api\V1\Admin;
 
 use App\DirectoryCategory;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Traits\MediaUploadingTrait;
 use App\Http\Requests\StoreDirectoryCategoryRequest;
 use App\Http\Requests\UpdateDirectoryCategoryRequest;
 use App\Http\Resources\Admin\DirectoryCategoryResource;
@@ -13,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 
 class DirectoryCategoryApiController extends Controller
 {
+    use MediaUploadingTrait;
+
     public function index()
     {
         abort_if(Gate::denies('directory_category_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
@@ -23,6 +26,10 @@ class DirectoryCategoryApiController extends Controller
     public function store(StoreDirectoryCategoryRequest $request)
     {
         $directoryCategory = DirectoryCategory::create($request->all());
+
+        if ($request->input('image', false)) {
+            $directoryCategory->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
+        }
 
         return (new DirectoryCategoryResource($directoryCategory))
             ->response()
@@ -39,6 +46,17 @@ class DirectoryCategoryApiController extends Controller
     public function update(UpdateDirectoryCategoryRequest $request, DirectoryCategory $directoryCategory)
     {
         $directoryCategory->update($request->all());
+
+        if ($request->input('image', false)) {
+            if (!$directoryCategory->image || $request->input('image') !== $directoryCategory->image->file_name) {
+                if ($directoryCategory->image) {
+                    $directoryCategory->image->delete();
+                }
+                $directoryCategory->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
+            }
+        } elseif ($directoryCategory->image) {
+            $directoryCategory->image->delete();
+        }
 
         return (new DirectoryCategoryResource($directoryCategory))
             ->response()

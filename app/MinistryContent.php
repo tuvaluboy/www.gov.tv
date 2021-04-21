@@ -2,28 +2,33 @@
 
 namespace App;
 
+use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
-use \DateTimeInterface;
 
 class MinistryContent extends Model implements HasMedia
 {
-    use SoftDeletes, HasMediaTrait;
+    use SoftDeletes;
+    use HasMediaTrait;
+
+    public const STATUS_SELECT = [
+        'Publish' => 'Publish',
+        'Hidden'  => 'Hidden',
+    ];
 
     public $table = 'ministry_contents';
+
+    protected $appends = [
+        'files',
+    ];
 
     protected $dates = [
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
-
-    const STATUS_SELECT = [
-        'Publish' => 'Publish',
-        'Hidden'  => 'Hidden',
     ];
 
     protected $fillable = [
@@ -36,11 +41,6 @@ class MinistryContent extends Model implements HasMedia
         'updated_at',
         'deleted_at',
     ];
-
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
 
     public function registerMediaConversions(Media $media = null)
     {
@@ -61,5 +61,15 @@ class MinistryContent extends Model implements HasMedia
     public function sub_categories()
     {
         return $this->belongsToMany(DirectorySubCategory::class);
+    }
+
+    public function getFilesAttribute()
+    {
+        return $this->getMedia('files');
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

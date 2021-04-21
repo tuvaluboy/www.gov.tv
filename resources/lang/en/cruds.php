@@ -1,11 +1,11 @@
 <?php
 
 return [
-    'userManagement'       => [
+    'userManagement' => [
         'title'          => 'User management',
         'title_singular' => 'User management',
     ],
-    'permission'           => [
+    'permission' => [
         'title'          => 'Permissions',
         'title_singular' => 'Permission',
         'fields'         => [
@@ -21,7 +21,7 @@ return [
             'deleted_at_helper' => ' ',
         ],
     ],
-    'role'                 => [
+    'role' => [
         'title'          => 'Roles',
         'title_singular' => 'Role',
         'fields'         => [
@@ -39,7 +39,7 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-    'user'                 => [
+    'user' => [
         'title'          => 'Users',
         'title_singular' => 'User',
         'fields'         => [
@@ -67,11 +67,11 @@ return [
             'image_helper'             => ' ',
         ],
     ],
-    'about'                => [
+    'about' => [
         'title'          => 'About',
         'title_singular' => 'About',
     ],
-    'serviceCategory'      => [
+    'serviceCategory' => [
         'title'          => 'Service Category',
         'title_singular' => 'Service Category',
         'fields'         => [
@@ -91,7 +91,7 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-    'servicesSubCategory'  => [
+    'servicesSubCategory' => [
         'title'          => 'Services Sub Category',
         'title_singular' => 'Services Sub Category',
         'fields'         => [
@@ -111,7 +111,7 @@ return [
             'deleted_at_helper'       => ' ',
         ],
     ],
-    'service'              => [
+    'service' => [
         'title'          => 'Services',
         'title_singular' => 'Service',
         'fields'         => [
@@ -139,15 +139,15 @@ return [
             'tags_helper'                => ' ',
         ],
     ],
-    'servicesSetup'        => [
+    'servicesSetup' => [
         'title'          => 'Services Setup',
         'title_singular' => 'Services Setup',
     ],
-    'mediaCenter'          => [
+    'mediaCenter' => [
         'title'          => 'Media Center',
         'title_singular' => 'Media Center',
     ],
-    'category'             => [
+    'category' => [
         'title'          => 'Categories',
         'title_singular' => 'Category',
         'fields'         => [
@@ -167,7 +167,7 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-    'item'                 => [
+    'item' => [
         'title'          => 'Item',
         'title_singular' => 'Item',
         'fields'         => [
@@ -195,11 +195,11 @@ return [
             'tags_helper'        => ' ',
         ],
     ],
-    'directory'            => [
+    'directory' => [
         'title'          => 'Directory',
         'title_singular' => 'Directory',
     ],
-    'directoryCategory'    => [
+    'directoryCategory' => [
         'title'          => 'Directory Category',
         'title_singular' => 'Directory Category',
         'fields'         => [
@@ -217,6 +217,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'image'              => 'Image',
+            'image_helper'       => ' ',
         ],
     ],
     'directorySubCategory' => [
@@ -241,7 +243,7 @@ return [
             'content_helper'           => ' ',
         ],
     ],
-    'directoryContent'     => [
+    'directoryContent' => [
         'title'          => 'Directory Content',
         'title_singular' => 'Directory Content',
         'fields'         => [
@@ -269,7 +271,7 @@ return [
             'tags_helper'                => ' ',
         ],
     ],
-    'ministryContent'      => [
+    'ministryContent' => [
         'title'          => 'Ministry Content',
         'title_singular' => 'Ministry Content',
         'fields'         => [
@@ -291,9 +293,13 @@ return [
             'updated_at_helper'          => ' ',
             'deleted_at'                 => 'Deleted at',
             'deleted_at_helper'          => ' ',
+            'sub_categories'             => 'Sub Categories',
+            'sub_categories_helper'      => ' ',
+            'files'                      => 'Files',
+            'files_helper'               => ' ',
         ],
     ],
-    'content'              => [
+    'content' => [
         'title'          => 'Content',
         'title_singular' => 'Content',
         'fields'         => [
@@ -315,7 +321,7 @@ return [
             'deleted_at_helper'  => ' ',
         ],
     ],
-    'tag'                  => [
+    'tag' => [
         'title'          => 'Tag',
         'title_singular' => 'Tag',
         'fields'         => [

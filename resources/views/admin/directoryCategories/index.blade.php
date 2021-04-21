@@ -35,6 +35,9 @@
                             {{ trans('cruds.directoryCategory.fields.status') }}
                         </th>
                         <th>
+                            {{ trans('cruds.directoryCategory.fields.image') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -56,6 +59,13 @@
                             </td>
                             <td>
                                 {{ App\DirectoryCategory::STATUS_SELECT[$directoryCategory->status] ?? '' }}
+                            </td>
+                            <td>
+                                @if($directoryCategory->image)
+                                    <a href="{{ $directoryCategory->image->getUrl() }}" target="_blank" style="display: inline-block">
+                                        <img src="{{ $directoryCategory->image->getUrl('thumb') }}">
+                                    </a>
+                                @endif
                             </td>
                             <td>
                                 @can('directory_category_show')

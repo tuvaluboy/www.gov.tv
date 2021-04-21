@@ -27,6 +27,9 @@ class MinistryContentApiController extends Controller
     {
         $ministryContent = MinistryContent::create($request->all());
         $ministryContent->sub_categories()->sync($request->input('sub_categories', []));
+        if ($request->input('files', false)) {
+            $ministryContent->addMedia(storage_path('tmp/uploads/' . basename($request->input('files'))))->toMediaCollection('files');
+        }
 
         return (new MinistryContentResource($ministryContent))
             ->response()
@@ -44,6 +47,16 @@ class MinistryContentApiController extends Controller
     {
         $ministryContent->update($request->all());
         $ministryContent->sub_categories()->sync($request->input('sub_categories', []));
+        if ($request->input('files', false)) {
+            if (!$ministryContent->files || $request->input('files') !== $ministryContent->files->file_name) {
+                if ($ministryContent->files) {
+                    $ministryContent->files->delete();
+                }
+                $ministryContent->addMedia(storage_path('tmp/uploads/' . basename($request->input('files'))))->toMediaCollection('files');
+            }
+        } elseif ($ministryContent->files) {
+            $ministryContent->files->delete();
+        }
 
         return (new MinistryContentResource($ministryContent))
             ->response()

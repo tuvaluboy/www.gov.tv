@@ -52,7 +52,6 @@ class CategoriesApiController extends Controller
                 if ($category->image) {
                     $category->image->delete();
                 }
-
                 $category->addMedia(storage_path('tmp/uploads/' . basename($request->input('image'))))->toMediaCollection('image');
             }
         } elseif ($category->image) {

@@ -22,7 +22,7 @@ class MinistryContentController extends Controller
     {
         abort_if(Gate::denies('ministry_content_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $ministryContents = MinistryContent::with(['sub_categories'])->get();
+        $ministryContents = MinistryContent::with(['sub_categories', 'media'])->get();
 
         $directory_sub_categories = DirectorySubCategory::get();
 
@@ -42,6 +42,9 @@ class MinistryContentController extends Controller
     {
         $ministryContent = MinistryContent::create($request->all());
         $ministryContent->sub_categories()->sync($request->input('sub_categories', []));
+        foreach ($request->input('files', []) as $file) {
+            $ministryContent->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+        }
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $ministryContent->id]);
@@ -65,6 +68,19 @@ class MinistryContentController extends Controller
     {
         $ministryContent->update($request->all());
         $ministryContent->sub_categories()->sync($request->input('sub_categories', []));
+        if (count($ministryContent->files) > 0) {
+            foreach ($ministryContent->files as $media) {
+                if (!in_array($media->file_name, $request->input('files', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $ministryContent->files->pluck('file_name')->toArray();
+        foreach ($request->input('files', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $ministryContent->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+            }
+        }
 
         return redirect()->route('admin.ministry-contents.index');
     }
