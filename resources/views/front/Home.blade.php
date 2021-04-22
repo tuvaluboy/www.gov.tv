@@ -111,38 +111,26 @@
 
             </div>
         </div>
+        @foreach($media->chunk(3) as $category)
         <div class="row">
+            @foreach($category as $services)
+          
             <div class="card p-3 col-12 col-md-6 col-lg-4">
-                <div class="card-wrapper card1" style="background-image: url('../../../assets/images/02.jpg');">
+            <a href="{{route('media.list', $services->id)}}">
+            <div class="card-wrapper card1" style="background-image: url('{{$services->image->getUrl()}}');">
                     <div class="card-box">
                         <h4 class="card-title align-center mbr-bold pb-4 mbr-white mbr-fonts-style display-5">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
+                          {{$services->title}}</h4>
                         <p class="mbr-text align-center pt-3 mbr-white mbr-regular mbr-fonts-style display-7">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
+                                {{$services->description}}</p>
                     </div>
                 </div>
+            </a>
             </div>
-            <div class="card p-3 col-12 col-md-6 col-lg-4">
-                <div class="card-wrapper card2">
-                    <div class="card-box">
-                        <h4 class="card-title align-center mbr-bold pb-4 mbr-white mbr-fonts-style display-5">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
-                        <p class="mbr-text align-center pt-3 mbr-white mbr-regular mbr-fonts-style display-7">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    </div>
-                </div>
-            </div>
-            <div class="card p-3 col-12 col-md-6 col-lg-4">
-                <div class="card-wrapper card3">
-                    <div class="card-box">
-                        <h4 class="card-title align-center mbr-bold pb-4 mbr-white mbr-fonts-style display-5">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit</h4>
-                        <p class="mbr-text align-center pt-3 mbr-white mbr-regular mbr-fonts-style display-7">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit</p>
-                    </div>
-                </div>
-            </div>
+            
+            @endforeach
         </div>
+        @endforeach
     </div>
 </section>
 

@@ -41,7 +41,7 @@ class HomeController extends Controller
         $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $backgroundimagemiddle = BackgroundImage::where('page','Homesecond')->where('status','Publish')->first();
-
+        $media = Category::all();
    
         $servicescategories = ServiceCategory::where('status','Publish')->get();
         $counts = ServiceCategory::where('status','Publish')->count();
@@ -53,7 +53,7 @@ class HomeController extends Controller
         $last  = end($diretorycategories);
       //  return $last;
         $counts_directory = DirectoryCategory::where('status','Publish')->count();
-        return view('front.home', compact('titlename','counts','servicescategories','diretorycategories','counts_directory','first','last','backgroundimagetop','backgroundimagefooter','backgroundimagemiddle'));
+        return view('front.home', compact('titlename','counts','servicescategories','diretorycategories','counts_directory','first','last','backgroundimagetop','backgroundimagefooter','backgroundimagemiddle','media'));
 
     }
 
@@ -175,25 +175,33 @@ class HomeController extends Controller
        // return $about->description;
         return view('front.aboutcontent', compact('titlename','content'));
     }
+
+
     // Services Sub category
     public function showsubcategory($id){
-        //find the category
+        $pagename = "Services";
+   
+        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $serviceCategory = ServiceCategory::find($id);
         $subcategories = ServicesSubCategory::all()->where('servicescategory_id',$id)->where('status','Publish');
         $titlename = $serviceCategory->title;
-
-
-        return view('front.servicessubcategory', compact('titlename','subcategories','serviceCategory'));
+ 
+        return view('front.servicessubcategory', compact('titlename','subcategories','serviceCategory','backgroundimagetop','backgroundimagefooter'));
     }
     // Services Content
     public function services($id){
+        $pagename = "Services";
+   
+        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $service = Service::find($id);
         $services = Service::where('servicessubcategory_id',$service->servicessubcategory_id)->where('status','Publish')->get();
         $subcategories = ServicesSubCategory::find($service->servicessubcategory_id);
         $serviceCategory = ServiceCategory::find($subcategories->servicescategory_id);
 
         $titlename = $service->title;
-        return view('front.services', compact('titlename','service','services','subcategories','serviceCategory'));
+        return view('front.services', compact('titlename','service','services','subcategories','serviceCategory','backgroundimagetop','backgroundimagefooter'));
     }
 
     public function mediacenter(){
@@ -204,25 +212,36 @@ class HomeController extends Controller
     }
 
     public function medialist($id){
+        $pagename = "Media";
+   
+        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $category = Category::find($id);
         $items = Item::where('categories_id',$category->id)->where('status','Publish')->orderBy('CREATED_AT', 'desc')->paginate(5);
         $titlename = $category->title;
 
-        return view('front.medialist',compact('items','titlename','category'));
+        return view('front.medialist',compact('items','titlename','category','backgroundimagetop','backgroundimagefooter'));
     }
     public function mediashow($id){
+        $pagename = "Media";
+   
+        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $selecteditem = Item::find($id);
         $categoryid = $selecteditem->categories_id;
         $category = Category::find($categoryid);
         $items = Item::where('categories_id',$category->id)->paginate(5);
         $titlename = $selecteditem->title;
 
-        return view('front.mediashow',compact('category','items','titlename','selecteditem'));
+        return view('front.mediashow',compact('category','items','titlename','selecteditem','backgroundimagetop','backgroundimagefooter'));
     }
 
     public function search(Request $request){
         $titlename = "Search Result";
-
+        $pagename = "Search";
+   
+        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
 
         //search services
         $services = Service::where('title',$request->search)->where('status','Publish')->get();
@@ -234,6 +253,6 @@ class HomeController extends Controller
 
         $countresult = $services->count() + $directories->count() + $mediaitems->count();
         //return $services;
-        return view('front.search',compact('services','directories','mediaitems','titlename','countresult'));
+        return view('front.search',compact('services','directories','mediaitems','titlename','countresult','backgroundimagetop','backgroundimagefooter'));
     }
 }

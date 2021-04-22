@@ -2,7 +2,7 @@
 
 @section('content')
 
-<section class="header4 cid-sdVgfli5UX" id="header4-2p">
+{{-- <section class="header4 cid-sdVgfli5UX" id="header4-2p">
     <div class="mbr-overlay"></div>
     <div class="align-left container">
         <div class="row">
@@ -13,14 +13,15 @@
             </div>
         </div>
     </div>
-</section>
+</section> --}}
+@include('partials.slidemenu')
 
 <hr>
     <div class="align-left container">
         <div class="row">
             <div class="content-wrap">
                 <div class="col-lg-12">
-                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> &gt; <a href="{{route('media')}}"> Media</a> &gt;{{$titlename}} </p>
+                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a>  &gt;{{$titlename}} </p>
                 </div>
             </div>
         </div>    
