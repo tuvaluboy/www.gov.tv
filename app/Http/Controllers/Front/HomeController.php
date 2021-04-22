@@ -64,28 +64,39 @@ class HomeController extends Controller
     }
 
     public function directorysubcategory($id){
+        $pagename = "Directory";
+
+        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $directorycategory = DirectoryCategory::find($id);
         $directorysubcategory = DirectorySubCategory::where('directorycategory_id','=',$directorycategory->id)->where('status','Publish')->get();
         $titlename= $directorycategory->title;
 
-        return view('front.directorysubcategory',compact('directorycategory','titlename','directorysubcategory'));
+        return view('front.directorysubcategory',compact('directorycategory','titlename','directorysubcategory','backgroundimagetop','backgroundimagefooter'));
     }
 
     public function directorycontent($content_id){
+        $pagename = "Directory";
         // find the content
         $directorycontent = DirectoryContent::find($content_id);
         // find the subcategory that was selected
        // $directorysubcategory = DirectorySubCategory::find($subcategory_id);
         // fint all the content that has same content with the selected
        // $directorycontents = DirectoryContent::where( ,$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
-
+       $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+       $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
+      
         $titlename = $directorycontent->title;
 
-        return view('front.directorycontent',compact('titlename','directorycontent'));
+        return view('front.directorycontent',compact('titlename','directorycontent','backgroundimagetop','backgroundimagefooter'));
     }
     public function directorycontentministry($content_id){
+        $pagename = "Directory";
         // find the content
         $directorycontent = MinistryContent::find($content_id);
+        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
+        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
+       
        // return $directorycontent->contentDirectorySubCategories;
         // find the subcategory that was connected
        // $directorysubcategory = DirectorySubCategory::find($subcategory_id);
@@ -94,7 +105,7 @@ class HomeController extends Controller
 
         $titlename = $directorycontent->title;
 
-        return view('front.directoryministrycontent',compact('titlename','directorycontent'));
+        return view('front.directoryministrycontent',compact('titlename','directorycontent','backgroundimagetop','backgroundimagefooter'));
     }
 
     public function budget(){

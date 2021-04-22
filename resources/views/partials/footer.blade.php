@@ -40,9 +40,11 @@
         </div>
     </div>
 </section> -->
-
+@if(!is_null($backgroundimagefooter))
 <section class="footer2 solutionm4_footer2 cid-suH0nqptA5" style="background-image: url('{{$backgroundimagefooter->image->url}}');" once="footers" id="footer2-2">
-
+@else 
+<section class="footer2 solutionm4_footer2 cid-suH0nqptA5"  once="footers" id="footer2-2">
+@endif
     <div class="mbr-overlay"></div>
     <div class="container">
         <div class="row align-left">

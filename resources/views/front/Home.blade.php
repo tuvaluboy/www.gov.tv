@@ -24,8 +24,11 @@
 @include('partials.servicesblock')
 
 <!-- Directory -->
+@if(!is_null($backgroundimagemiddle))
 <section class="features3 solutionm4_features3 cid-suH2PdPBWP mbr-parallax-background" style="background-image: url('{{$backgroundimagemiddle->image->url}}');" id="features3-3">
-
+@else 
+<section class="features3 solutionm4_features3 cid-suH2PdPBWP mbr-parallax-background"   id="features3-3">
+@endif
 <div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(255, 255, 255);">
 </div>
 @foreach($diretorycategories->chunk(3) as $category)
