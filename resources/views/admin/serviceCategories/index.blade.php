@@ -29,6 +29,9 @@
                             {{ trans('cruds.serviceCategory.fields.title') }}
                         </th>
                         <th>
+                            {{ trans('cruds.serviceCategory.fields.icon') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.serviceCategory.fields.status') }}
                         </th>
                         <th>
@@ -47,6 +50,9 @@
                             </td>
                             <td>
                                 {{ $serviceCategory->title ?? '' }}
+                            </td>
+                            <td>
+                                {{ $serviceCategory->icon ?? '' }}
                             </td>
                             <td>
                                 {{ App\ServiceCategory::STATUS_SELECT[$serviceCategory->status] ?? '' }}

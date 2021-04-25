@@ -33,8 +33,8 @@
             <div class="form-group">
                 <label for="servicessubcategory_id">{{ trans('cruds.service.fields.servicessubcategory') }}</label>
                 <select class="form-control select2 {{ $errors->has('servicessubcategory') ? 'is-invalid' : '' }}" name="servicessubcategory_id" id="servicessubcategory_id">
-                    @foreach($servicessubcategories as $id => $servicessubcategory)
-                        <option value="{{ $id }}" {{ (old('servicessubcategory_id') ? old('servicessubcategory_id') : $service->servicessubcategory->id ?? '') == $id ? 'selected' : '' }}>{{ $servicessubcategory }}</option>
+                    @foreach($servicessubcategories as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('servicessubcategory_id') ? old('servicessubcategory_id') : $service->servicessubcategory->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('servicessubcategory'))
@@ -106,6 +106,17 @@
                 <span class="help-block">{{ trans('cruds.service.fields.tags_helper') }}</span>
             </div>
             <div class="form-group">
+                <label for="files">{{ trans('cruds.service.fields.files') }}</label>
+                <div class="needsclick dropzone {{ $errors->has('files') ? 'is-invalid' : '' }}" id="files-dropzone">
+                </div>
+                @if($errors->has('files'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('files') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.service.fields.files_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <button class="btn btn-danger" type="submit">
                     {{ trans('global.save') }}
                 </button>
@@ -130,7 +141,7 @@
               return new Promise(function(resolve, reject) {
                 // Init request
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', '/admin/services/ckmedia', true);
+                xhr.open('POST', '{{ route('admin.services.storeCKEditorImages') }}', true);
                 xhr.setRequestHeader('x-csrf-token', window._token);
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.responseType = 'json';
@@ -183,4 +194,60 @@
 });
 </script>
 
+<script>
+    var uploadedFilesMap = {}
+Dropzone.options.filesDropzone = {
+    url: '{{ route('admin.services.storeMedia') }}',
+    maxFilesize: 1000, // MB
+    addRemoveLinks: true,
+    headers: {
+      'X-CSRF-TOKEN': "{{ csrf_token() }}"
+    },
+    params: {
+      size: 1000
+    },
+    success: function (file, response) {
+      $('form').append('<input type="hidden" name="files[]" value="' + response.name + '">')
+      uploadedFilesMap[file.name] = response.name
+    },
+    removedfile: function (file) {
+      file.previewElement.remove()
+      var name = ''
+      if (typeof file.file_name !== 'undefined') {
+        name = file.file_name
+      } else {
+        name = uploadedFilesMap[file.name]
+      }
+      $('form').find('input[name="files[]"][value="' + name + '"]').remove()
+    },
+    init: function () {
+@if(isset($service) && $service->files)
+          var files =
+            {!! json_encode($service->files) !!}
+              for (var i in files) {
+              var file = files[i]
+              this.options.addedfile.call(this, file)
+              file.previewElement.classList.add('dz-complete')
+              $('form').append('<input type="hidden" name="files[]" value="' + file.file_name + '">')
+            }
+@endif
+    },
+     error: function (file, response) {
+         if ($.type(response) === 'string') {
+             var message = response //dropzone sends it's own error messages in string
+         } else {
+             var message = response.errors.file
+         }
+         file.previewElement.classList.add('dz-error')
+         _ref = file.previewElement.querySelectorAll('[data-dz-errormessage]')
+         _results = []
+         for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+             node = _ref[_i]
+             _results.push(node.textContent = message)
+         }
+
+         return _results
+     }
+}
+</script>
 @endsection

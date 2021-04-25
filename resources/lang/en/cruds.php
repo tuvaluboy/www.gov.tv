@@ -89,6 +89,8 @@ return [
             'updated_at_helper'  => ' ',
             'deleted_at'         => 'Deleted at',
             'deleted_at_helper'  => ' ',
+            'icon'               => 'Icon',
+            'icon_helper'        => ' ',
         ],
     ],
     'servicesSubCategory' => [
@@ -137,6 +139,8 @@ return [
             'contact_helper'             => ' ',
             'tags'                       => 'Tags',
             'tags_helper'                => ' ',
+            'files'                      => 'Files',
+            'files_helper'               => ' ',
         ],
     ],
     'servicesSetup' => [
@@ -269,6 +273,8 @@ return [
             'ministry_helper'            => 'Ministry or Head of the Organization',
             'tags'                       => 'Tags',
             'tags_helper'                => ' ',
+            'files'                      => 'Files',
+            'files_helper'               => ' ',
         ],
     ],
     'ministryContent' => [

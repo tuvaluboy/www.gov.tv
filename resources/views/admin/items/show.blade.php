@@ -44,11 +44,11 @@
                             {{ trans('cruds.item.fields.file') }}
                         </th>
                         <td>
-                            @if($item->file)
-                                <a href="{{ $item->file->getUrl() }}" target="_blank">
+                            @foreach($item->file as $key => $media)
+                                <a href="{{ $media->getUrl() }}" target="_blank">
                                     {{ trans('global.view_file') }}
                                 </a>
-                            @endif
+                            @endforeach
                         </td>
                     </tr>
                     <tr>

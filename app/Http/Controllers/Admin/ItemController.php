@@ -47,9 +47,8 @@ class ItemController extends Controller
     {
         $item = Item::create($request->all());
         $item->tags()->sync($request->input('tags', []));
-
-        if ($request->input('file', false)) {
-            $item->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
+        foreach ($request->input('file', []) as $file) {
+            $item->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('file');
         }
 
         if ($media = $request->input('ck-media', false)) {
@@ -76,17 +75,18 @@ class ItemController extends Controller
     {
         $item->update($request->all());
         $item->tags()->sync($request->input('tags', []));
-
-        if ($request->input('file', false)) {
-            if (!$item->file || $request->input('file') !== $item->file->file_name) {
-                if ($item->file) {
-                    $item->file->delete();
+        if (count($item->file) > 0) {
+            foreach ($item->file as $media) {
+                if (!in_array($media->file_name, $request->input('file', []))) {
+                    $media->delete();
                 }
-
-                $item->addMedia(storage_path('tmp/uploads/' . basename($request->input('file'))))->toMediaCollection('file');
             }
-        } elseif ($item->file) {
-            $item->file->delete();
+        }
+        $media = $item->file->pluck('file_name')->toArray();
+        foreach ($request->input('file', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $item->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('file');
+            }
         }
 
         return redirect()->route('admin.items.index');

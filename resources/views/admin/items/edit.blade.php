@@ -44,8 +44,8 @@
             <div class="form-group">
                 <label for="categories_id">{{ trans('cruds.item.fields.categories') }}</label>
                 <select class="form-control select2 {{ $errors->has('categories') ? 'is-invalid' : '' }}" name="categories_id" id="categories_id">
-                    @foreach($categories as $id => $categories)
-                        <option value="{{ $id }}" {{ (old('categories_id') ? old('categories_id') : $item->categories->id ?? '') == $id ? 'selected' : '' }}>{{ $categories }}</option>
+                    @foreach($categories as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('categories_id') ? old('categories_id') : $item->categories->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('categories'))
@@ -123,7 +123,7 @@
               return new Promise(function(resolve, reject) {
                 // Init request
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', '/admin/items/ckmedia', true);
+                xhr.open('POST', '{{ route('admin.items.storeCKEditorImages') }}', true);
                 xhr.setRequestHeader('x-csrf-token', window._token);
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.responseType = 'json';
@@ -177,10 +177,10 @@
 </script>
 
 <script>
-    Dropzone.options.fileDropzone = {
+    var uploadedFileMap = {}
+Dropzone.options.fileDropzone = {
     url: '{{ route('admin.items.storeMedia') }}',
     maxFilesize: 800, // MB
-    maxFiles: 1,
     addRemoveLinks: true,
     headers: {
       'X-CSRF-TOKEN': "{{ csrf_token() }}"
@@ -189,23 +189,29 @@
       size: 800
     },
     success: function (file, response) {
-      $('form').find('input[name="file"]').remove()
-      $('form').append('<input type="hidden" name="file" value="' + response.name + '">')
+      $('form').append('<input type="hidden" name="file[]" value="' + response.name + '">')
+      uploadedFileMap[file.name] = response.name
     },
     removedfile: function (file) {
       file.previewElement.remove()
-      if (file.status !== 'error') {
-        $('form').find('input[name="file"]').remove()
-        this.options.maxFiles = this.options.maxFiles + 1
+      var name = ''
+      if (typeof file.file_name !== 'undefined') {
+        name = file.file_name
+      } else {
+        name = uploadedFileMap[file.name]
       }
+      $('form').find('input[name="file[]"][value="' + name + '"]').remove()
     },
     init: function () {
 @if(isset($item) && $item->file)
-      var file = {!! json_encode($item->file) !!}
-          this.options.addedfile.call(this, file)
-      file.previewElement.classList.add('dz-complete')
-      $('form').append('<input type="hidden" name="file" value="' + file.file_name + '">')
-      this.options.maxFiles = this.options.maxFiles - 1
+          var files =
+            {!! json_encode($item->file) !!}
+              for (var i in files) {
+              var file = files[i]
+              this.options.addedfile.call(this, file)
+              file.previewElement.classList.add('dz-complete')
+              $('form').append('<input type="hidden" name="file[]" value="' + file.file_name + '">')
+            }
 @endif
     },
      error: function (file, response) {

@@ -23,7 +23,7 @@ class DirectoryContentController extends Controller
     {
         abort_if(Gate::denies('directory_content_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $directoryContents = DirectoryContent::with(['ministry', 'tags'])->get();
+        $directoryContents = DirectoryContent::with(['ministry', 'tags', 'media'])->get();
 
         $ministry_contents = MinistryContent::get();
 
@@ -47,6 +47,9 @@ class DirectoryContentController extends Controller
     {
         $directoryContent = DirectoryContent::create($request->all());
         $directoryContent->tags()->sync($request->input('tags', []));
+        foreach ($request->input('files', []) as $file) {
+            $directoryContent->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+        }
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $directoryContent->id]);
@@ -72,6 +75,19 @@ class DirectoryContentController extends Controller
     {
         $directoryContent->update($request->all());
         $directoryContent->tags()->sync($request->input('tags', []));
+        if (count($directoryContent->files) > 0) {
+            foreach ($directoryContent->files as $media) {
+                if (!in_array($media->file_name, $request->input('files', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $directoryContent->files->pluck('file_name')->toArray();
+        foreach ($request->input('files', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $directoryContent->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+            }
+        }
 
         return redirect()->route('admin.directory-contents.index');
     }

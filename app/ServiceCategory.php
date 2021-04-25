@@ -2,16 +2,22 @@
 
 namespace App;
 
+use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
-use \DateTimeInterface;
 
 class ServiceCategory extends Model implements HasMedia
 {
-    use SoftDeletes, HasMediaTrait;
+    use SoftDeletes;
+    use HasMediaTrait;
+
+    public const STATUS_SELECT = [
+        'Publish' => 'Publish',
+        'Hidden'  => 'Hidden',
+    ];
 
     public $table = 'service_categories';
 
@@ -21,24 +27,15 @@ class ServiceCategory extends Model implements HasMedia
         'deleted_at',
     ];
 
-    const STATUS_SELECT = [
-        'Publish' => 'Publish',
-        'Hidden'  => 'Hidden',
-    ];
-
     protected $fillable = [
         'title',
         'description',
+        'icon',
         'status',
         'created_at',
         'updated_at',
         'deleted_at',
     ];
-
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
 
     public function registerMediaConversions(Media $media = null)
     {
@@ -49,5 +46,10 @@ class ServiceCategory extends Model implements HasMedia
     public function servicescategoryServicesSubCategories()
     {
         return $this->hasMany(ServicesSubCategory::class, 'servicescategory_id', 'id');
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

@@ -24,7 +24,7 @@ class ServicesController extends Controller
     {
         abort_if(Gate::denies('service_access'), Response::HTTP_FORBIDDEN, '403 Forbidden');
 
-        $services = Service::with(['servicessubcategory', 'contacts', 'tags'])->get();
+        $services = Service::with(['servicessubcategory', 'contacts', 'tags', 'media'])->get();
 
         $services_sub_categories = ServicesSubCategory::get();
 
@@ -53,6 +53,9 @@ class ServicesController extends Controller
         $service = Service::create($request->all());
         $service->contacts()->sync($request->input('contacts', []));
         $service->tags()->sync($request->input('tags', []));
+        foreach ($request->input('files', []) as $file) {
+            $service->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+        }
 
         if ($media = $request->input('ck-media', false)) {
             Media::whereIn('id', $media)->update(['model_id' => $service->id]);
@@ -81,6 +84,19 @@ class ServicesController extends Controller
         $service->update($request->all());
         $service->contacts()->sync($request->input('contacts', []));
         $service->tags()->sync($request->input('tags', []));
+        if (count($service->files) > 0) {
+            foreach ($service->files as $media) {
+                if (!in_array($media->file_name, $request->input('files', []))) {
+                    $media->delete();
+                }
+            }
+        }
+        $media = $service->files->pluck('file_name')->toArray();
+        foreach ($request->input('files', []) as $file) {
+            if (count($media) === 0 || !in_array($file, $media)) {
+                $service->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
+            }
+        }
 
         return redirect()->route('admin.services.index');
     }

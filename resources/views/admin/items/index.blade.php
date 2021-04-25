@@ -102,11 +102,11 @@
                                 {{ $item->title ?? '' }}
                             </td>
                             <td>
-                                @if($item->file)
-                                    <a href="{{ $item->file->getUrl() }}" target="_blank">
+                                @foreach($item->file as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank">
                                         {{ trans('global.view_file') }}
                                     </a>
-                                @endif
+                                @endforeach
                             </td>
                             <td>
                                 {{ $item->categories->title ?? '' }}

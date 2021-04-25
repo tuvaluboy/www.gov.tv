@@ -40,6 +40,9 @@
                             {{ trans('cruds.service.fields.tags') }}
                         </th>
                         <th>
+                            {{ trans('cruds.service.fields.files') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -70,6 +73,13 @@
                             <td>
                                 @foreach($service->tags as $key => $item)
                                     <span class="badge badge-info">{{ $item->name }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($service->files as $key => $media)
+                                    <a href="{{ $media->getUrl() }}" target="_blank">
+                                        {{ trans('global.view_file') }}
+                                    </a>
                                 @endforeach
                             </td>
                             <td>

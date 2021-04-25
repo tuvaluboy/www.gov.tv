@@ -30,6 +30,16 @@
                 <span class="help-block">{{ trans('cruds.serviceCategory.fields.description_helper') }}</span>
             </div>
             <div class="form-group">
+                <label class="required" for="icon">{{ trans('cruds.serviceCategory.fields.icon') }}</label>
+                <input class="form-control {{ $errors->has('icon') ? 'is-invalid' : '' }}" type="text" name="icon" id="icon" value="{{ old('icon', '') }}" required>
+                @if($errors->has('icon'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('icon') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.serviceCategory.fields.icon_helper') }}</span>
+            </div>
+            <div class="form-group">
                 <label>{{ trans('cruds.serviceCategory.fields.status') }}</label>
                 <select class="form-control {{ $errors->has('status') ? 'is-invalid' : '' }}" name="status" id="status">
                     <option value disabled {{ old('status', null) === null ? 'selected' : '' }}>{{ trans('global.pleaseSelect') }}</option>
@@ -69,7 +79,7 @@
               return new Promise(function(resolve, reject) {
                 // Init request
                 var xhr = new XMLHttpRequest();
-                xhr.open('POST', '/admin/service-categories/ckmedia', true);
+                xhr.open('POST', '{{ route('admin.service-categories.storeCKEditorImages') }}', true);
                 xhr.setRequestHeader('x-csrf-token', window._token);
                 xhr.setRequestHeader('Accept', 'application/json');
                 xhr.responseType = 'json';
@@ -102,7 +112,7 @@
                 // Send request
                 var data = new FormData();
                 data.append('upload', file);
-                data.append('crud_id', {{ $serviceCategory->id ?? 0 }});
+                data.append('crud_id', '{{ $serviceCategory->id ?? 0 }}');
                 xhr.send(data);
               });
             })

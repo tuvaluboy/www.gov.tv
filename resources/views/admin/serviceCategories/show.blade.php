@@ -41,6 +41,14 @@
                     </tr>
                     <tr>
                         <th>
+                            {{ trans('cruds.serviceCategory.fields.icon') }}
+                        </th>
+                        <td>
+                            {{ $serviceCategory->icon }}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>
                             {{ trans('cruds.serviceCategory.fields.status') }}
                         </th>
                         <td>

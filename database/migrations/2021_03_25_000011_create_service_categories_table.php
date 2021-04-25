@@ -13,6 +13,7 @@ class CreateServiceCategoriesTable extends Migration
             $table->string('title')->nullable();
             $table->longText('description')->nullable();
             $table->string('status')->nullable();
+            $table->string('icon');
             $table->timestamps();
             $table->softDeletes();
         });

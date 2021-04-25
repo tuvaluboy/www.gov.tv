@@ -2,16 +2,22 @@
 
 namespace App;
 
+use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Spatie\MediaLibrary\HasMedia\HasMedia;
 use Spatie\MediaLibrary\HasMedia\HasMediaTrait;
 use Spatie\MediaLibrary\Models\Media;
-use \DateTimeInterface;
 
 class Item extends Model implements HasMedia
 {
-    use SoftDeletes, HasMediaTrait;
+    use SoftDeletes;
+    use HasMediaTrait;
+
+    public const STATUS_SELECT = [
+        'Publish' => 'Publish',
+        'Hidden'  => 'Hidden',
+    ];
 
     public $table = 'items';
 
@@ -25,11 +31,6 @@ class Item extends Model implements HasMedia
         'deleted_at',
     ];
 
-    const STATUS_SELECT = [
-        'Publish' => 'Publish',
-        'Hidden'  => 'Hidden',
-    ];
-
     protected $fillable = [
         'title',
         'description',
@@ -41,11 +42,6 @@ class Item extends Model implements HasMedia
         'deleted_at',
     ];
 
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
-
     public function registerMediaConversions(Media $media = null)
     {
         $this->addMediaConversion('thumb')->fit('crop', 50, 50);
@@ -54,7 +50,7 @@ class Item extends Model implements HasMedia
 
     public function getFileAttribute()
     {
-        return $this->getMedia('file')->last();
+        return $this->getMedia('file');
     }
 
     public function categories()
@@ -65,5 +61,10 @@ class Item extends Model implements HasMedia
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }
