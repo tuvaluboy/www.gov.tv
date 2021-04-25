@@ -244,11 +244,12 @@ class HomeController extends Controller
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
 
         //search services
-        $services = Service::where('title',$request->search)->where('status','Publish')->get();
+        $services = Service::where('title','LIKE',$request->search)->where('status','Publish')
+        ->get();
         //search directory
-        $directories = DirectoryContent::where('title',$request->search)->where('status','Publish')->get();
+        $directories = DirectoryContent::where('title','LIKE',$request->search)->where('status','Publish')->get();
         //search news
-        $mediaitems = item::where('title',$request->search)->where('status','Publish')->get();
+        $mediaitems = item::where('title','LIKE',$request->search)->where('status','Publish')->get();
 
 
         $countresult = $services->count() + $directories->count() + $mediaitems->count();

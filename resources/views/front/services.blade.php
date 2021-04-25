@@ -61,7 +61,7 @@
                     </div>
                 </div>
                 @foreach($service->files as $file)
-                            <a href="{{ $file->getUrl() }}" target="_blank"><span class="mbr-iconfont mobi-mbri-file mobi-mbri" style="color: rgb(0, 119, 255); fill: rgb(0, 119, 255);"></span>{{$file->name }}</a> 
+                            <a href="{{ $file->getUrl() }}" target="_blank"><span class="mbr-iconfont mobi-mbri-file mobi-mbri" style="color: rgb(0, 119, 255); fill: rgb(0, 119, 255);"></span>{{$file->name }}</a> <br>
                 @endforeach
             </div>
         </div>

@@ -15,49 +15,7 @@
 <hr>
 <br>
 @include('partials.search')
-
-<!-- Search Result Block  -->
-<!-- <section class="features9 cid-sslWma43Fx" id="features10-7h">
-    <div class="container">
-       <div class="row">
-			<div class="col-md-12" >
-                <div class="card-wrapper">
-				    <div class="search-result  ">
-					    <h2>Results</h2>
-					    <p>{{$countresult}}  Results</p>
-				    </div>
-			    </div>
-		    </div>
-
-
-
-                <div class="col-12 col-md-4 col-lg-3">
-                    <div class="card-wrapper media-container-row media-container-row">
-                        <div class="card-box">
-                            <h4 class="card-title pb-3 mbr-fonts-style display-7">
-                            All Categories
-                            </h4>
-                            <hr/>
-                            <div class="list">
-                                <li><a>Testing <span>10 </span></a></li>
-                            </div>
-                        </div>
-
-
-                    </div>
-                </div>
-
-                <div class="col-12 col-lg-4 col-lg-9">
-                    <div class="card-wrapper media-container-row">
-                        <div class="card-box">
-                            <div class="row justify-content-left"> </div>
-                        </div>
-                    </div>
-                </div>
-
-        </div>
-    </div>
-</section> -->
+{{--  
 <section class="content16 cid-s9RPxwphdz" id="content16-1n">
 <div class="container">
     <div class="container wrap">
@@ -100,8 +58,63 @@
         @endforeach
     </div>
 </div>
-</section>
+</section> --}}
+ 
+<section class="features2 cid-s1YPl57Et0" id="features2-3">
 
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="col-lg-3 col-md-12 md-pb">
+            <div class="title-wrapper align-left">
+
+                    <h6 class="mbr-section-title mbr-white   pb-3 mbr-fonts-style display-2"> Result</h6>
+                    <p class="mbr-text pb-3 mbr-white mbr-regular mbr-fonts-style display-7"> {{$countresult}} </p>
+                       
+                  
+        </div>
+            </div>
+            <div class="col-lg-9 col-md-12 md-pb">
+                <div class="title-wrapper align-left">
+                    <div class="line"></div>
+                    <h3 class="mbr-section-title mbr-white mbr-semibold pb-3 mbr-fonts-style display-2">  </h3>
+
+                </div>
+                <div class="row">
+                    <div class="card p-3 col-12 col-md-6 col-lg-12">
+                        <div class="card-wrapper">
+                            <div class="card-box">
+                                <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
+                                    @foreach($services as $service )
+                                    <u> <h3> <a href="{{route('services.show', $service->id)}}">{{$service->title}} </a> </h3></u>
+                                    {!!$service->description!!}
+                                    @endforeach
+                                </p>
+                                <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
+                                    @foreach($directories as $directory )
+                                    <u> <h3> <a href="{{route('directory.show', [$directory->id,1])}}">{{$directory->title}} </a> </h3></u>
+                                    {!!$directory->description!!}
+                                    @endforeach
+                                </p>
+                                <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
+                                    @foreach($mediaitems as $mediaitem )
+                                    <u> <h3> <a href="{{route('media.show', $mediaitem->id)}}">{{$mediaitem->title}} </a> </h3></u>
+                                    {!!$mediaitem->summary!!}
+                                    @endforeach
+                                </p>
+                            </div>
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
 
 <br>
 <br>
