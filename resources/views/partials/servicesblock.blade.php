@@ -38,6 +38,7 @@
         <div class="row justify-content-center">
         @foreach($servicescategory as $services)
             <div class="card col-12 col-md-6 col-lg-4">
+                <a  href="{{route('showsubcategory.show', $services->id)}}">
                 <div class="card-wrapper align-center" >
                         <div class="img-wrapper">
                                 <span class="mbr-iconfont mobi-mbri-paper-{{$services->icon}} mobi-mbri"></span>
@@ -49,12 +50,13 @@
                         {!!$services->description!!}</p>
 
                         <div class="link-wrapper">
-                            <a  href="{{route('showsubcategory.show', $services->id)}}">
+                          
                             <span class="mbr-iconfont mobi-mbri-right mobi-mbri"> </span>
-                            </a>
+                           
                         </div>
                     </div>
                 </div>
+                </a>
             </div>
             @endforeach
         </div>
