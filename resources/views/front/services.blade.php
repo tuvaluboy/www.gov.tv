@@ -55,10 +55,14 @@
                                 <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
                                 {!!$service->detailinformation!!}</p>
                             </div>
-
+                            
+                            
                         </div>
                     </div>
                 </div>
+                @foreach($service->files as $file)
+                            <a href="{{ $file->getUrl() }}" target="_blank"><span class="mbr-iconfont mobi-mbri-file mobi-mbri" style="color: rgb(0, 119, 255); fill: rgb(0, 119, 255);"></span>{{$file->name }}</a> 
+                @endforeach
             </div>
         </div>
     </div>

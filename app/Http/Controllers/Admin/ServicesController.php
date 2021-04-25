@@ -53,6 +53,7 @@ class ServicesController extends Controller
         $service = Service::create($request->all());
         $service->contacts()->sync($request->input('contacts', []));
         $service->tags()->sync($request->input('tags', []));
+
         foreach ($request->input('files', []) as $file) {
             $service->addMedia(storage_path('tmp/uploads/' . basename($file)))->toMediaCollection('files');
         }
