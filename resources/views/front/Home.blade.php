@@ -50,7 +50,9 @@
                         {!!$services->description!!}</p>
                     </div>
                     <div class="img-wrapper"> 
+                    
                         <img src="{{ $services->image->getUrl() }}">
+             
                         {{-- <img src="assets/images/02.jpg" alt="Mobirise"> --}}
                     </div>
                 </div>

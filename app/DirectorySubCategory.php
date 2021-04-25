@@ -2,13 +2,18 @@
 
 namespace App;
 
+use \DateTimeInterface;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
-use \DateTimeInterface;
 
 class DirectorySubCategory extends Model
 {
     use SoftDeletes;
+
+    public const STATUS_SELECT = [
+        'Publish' => 'Publish',
+        'Hidden'  => 'Hidden',
+    ];
 
     public $table = 'directory_sub_categories';
 
@@ -16,11 +21,6 @@ class DirectorySubCategory extends Model
         'created_at',
         'updated_at',
         'deleted_at',
-    ];
-
-    const STATUS_SELECT = [
-        'Publish' => 'Publish',
-        'Hidden'  => 'Hidden',
     ];
 
     protected $fillable = [
@@ -32,14 +32,14 @@ class DirectorySubCategory extends Model
         'deleted_at',
     ];
 
-    protected function serializeDate(DateTimeInterface $date)
-    {
-        return $date->format('Y-m-d H:i:s');
-    }
-
     public function subCategoriesMinistryContents()
     {
         return $this->belongsToMany(MinistryContent::class);
+    }
+
+    public function subcategoryDirectoryContents()
+    {
+        return $this->belongsToMany(DirectoryContent::class);
     }
 
     public function directorycategory()
@@ -50,5 +50,15 @@ class DirectorySubCategory extends Model
     public function contents()
     {
         return $this->belongsToMany(MinistryContent::class);
+    }
+
+    public function contentdepartments()
+    {
+        return $this->belongsToMany(DirectoryContent::class);
+    }
+
+    protected function serializeDate(DateTimeInterface $date)
+    {
+        return $date->format('Y-m-d H:i:s');
     }
 }

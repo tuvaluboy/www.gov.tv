@@ -57,6 +57,16 @@
                             @endforeach
                         </td>
                     </tr>
+                    <tr>
+                        <th>
+                            {{ trans('cruds.directorySubCategory.fields.contentdepartment') }}
+                        </th>
+                        <td>
+                            @foreach($directorySubCategory->contentdepartments as $key => $contentdepartment)
+                                <span class="label label-info">{{ $contentdepartment->title }}</span>
+                            @endforeach
+                        </td>
+                    </tr>
                 </tbody>
             </table>
             <div class="form-group">
@@ -78,10 +88,18 @@
                 {{ trans('cruds.ministryContent.title') }}
             </a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#subcategory_directory_contents" role="tab" data-toggle="tab">
+                {{ trans('cruds.directoryContent.title') }}
+            </a>
+        </li>
     </ul>
     <div class="tab-content">
         <div class="tab-pane" role="tabpanel" id="sub_categories_ministry_contents">
             @includeIf('admin.directorySubCategories.relationships.subCategoriesMinistryContents', ['ministryContents' => $directorySubCategory->subCategoriesMinistryContents])
+        </div>
+        <div class="tab-pane" role="tabpanel" id="subcategory_directory_contents">
+            @includeIf('admin.directorySubCategories.relationships.subcategoryDirectoryContents', ['directoryContents' => $directorySubCategory->subcategoryDirectoryContents])
         </div>
     </div>
 </div>

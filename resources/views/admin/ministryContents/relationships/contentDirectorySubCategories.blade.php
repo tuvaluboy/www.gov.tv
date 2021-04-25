@@ -37,6 +37,9 @@
                             {{ trans('cruds.directorySubCategory.fields.content') }}
                         </th>
                         <th>
+                            {{ trans('cruds.directorySubCategory.fields.contentdepartment') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -61,6 +64,11 @@
                             </td>
                             <td>
                                 @foreach($directorySubCategory->contents as $key => $item)
+                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($directorySubCategory->contentdepartments as $key => $item)
                                     <span class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
                             </td>

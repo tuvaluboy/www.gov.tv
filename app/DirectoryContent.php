@@ -54,6 +54,11 @@ class DirectoryContent extends Model implements HasMedia
         return $this->belongsToMany(Service::class);
     }
 
+    public function contentdepartmentDirectorySubCategories()
+    {
+        return $this->belongsToMany(DirectorySubCategory::class);
+    }
+
     public function ministry()
     {
         return $this->belongsTo(MinistryContent::class, 'ministry_id');
@@ -67,6 +72,11 @@ class DirectoryContent extends Model implements HasMedia
     public function getFilesAttribute()
     {
         return $this->getMedia('files');
+    }
+
+    public function subcategories()
+    {
+        return $this->belongsToMany(DirectorySubCategory::class);
     }
 
     protected function serializeDate(DateTimeInterface $date)

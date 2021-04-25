@@ -29,6 +29,9 @@
                             {{ trans('cruds.directoryContent.fields.ministry') }}
                         </th>
                         <th>
+                            {{ trans('cruds.directoryContent.fields.subcategory') }}
+                        </th>
+                        <th>
                             {{ trans('cruds.directoryContent.fields.title') }}
                         </th>
                         <th>
@@ -54,6 +57,14 @@
                             <select class="search">
                                 <option value>{{ trans('global.all') }}</option>
                                 @foreach($ministry_contents as $key => $item)
+                                    <option value="{{ $item->title }}">{{ $item->title }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($directory_sub_categories as $key => $item)
                                     <option value="{{ $item->title }}">{{ $item->title }}</option>
                                 @endforeach
                             </select>
@@ -94,6 +105,11 @@
                             </td>
                             <td>
                                 {{ $directoryContent->ministry->title ?? '' }}
+                            </td>
+                            <td>
+                                @foreach($directoryContent->subcategories as $key => $item)
+                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
                             </td>
                             <td>
                                 {{ $directoryContent->title ?? '' }}

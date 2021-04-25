@@ -243,13 +243,15 @@ return [
             'updated_at_helper'        => ' ',
             'deleted_at'               => 'Deleted at',
             'deleted_at_helper'        => ' ',
-            'content'                  => 'Content',
+            'content'                  => 'Content Ministry',
             'content_helper'           => ' ',
+            'contentdepartment'        => 'Content Department',
+            'contentdepartment_helper' => ' ',
         ],
     ],
     'directoryContent' => [
-        'title'          => 'Directory Content',
-        'title_singular' => 'Directory Content',
+        'title'          => 'Directory Departments',
+        'title_singular' => 'Directory Department',
         'fields'         => [
             'id'                         => 'ID',
             'id_helper'                  => ' ',
@@ -275,6 +277,8 @@ return [
             'tags_helper'                => ' ',
             'files'                      => 'Files',
             'files_helper'               => ' ',
+            'subcategory'                => 'Subcategory',
+            'subcategory_helper'         => ' ',
         ],
     ],
     'ministryContent' => [

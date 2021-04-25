@@ -38,6 +38,9 @@
                             {{ trans('cruds.directorySubCategory.fields.content') }}
                         </th>
                         <th>
+                            {{ trans('cruds.directorySubCategory.fields.contentdepartment') }}
+                        </th>
+                        <th>
                             &nbsp;
                         </th>
                     </tr>
@@ -75,6 +78,14 @@
                             </select>
                         </td>
                         <td>
+                            <select class="search">
+                                <option value>{{ trans('global.all') }}</option>
+                                @foreach($directory_contents as $key => $item)
+                                    <option value="{{ $item->title }}">{{ $item->title }}</option>
+                                @endforeach
+                            </select>
+                        </td>
+                        <td>
                         </td>
                     </tr>
                 </thead>
@@ -98,6 +109,11 @@
                             </td>
                             <td>
                                 @foreach($directorySubCategory->contents as $key => $item)
+                                    <span class="badge badge-info">{{ $item->title }}</span>
+                                @endforeach
+                            </td>
+                            <td>
+                                @foreach($directorySubCategory->contentdepartments as $key => $item)
                                     <span class="badge badge-info">{{ $item->title }}</span>
                                 @endforeach
                             </td>

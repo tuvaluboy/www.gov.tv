@@ -38,8 +38,8 @@
             <div class="form-group">
                 <label for="directorycategory_id">{{ trans('cruds.directorySubCategory.fields.directorycategory') }}</label>
                 <select class="form-control select2 {{ $errors->has('directorycategory') ? 'is-invalid' : '' }}" name="directorycategory_id" id="directorycategory_id">
-                    @foreach($directorycategories as $id => $directorycategory)
-                        <option value="{{ $id }}" {{ (old('directorycategory_id') ? old('directorycategory_id') : $directorySubCategory->directorycategory->id ?? '') == $id ? 'selected' : '' }}>{{ $directorycategory }}</option>
+                    @foreach($directorycategories as $id => $entry)
+                        <option value="{{ $id }}" {{ (old('directorycategory_id') ? old('directorycategory_id') : $directorySubCategory->directorycategory->id ?? '') == $id ? 'selected' : '' }}>{{ $entry }}</option>
                     @endforeach
                 </select>
                 @if($errors->has('directorycategory'))
@@ -66,6 +66,24 @@
                     </div>
                 @endif
                 <span class="help-block">{{ trans('cruds.directorySubCategory.fields.content_helper') }}</span>
+            </div>
+            <div class="form-group">
+                <label for="contentdepartments">{{ trans('cruds.directorySubCategory.fields.contentdepartment') }}</label>
+                <div style="padding-bottom: 4px">
+                    <span class="btn btn-info btn-xs select-all" style="border-radius: 0">{{ trans('global.select_all') }}</span>
+                    <span class="btn btn-info btn-xs deselect-all" style="border-radius: 0">{{ trans('global.deselect_all') }}</span>
+                </div>
+                <select class="form-control select2 {{ $errors->has('contentdepartments') ? 'is-invalid' : '' }}" name="contentdepartments[]" id="contentdepartments" multiple>
+                    @foreach($contentdepartments as $id => $contentdepartment)
+                        <option value="{{ $id }}" {{ (in_array($id, old('contentdepartments', [])) || $directorySubCategory->contentdepartments->contains($id)) ? 'selected' : '' }}>{{ $contentdepartment }}</option>
+                    @endforeach
+                </select>
+                @if($errors->has('contentdepartments'))
+                    <div class="invalid-feedback">
+                        {{ $errors->first('contentdepartments') }}
+                    </div>
+                @endif
+                <span class="help-block">{{ trans('cruds.directorySubCategory.fields.contentdepartment_helper') }}</span>
             </div>
             <div class="form-group">
                 <button class="btn btn-danger" type="submit">
