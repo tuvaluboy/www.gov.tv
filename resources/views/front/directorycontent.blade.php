@@ -43,8 +43,10 @@
         </div>
         </div>
         <div class="col-lg-9 col-md-12 md-pb">
+        @if($directorycontent->ministry)
         <h5><a href="{{route('directory.showministry', [$directorycontent->ministry->id ])}}"> {{$directorycontent->ministry->title}} </a>
-                                    </h4>
+             </h4>
+             @endif
             <div class="title-wrapper align-left">
                 <div class="line"></div>
                 <h3 class="mbr-section-title mbr-white mbr-semibold pb-3 mbr-fonts-style display-2">  {{$directorycontent->title}}</h3>
@@ -56,15 +58,18 @@
                         <div class="card-box">
 
                             <p class="card-text mbr-regular mbr-black mbr-fonts-style display-7">
-                            {!!$directorycontent->description!!}
+                            {!!$directorycontent->detailinformation!!}
                                 <br>
 
 
                         </div>
-
+                       
                     </div>
                 </div>
             </div>
+            @foreach($directorycontent->files as $file)
+            <a href="{{ $file->getUrl() }}" target="_blank"><span class="mbr-iconfont mobi-mbri-file mobi-mbri" style="color: rgb(0, 119, 255); fill: rgb(0, 119, 255);"></span>{{$file->name }}</a> <br>
+            @endforeach
         </div>
     </div>
 </div>
