@@ -127,9 +127,9 @@
                         
                             </div>
                              
-                            @if($selecteditem->file)
-                            <a href="{{ $selecteditem->file->getUrl() }}" target="_blank"><span class="mbr-iconfont mobi-mbri-file mobi-mbri" style="color: rgb(0, 119, 255); fill: rgb(0, 119, 255);">{{ $selecteditem->file->title }}</span></a> 
-                            @endif
+                            @foreach($selecteditem->file as $file)
+                            <a href="{{ $file->getUrl() }}" target="_blank"><span class="mbr-iconfont mobi-mbri-file mobi-mbri" style="color: rgb(0, 119, 255); fill: rgb(0, 119, 255);"></span>{{ $file->name }}</a> 
+                            @endforeach
 
                            
                         </div>

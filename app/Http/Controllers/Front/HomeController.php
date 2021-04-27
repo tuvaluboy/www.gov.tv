@@ -97,8 +97,9 @@ class HomeController extends Controller
         $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
        
-       // return $directorycontent->contentDirectorySubCategories;
+ 
         // find the subcategory that was connected
+      
        // $directorysubcategory = DirectorySubCategory::find($subcategory_id);
         // fint all the content that has same content with the selected
        // $directorycontents = DirectoryContent::where( ,$directorycontent->directorysubcategory_id )->where('status','Publish')->get();

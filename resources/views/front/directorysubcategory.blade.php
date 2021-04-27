@@ -45,10 +45,18 @@
                             <div class="panel-body">
 
                                     <p class="mbr-fonts-style mbr-regular mbr-text panel-text display-7">
-                                    @foreach($subcategory->contents as $service)
-                                    <a href="{{route('directory.showministry',[ $service->id ])}}"><u>{{$service->title}}</u></a><br>
-                                    {!!$service->description!!}
-                                    @endforeach</p>
+                                    @if($subcategory->contents)
+                                        @foreach($subcategory->contents as $service)
+                                        <a href="{{route('directory.showministry',[ $service->id ])}}"><u>{{$service->title}}</u></a><br>
+                                        {!!$service->description!!}
+                                        @endforeach
+                                    @endif
+                                    @if($subcategory->contentdepartments)
+                                        @foreach($subcategory->contentdepartments as $service)
+                                        <a href="{{route('directory.show',[ $service->id ])}}"><u>{{$service->title}}</u></a><br>
+                                        {!!$service->description!!}
+                                        @endforeach
+                                    @endif</p>
 
                             </div>
                         </div>
