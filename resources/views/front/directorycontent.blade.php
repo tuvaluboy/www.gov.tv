@@ -3,18 +3,7 @@
 @section('content')
 
 
-<section class="header4 cid-sdVgfli5UX" id="header4-2p">
-    <div class="mbr-overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="content-wrap">
-                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-2">
-                    <strong><br></strong><br><strong>{{$directorycontent->title}}</strong>
-            </h1>
-            </div>
-        </div>
-    </div>
-</section>
+@include('partials.slidemenu')
 
 <hr>
     <div class="align-left container">
