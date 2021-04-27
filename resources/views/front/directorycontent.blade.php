@@ -20,7 +20,7 @@
     <div class="align-left container">
             <div class="content-wrap">
                 <div class="col-lg-12">
-                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> / <a href="{{route('directory.list',[ $directorycontent->sub_categories[0]->id ])}}">{{$directorycontent->sub_categories[0]->title}}</a> / {{$directorycontent->title}}
+                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> / <a href="{{route('directory.list',[ $directorycontent->contentdepartmentDirectorySubCategories[0]->id ])}}">{{$directorycontent->contentdepartmentDirectorySubCategories[0]->title}}</a> / {{$directorycontent->title}}
                     </p>
                 </div>
             </div>
@@ -63,7 +63,7 @@
 
 
                         </div>
-                       
+
                     </div>
                 </div>
             </div>

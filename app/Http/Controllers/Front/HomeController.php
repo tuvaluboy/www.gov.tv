@@ -42,7 +42,7 @@ class HomeController extends Controller
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $backgroundimagemiddle = BackgroundImage::where('page','Homesecond')->where('status','Publish')->first();
         $media = Category::all();
-   
+
         $servicescategories = ServiceCategory::where('status','Publish')->get();
         $counts = ServiceCategory::where('status','Publish')->count();
         $titlename = "Welcome to Gov.tv | Government of Tuvalu";
@@ -85,7 +85,7 @@ class HomeController extends Controller
        // $directorycontents = DirectoryContent::where( ,$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
        $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
        $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
-      
+
         $titlename = $directorycontent->title;
 
         return view('front.directorycontent',compact('titlename','directorycontent','backgroundimagetop','backgroundimagefooter'));
@@ -96,10 +96,10 @@ class HomeController extends Controller
         $directorycontent = MinistryContent::find($content_id);
         $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
-       
- 
+
+
         // find the subcategory that was connected
-      
+
        // $directorysubcategory = DirectorySubCategory::find($subcategory_id);
         // fint all the content that has same content with the selected
        // $directorycontents = DirectoryContent::where( ,$directorycontent->directorysubcategory_id )->where('status','Publish')->get();
@@ -181,19 +181,19 @@ class HomeController extends Controller
     // Services Sub category
     public function showsubcategory($id){
         $pagename = "Services";
-   
+
         $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $serviceCategory = ServiceCategory::find($id);
         $subcategories = ServicesSubCategory::all()->where('servicescategory_id',$id)->where('status','Publish');
         $titlename = $serviceCategory->title;
- 
+
         return view('front.servicessubcategory', compact('titlename','subcategories','serviceCategory','backgroundimagetop','backgroundimagefooter'));
     }
     // Services Content
     public function services($id){
         $pagename = "Services";
-   
+
         $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $service = Service::find($id);
@@ -214,7 +214,7 @@ class HomeController extends Controller
 
     public function medialist($id){
         $pagename = "Media";
-   
+
         $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $category = Category::find($id);
@@ -225,7 +225,7 @@ class HomeController extends Controller
     }
     public function mediashow($id){
         $pagename = "Media";
-   
+
         $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
         $selecteditem = Item::find($id);
@@ -240,7 +240,7 @@ class HomeController extends Controller
     public function search(Request $request){
         $titlename = "Search Result";
         $pagename = "Search";
-   
+
         $backgroundimagetop = BackgroundImage::where('page',$pagename)->where('status','Publish')->first();
         $backgroundimagefooter = BackgroundImage::where('page','Footer')->where('status','Publish')->first();
 
