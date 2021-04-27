@@ -3,24 +3,13 @@
 @section('content')
 
 
-<section class="header4 cid-sdVgfli5UX" id="header4-2p">
-    <div class="mbr-overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class="content-wrap">
-                <h1 class="mbr-section-title mbr-fonts-style mbr-white mb-3 display-2">
-                    <strong><br></strong><br><strong>{{$directorycontent->title}}</strong>
-            </h1>
-            </div>
-        </div>
-    </div>
-</section>
+@include('partials.slidemenu')
 
 <hr>
     <div class="align-left container">
             <div class="content-wrap">
                 <div class="col-lg-12">
-                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> / <a href="{{route('directory.list',[ $directorycontent->sub_categories[0]->id ])}}">{{$directorycontent->sub_categories[0]->title}}</a> / {{$directorycontent->title}}
+                    <p class="mbr-text mbr-fonts-style display-text"><a  href="{{route('home')}}" class="text-primary">Home</a> / <a href="{{route('directory.list',[ $directorycontent->contentdepartmentDirectorySubCategories[0]->id ])}}">{{$directorycontent->contentdepartmentDirectorySubCategories[0]->title}}</a> / {{$directorycontent->title}}
                     </p>
                 </div>
             </div>
@@ -63,7 +52,7 @@
 
 
                         </div>
-                       
+
                     </div>
                 </div>
             </div>
