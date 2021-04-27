@@ -330,6 +330,26 @@ class PermissionsTableSeeder extends Seeder
             ],
             [
                 'id'    => 81,
+                'title' => 'menu_message_create',
+            ],
+            [
+                'id'    => 82,
+                'title' => 'menu_message_edit',
+            ],
+            [
+                'id'    => 83,
+                'title' => 'menu_message_show',
+            ],
+            [
+                'id'    => 84,
+                'title' => 'menu_message_delete',
+            ],
+            [
+                'id'    => 85,
+                'title' => 'menu_message_access',
+            ],
+            [
+                'id'    => 86,
                 'title' => 'profile_password_edit',
             ],
         ];

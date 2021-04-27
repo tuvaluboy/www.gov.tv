@@ -162,6 +162,13 @@ Route::group(['prefix' => 'admin', 'as' => 'admin.', 'namespace' => 'Admin', 'mi
     Route::post('background-images/media', 'BackgroundImageController@storeMedia')->name('background-images.storeMedia');
     Route::post('background-images/ckmedia', 'BackgroundImageController@storeCKEditorImages')->name('background-images.storeCKEditorImages');
     Route::resource('background-images', 'BackgroundImageController');
+
+    
+    // Menu Message
+    Route::delete('menu-messages/destroy', 'MenuMessageController@massDestroy')->name('menu-messages.massDestroy');
+    Route::post('menu-messages/media', 'MenuMessageController@storeMedia')->name('menu-messages.storeMedia');
+    Route::post('menu-messages/ckmedia', 'MenuMessageController@storeCKEditorImages')->name('menu-messages.storeCKEditorImages');
+    Route::resource('menu-messages', 'MenuMessageController');
 });
 Route::group(['prefix' => 'profile', 'as' => 'profile.', 'namespace' => 'Auth', 'middleware' => ['auth']], function () {
 // Change password
